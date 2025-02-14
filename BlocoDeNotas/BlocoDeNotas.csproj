@@ -49,4 +49,8 @@
     <Content Include="BlocoDeNotas.Icone.ico" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="call &quot;C:\Users\gusta\source\Scripts\asign.cmd&quot;" />
+  </Target>
+
 </Project>
