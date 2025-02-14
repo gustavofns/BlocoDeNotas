@@ -8,18 +8,9 @@
     <UseWPF>true</UseWPF>
     <SupportedOSPlatformVersion>10.0.22621.0</SupportedOSPlatformVersion>
     <PlatformTarget>x64</PlatformTarget>
-    <AssemblyVersion>0.3.0.2</AssemblyVersion>
-    <FileVersion>0.3.0.2</FileVersion>
     <NeutralLanguage>pt-BR</NeutralLanguage>
     <Platforms>AnyCPU;x64</Platforms>
     <AnalysisLevel>preview</AnalysisLevel>
-    <Product>Bloco de notas - Beta</Product>
-    <Version>0.3.0.2</Version>
-    <Description>Bloco de notas - Beta
-</Description>
-    <Copyright>Gustavo Silva</Copyright>
-    <Company>Gustavo Silva</Company>
-    <PackageId>$(AssemblyName)</PackageId>
     <PackageIcon></PackageIcon>
     <ApplicationIcon>BlocoDeNotas.Icone.ico</ApplicationIcon>
     <DelaySign>False</DelaySign>
@@ -50,9 +41,5 @@
   <ItemGroup>
     <Content Include="BlocoDeNotas.Icone.ico" />
   </ItemGroup>
-
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="call &quot;C:\Users\gusta\source\repos\BlocoDeNotas\Scripts\sign.bat&quot;" />
-  </Target>
 
 </Project>
