@@ -13,18 +13,6 @@
 "SccProvider" = "8:"
     "Hierarchy"
     {
-        "Entry"
-        {
-        "MsmKey" = "8:_2803FACFF8E24AB0B60BA25030F4A78A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F5BBC0382FB34031BFA0FAE9F437FF99"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
     }
     "Configurations"
     {
@@ -37,7 +25,7 @@
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
-        "Compression" = "3:2"
+        "Compression" = "3:3"
         "SignOutput" = "11:FALSE"
         "CertificateFile" = "8:"
         "PrivateKeyFile" = "8:"
@@ -92,6 +80,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -110,7 +106,15 @@
         {
             "LaunchCondition"
             {
-                "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_7E7287EAA9DE4979BD7E2819F66D2658"
+                "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_39E36013CC4746DB81FBE33733E2915F"
+                {
+                "Name" = "8:.NET Framework"
+                "Message" = "8:[VSDNETMSG]"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.7.2"
+                "AllowLaterVersions" = "11:FALSE"
+                "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=863262"
+                }
+                "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_F1A2ACE7B4ED4AF39EBACC13723F450D"
                 {
                 "Name" = "8:.NET Core"
                 "Message" = "8:[VSDNETCOREMSG]"
@@ -124,26 +128,6 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F5BBC0382FB34031BFA0FAE9F437FF99"
-            {
-            "SourcePath" = "8:..\\Icones\\BlocoDeNotas.Icone.ico"
-            "TargetName" = "8:BlocoDeNotas.Icone.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_FD7372D7B4254ED2940054A6F0F054B2"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
         }
         "FileType"
         {
@@ -222,9 +206,9 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Bloco de notas - Beta"
-        "ProductCode" = "8:{3289E8BA-35CC-4B1F-B589-97CC7247B528}"
-        "PackageCode" = "8:{C5923FC1-DAFC-4533-AE34-969C49855BB8}"
-        "UpgradeCode" = "8:{A819C42D-B87A-47F6-9A49-7608D0F3D500}"
+        "ProductCode" = "8:{28D3175F-5593-4566-B1B0-4AEDA88AF206}"
+        "PackageCode" = "8:{0AFEB5C1-C811-4CA4-A40B-86D613B81CE2}"
+        "UpgradeCode" = "8:{1987A795-C022-4F44-A6D7-EC387E1F8DC3}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
@@ -233,15 +217,15 @@
         "ProductVersion" = "8:0.3.0"
         "Manufacturer" = "8:Gustavo Silva"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:"
+        "ARPHELPLINK" = "8:https://github.com/gustavofns"
         "Title" = "8:Bloco de notas - Beta Setup"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Gustavo Silva"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:Bloco de notas"
-        "ARPURLINFOABOUT" = "8:"
+        "ARPURLINFOABOUT" = "8:https://github.com/gustavofns/BlocoDeNotas"
         "ARPPRODUCTICON" = "8:"
-        "ARPIconIndex" = "3:0"
+        "ARPIconIndex" = "3:32512"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:1"
@@ -343,34 +327,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_019C05A631634CDEADA7E3C42AD5D608"
-            {
-            "Name" = "8:Bloco de notas - Beta"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_2803FACFF8E24AB0B60BA25030F4A78A"
-            "Folder" = "8:_7640F4F4452148498CCD4D9D2AB62664"
-            "WorkingFolder" = "8:_FD7372D7B4254ED2940054A6F0F054B2"
-            "Icon" = "8:_F5BBC0382FB34031BFA0FAE9F437FF99"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6F15B36DDE56482284FCEA39FEE5602C"
-            {
-            "Name" = "8:Bloco de notas - Beta"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_2803FACFF8E24AB0B60BA25030F4A78A"
-            "Folder" = "8:_1383ABA8EE124BA4B1F2BD483E49C2C5"
-            "WorkingFolder" = "8:_FD7372D7B4254ED2940054A6F0F054B2"
-            "Icon" = "8:_F5BBC0382FB34031BFA0FAE9F437FF99"
-            "Feature" = "8:"
-            }
         }
         "UserInterface"
         {
@@ -770,34 +726,6 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2803FACFF8E24AB0B60BA25030F4A78A"
-            {
-            "SourcePath" = "8:..\\BlocoDeNotas\\obj\\x64\\Debug\\net9.0-windows10.0.26100.0\\apphost.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_FD7372D7B4254ED2940054A6F0F054B2"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:PublishItems"
-            "OutputProjectGuid" = "8:{2A3B15A5-BEE4-4EC1-83E9-CA3CF560C510}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
         }
     }
 }
