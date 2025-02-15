@@ -9,6 +9,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+#pragma warning disable WPF0001
+
 namespace BlocoDeNotas
 {
     /// <summary>
@@ -16,14 +18,44 @@ namespace BlocoDeNotas
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Construtor da classe
         public MainWindow()
         {
+            VerificarOS();
+            CarregarTema();
             InitializeComponent();
             MudarTela(new Editor(this));
         }
 
-        public void MudarTela(Page page) => frame.Navigate(page);
+        // Verifica a versão do sistema operacional
+        public void VerificarOS()
+        {
+            if (Environment.OSVersion.Version.Build < 20000)
+            {
+                MessageBox.Show("Este aplicativo não é compatível com a versão do seu sistema operacional.",
+                    "Bloco de notas", MessageBoxButton.OK, MessageBoxImage.Error);
+                Application.Current.Shutdown();
+            }
+            return;
+        }
 
-        public void MoverJanela(object sender, MouseButtonEventArgs e) => DragMove();
+        // Muda a tela do aplicativo
+        public void MudarTela(Page page)
+        {
+            frame.Navigate(page);
+        }
+
+        // Move a janela do aplicativo
+        public void MoverJanela(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        // Carregar Tema
+        public void CarregarTema()
+        {
+            Config.Tema tema = new Config.Tema("Sistema");
+            tema.MudarTema();
+        }
     }
 }
