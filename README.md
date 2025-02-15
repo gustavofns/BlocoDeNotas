@@ -1,5 +1,6 @@
 # Bloco de Notas
-  Projeto de bloco de notas moderno escrito em C# com o framework .NET 9.
+Projeto de um bloco de notas moderno desenvolvido em C# utilizando o framework .NET 9 para fins educacionais.
+
   
 ![bloco_clar](https://github.com/user-attachments/assets/77f8f2fe-fd06-482a-a563-be3c8aac0efe)
 
@@ -7,5 +8,5 @@
 
 ## Principais recursos
  * Abrir documentos de texto;
- * Salvar documentos de de texto;
- * Criar e editar documentos de textos.
+ * Salvar documentos de texto;
+ * Criar e editar documentos de texto.
