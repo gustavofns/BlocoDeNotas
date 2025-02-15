@@ -1,10 +1,6 @@
 # Bloco de Notas
-<<<<<<< HEAD
-  Projeto de um bloco de notas moderno desenvolvido em C# utilizando o framework .NET 9 para fins educacionais.
-=======
 Projeto de um bloco de notas moderno desenvolvido em C# utilizando o framework .NET 9 para fins educacionais.
 
->>>>>>> 0c209e4d4ddef216c7d49c6fa6d97f919f5a1551
   
 ![bloco_clar](https://github.com/user-attachments/assets/77f8f2fe-fd06-482a-a563-be3c8aac0efe)
 
