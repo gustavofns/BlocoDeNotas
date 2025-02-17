@@ -1,15 +1,7 @@
-﻿using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-#pragma warning disable WPF0001
 
 namespace BlocoDeNotas
 {
@@ -22,21 +14,8 @@ namespace BlocoDeNotas
         public MainWindow()
         {
             VerificarOS();
-            CarregarTema();
             InitializeComponent();
             MudarTela(new Editor(this));
-        }
-
-        // Verifica a versão do sistema operacional
-        public void VerificarOS()
-        {
-            if (Environment.OSVersion.Version.Build < 20000)
-            {
-                MessageBox.Show("Este aplicativo não é compatível com a versão do seu sistema operacional.",
-                    "Bloco de notas", MessageBoxButton.OK, MessageBoxImage.Error);
-                Application.Current.Shutdown();
-            }
-            return;
         }
 
         // Muda a tela do aplicativo
@@ -51,11 +30,18 @@ namespace BlocoDeNotas
             DragMove();
         }
 
-        // Carregar Tema
-        public void CarregarTema()
+        // Verifica a versão do sistema operacional
+        public void VerificarOS()
         {
-            Config.Tema tema = new Config.Tema("Sistema");
-            tema.MudarTema();
+            if (!(Environment.OSVersion.Version.Build >= 22000))
+            {
+                MessageBox.Show("Este aplicativo não é compatível com esta versão do Windows.\n" +
+                    "Por favor atualize para Windows 11 21H2 ou superior.",
+                    "Bloco de notas", MessageBoxButton.OK, MessageBoxImage.Error);
+                Application.Current.Shutdown();
+                Close();
+            }
+            return;
         }
     }
 }

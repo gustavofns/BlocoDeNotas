@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
-using System.Xml.Linq;
 
 namespace BlocoDeNotas
 {
@@ -57,25 +51,31 @@ namespace BlocoDeNotas
         public void VerificarAreaDeTransferencia()
         {
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Interval = TimeSpan.FromMicroseconds(1);
+            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(1);
             dispatcherTimer.Tick += new EventHandler((sender, e) =>
             {
+                // Corrigido um bug que exibia o menu de colar mesmo sem ter nenhum texto na área de transferência
+                // Melhorado o tempo de carregamento da área de transferência
                 if (Clipboard.ContainsText())
                 {
                     editor.colarMenu.IsEnabled = true;
                     editor.colarMenuContexto.IsEnabled = true;
+                    editor.colarConfigRapidas.Visibility = Visibility.Visible;
                 }
-                else 
-                { 
+                else
+                {
                     editor.colarMenu.IsEnabled = false;
                     editor.colarMenuContexto.IsEnabled = false;
+                    editor.colarConfigRapidas.Visibility = Visibility.Collapsed;
                 }
+
             });
             dispatcherTimer.Start();
         }
 
         public void TextoSelecionado()
         {
+            // Corrigido um bug que exibia os menus de copiar, recortar e excluir mesmo sem texto selecionado
             if (editor.editorDeTexto.SelectedText.Length > 0)
             {
                 editor.copiarMenu.IsEnabled = true;
@@ -84,6 +84,9 @@ namespace BlocoDeNotas
                 editor.copiarMenuContexto.IsEnabled = true;
                 editor.recortarMenuContexto.IsEnabled = true;
                 editor.excluirMenuContexto.IsEnabled = true;
+                editor.copiarConfigRapidas.Visibility = Visibility.Visible;
+                editor.recortarConfigRapidas.Visibility = Visibility.Visible;
+                editor.excluirConfigRapidas.Visibility = Visibility.Visible;
             }
             else
             {
@@ -93,6 +96,9 @@ namespace BlocoDeNotas
                 editor.copiarMenuContexto.IsEnabled = false;
                 editor.recortarMenuContexto.IsEnabled = false;
                 editor.excluirMenuContexto.IsEnabled = false;
+                editor.copiarConfigRapidas.Visibility = Visibility.Collapsed;
+                editor.recortarConfigRapidas.Visibility = Visibility.Collapsed;
+                editor.excluirConfigRapidas.Visibility = Visibility.Collapsed;
             }
         }
     }

@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Interop;
-using System.Windows.Threading;
-using Windows.Graphics.Printing3D;
-using Windows.Networking.NetworkOperators;
+﻿using System.Windows;
 
 #pragma warning disable WPF0001
 
-namespace BlocoDeNotas
+namespace BlocoDeNotas.Menu
 {
     public class MenuArquivo
     {
@@ -22,7 +10,7 @@ namespace BlocoDeNotas
         private Editor editor;
         private OperacoesComArquivos operacoesComArquivos;
 
-        public MenuArquivo(MainWindow mainWindow, Editor editor) 
+        public MenuArquivo(MainWindow mainWindow, Editor editor)
         {
             this.mainWindow = mainWindow;
             this.editor = editor;
@@ -40,7 +28,7 @@ namespace BlocoDeNotas
         }
 
         public void FecharJanela()
-        { 
+        {
             mainWindow.Close();
         }
 
@@ -53,7 +41,7 @@ namespace BlocoDeNotas
                 {
                     await operacoesComArquivos.AbrirArquivoAsync(arquivo);
                 }
-            } 
+            }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao abrir o arquivo:\n {ex.Message}", "Bloco de notas", MessageBoxButton.OK);
@@ -62,14 +50,14 @@ namespace BlocoDeNotas
 
         public async void SalvarArquivo()
         {
-            try 
-            { 
+            try
+            {
                 if (string.IsNullOrEmpty(editor.Arquivo))
                 {
                     await operacoesComArquivos.SalvarArquivoAsync("Selecione um local para salvar o documento");
                     return;
                 }
-                if(editor.TextoModificado) await operacoesComArquivos.GravarArquivoAsync();
+                if (editor.TextoModificado) await operacoesComArquivos.GravarArquivoAsync();
                 else return;
             }
             catch (Exception ex)
@@ -81,8 +69,8 @@ namespace BlocoDeNotas
 
         public async void SalvarArquivoComo()
         {
-            try 
-            { 
+            try
+            {
                 await operacoesComArquivos.SalvarArquivoAsync("Selecione como deseja salvar o arquivo...");
             }
             catch (Exception ex)

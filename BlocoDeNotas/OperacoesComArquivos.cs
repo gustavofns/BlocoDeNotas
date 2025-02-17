@@ -1,17 +1,6 @@
-﻿using ABI.Windows.ApplicationModel.Activation;
-using Microsoft.VisualBasic;
-using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.Win32;
 using System.IO;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Interop;
-using Windows.Storage.Pickers;
-using Windows.UI.ViewManagement;
 
 namespace BlocoDeNotas
 {
@@ -20,7 +9,7 @@ namespace BlocoDeNotas
         // Atributos da classe
         private MainWindow mainWindow;
         private Editor editor;
-        private const string tiposDeArquivo = 
+        private const string tiposDeArquivo =
             "Documentos de texto (*.txt)|*.txt|" +
             "Todos os arquivos (*.*)|*.*";
 
@@ -156,7 +145,7 @@ namespace BlocoDeNotas
 
         public Task<bool> RenomearArquivoAsync(string arquivo)
         {
-            if(File.Exists(arquivo))
+            if (File.Exists(arquivo))
             {
                 return Task.FromResult(false);
             }

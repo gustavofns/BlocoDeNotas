@@ -60,9 +60,11 @@
                 <MenuItem x:Name="fonteMenu" Visibility="Collapsed">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal" x:Name="sliderMenu">
-                            <TextBlock Text="&#xE8D2;" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Margin="0,0,10,0" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
-                            <Slider x:Name="tamanhoFonteSliderMenu" Minimum="2" Maximum="72" TickFrequency="2" Value="14" Width="130" IsSnapToTickEnabled="True" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center" ValueChanged="SliderTamanhoFonteMenu_ValueChanged"/>
-                            <TextBlock x:Name="tamanhoFontaLabelMenu" Text="0" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="10,0,0,0" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
+                            <TextBlock Text="&#xE8D2;" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Margin="0,0,10,0" 
+                                       Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
+                            <Slider x:Name="tamanhoFonteSliderMenu" Minimum="2" Maximum="72" TickFrequency="2" Value="14" Width="130" IsSnapToTickEnabled="True" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                    ValueChanged="SliderTamanhoFonteMenu_ValueChanged" MouseDoubleClick="Slider_DoubleClick"/>
+                            <TextBlock x:Name="tamanhoFontaLabelMenu" Text="14" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Margin="10,0,0,0" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
@@ -90,16 +92,15 @@
             <MenuItem Header="&#xE74E;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="SalvarArquivo_Click"/>
             <MenuItem Header="&#xE792;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="SalvarArquivoComo_Click"/>
             <Separator/>
-            <MenuItem Header="&#xE8C6;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="Recortar_Click"/>
-            <MenuItem Header="&#xE8C8;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="Copiar_Click"/>
-            <MenuItem Header="&#xE77F;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="Colar_Click"/>
-            <MenuItem Header="&#xECC9;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="Excluir_Click"/>
-            <Separator/>
+            <MenuItem x:Name="recortarConfigRapidas" Visibility="Collapsed" Header="&#xE8C6;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="Recortar_Click"/>
+            <MenuItem x:Name="copiarConfigRapidas" Visibility="Collapsed" Header="&#xE8C8;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="Copiar_Click"/>
+            <MenuItem x:Name="colarConfigRapidas" Visibility="Collapsed" Header="&#xE77F;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="Colar_Click"/>
+            <MenuItem x:Name="excluirConfigRapidas" Visibility="Collapsed" Header="&#xECC9;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="Excluir_Click"/>
         </Menu>
         <Menu Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontFamily="{StaticResource SymbolThemeFontFamily}" FontStretch="Medium" FontSize="16">
             <MenuItem Header="&#xE8A7;" Click="NovaJanela_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
             <MenuItem Header="&#xEE49;" Click="MiniBlock_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
-            <MenuItem Header="&#xE713;" Click="Config_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Visibility="Collapsed"/>
+            <MenuItem Header="&#xE713;" Click="Config_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
         </Menu>
         <Separator Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="1"/>
         <TextBox x:Name="editorDeTexto" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" 
@@ -111,10 +112,38 @@
                  TextChanged="editorDeTexto_TextChanged" SelectionChanged="editorDeTexto_SelectionChanged">
             <TextBox.ContextMenu>
                 <ContextMenu>
-                    <MenuItem x:Name="recortarMenuContexto" Header="Recortar" IsEnabled="False" Click="Recortar_Click" InputGestureText="Ctrl+X"/>
-                    <MenuItem x:Name="copiarMenuContexto" Header="Copiar" IsEnabled="False" Click="Copiar_Click" InputGestureText="Ctrl+C"/>
-                    <MenuItem x:Name="colarMenuContexto"  Header="Colar" IsEnabled="False" Click="Colar_Click" InputGestureText="Ctrl+V"/>
-                    <MenuItem x:Name="excluirMenuContexto"  Header="Excluir" IsEnabled="False" Click="Excluir_Click" InputGestureText="Del"/>
+                    <MenuItem x:Name="recortarMenuContexto" IsEnabled="False" Click="Recortar_Click" InputGestureText="Ctrl+X">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE8C6;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
+                                <TextBlock Text="Recortar" FontSize="14" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem x:Name="copiarMenuContexto" IsEnabled="False" Click="Copiar_Click" InputGestureText="Ctrl+C">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE8C8;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
+                                <TextBlock Text="Copiar" FontSize="14" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem x:Name="colarMenuContexto" IsEnabled="False" Click="Colar_Click" InputGestureText="Ctrl+V">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE77F;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
+                                <TextBlock Text="Colar" FontSize="14" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem x:Name="excluirMenuContexto" IsEnabled="False" Click="Excluir_Click" InputGestureText="Del">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xECC9;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
+                                <TextBlock Text="Excluir" FontSize="14" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
                 </ContextMenu>
             </TextBox.ContextMenu>
         </TextBox>
@@ -137,8 +166,8 @@
             <Separator Grid.Column="2" HorizontalAlignment="Right"/>
             <TextBlock Text="&#xE8D2;" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Margin="0,0,180,0" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
             <Slider x:Name="tamanhoFonteSlider" Grid.Column="3" Minimum="2" Maximum="72" TickFrequency="2" Value="14" Width="125" 
-                    IsSnapToTickEnabled="True" ValueChanged="SliderTamanhoFonte_ValueChanged" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,45,0"/>
-            <TextBlock x:Name="tamanhoFonteLabel" Grid.Column="3" Text="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" Margin="0,0,15,0" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
+                    IsSnapToTickEnabled="True" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,45,0" ValueChanged="SliderTamanhoFonte_ValueChanged" MouseDoubleClick="Slider_DoubleClick"/>
+            <TextBlock x:Name="tamanhoFonteLabel" Grid.Column="3" Text="14" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" Margin="0,0,15,0" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
         </Grid>
     </Grid>
 </Page>

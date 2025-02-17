@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 
-namespace BlocoDeNotas
+namespace BlocoDeNotas.Menu
 {
     public class MenuEditar
     {
@@ -19,7 +14,7 @@ namespace BlocoDeNotas
         public void Recortar()
         {
             try
-            { 
+            {
                 if (editor.editorDeTexto.SelectedText.Length > 0)
                 {
                     Clipboard.Clear();
@@ -28,7 +23,7 @@ namespace BlocoDeNotas
                     editor.editorDeTexto.CaretIndex = editor.editorDeTexto.Text.Length;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Não foi possível recortar o documento:\n{ex.Message}", "Bloco de notas", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -36,7 +31,7 @@ namespace BlocoDeNotas
 
         public void Copiar()
         {
-            try 
+            try
             {
                 if (editor.editorDeTexto.SelectedText.Length > 0)
                 {
@@ -52,10 +47,17 @@ namespace BlocoDeNotas
 
         }
 
+        // Cola o texto da área de transferência
         public void Colar()
         {
             try
             {
+                // Corrido o bug de colar o texto selecionado
+                if (editor.editorDeTexto.SelectedText.Length > 0)
+                {
+                    editor.editorDeTexto.SelectedText = string.Empty;
+                }
+
                 if (Clipboard.ContainsText())
                 {
 

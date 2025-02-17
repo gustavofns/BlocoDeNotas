@@ -1,8 +1,14 @@
-﻿using System.Diagnostics.Eventing.Reader;
+﻿using BlocoDeNotas.Config;
+using BlocoDeNotas.Config.DefinirConfig;
+using BlocoDeNotas.Config.Frames;
+using BlocoDeNotas.Menu;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+
+#pragma warning disable WPF0001
 
 namespace BlocoDeNotas
 {
@@ -18,6 +24,8 @@ namespace BlocoDeNotas
         private MenuEditar menuEditar;
         private MenuExibir menuExibir;
         private MenuFerramentas menuFerramentas;
+        private CarregarConfig carregarConfig;
+        private Personalizacao personalizacao;
         private string arquivo = String.Empty;
         private StringBuilder documento = new StringBuilder();
         private bool textoModificado = false;
@@ -27,11 +35,14 @@ namespace BlocoDeNotas
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
-            eventos = new Eventos(mainWindow,  this);
+            eventos = new Eventos(mainWindow, this);
             menuArquivo = new MenuArquivo(mainWindow, this);
             menuEditar = new MenuEditar(this);
             menuExibir = new MenuExibir(mainWindow, this);
             menuFerramentas = new MenuFerramentas(mainWindow, this);
+            carregarConfig = new CarregarConfig(mainWindow, this);
+            personalizacao = new Personalizacao(this);
+            CarregarConfig();
         }
 
         // Getters e setters
@@ -56,13 +67,20 @@ namespace BlocoDeNotas
         // Eventos
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            editorDeTexto.Focus();
-            eventos.RegistrarTeclas();
             eventos.VerificarAreaDeTransferencia();
-            tamanhoFonteLabel.Text = $"{(int)tamanhoFonteSlider.Value}";
-            tamanhoFontaLabelMenu.Text = $"{(int)tamanhoFonteSliderMenu.Value}";
+            eventos.RegistrarTeclas();
+            editorDeTexto.Focus();
         }
 
+        // Carregar Configurações
+        public void CarregarConfig()
+        {
+            personalizacao.MudarTema(Properties.Settings.Default.Tema);
+            personalizacao.AplicarCordeFundo("Magenta");
+            carregarConfig.ConfigBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
+        }
+
+        // Quando ocorre uma mudança no texto
         private void editorDeTexto_TextChanged(object sender, TextChangedEventArgs e)
         {
             eventos.AtualizarRotulos();
@@ -70,27 +88,22 @@ namespace BlocoDeNotas
             eventos.AtualizarBarraDeTítulo();
         }
 
-        private void editorDeTexto_SelectionChanged(object sender, RoutedEventArgs e) 
-        { 
+        // Quando o texto é selecionado
+        private void editorDeTexto_SelectionChanged(object sender, RoutedEventArgs e)
+        {
             eventos.TextoSelecionado();
         }
 
+        // Slider tamanho da fonte na barra de status
         private void SliderTamanhoFonte_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (tamanhoFonteLabel != null)
-            {
-                tamanhoFonteLabel.Text = $"{(int)tamanhoFonteSlider.Value}";
-                editorDeTexto.FontSize = (int)tamanhoFonteSlider.Value;
-                tamanhoFontaLabelMenu.Text = $"{(int)tamanhoFonteSlider.Value}";
-                tamanhoFonteSliderMenu.Value = tamanhoFonteSlider.Value;
-            }
-        }
+        { if (tamanhoFonteLabel != null) menuExibir.SliderMudarFonte((int)e.NewValue); }
+        private void Slider_DoubleClick(object sender, MouseButtonEventArgs e) => menuExibir.SliderDuploClick();
 
         // Atalhos do teclado
         private void AtalhosDoTeclado_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             // Menu arquivo
-            if (e.Key == Key.N && Keyboard.Modifiers == (ModifierKeys.Control| ModifierKeys.Shift)) menuArquivo.NovaJanela();
+            if (e.Key == Key.N && Keyboard.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift)) menuArquivo.NovaJanela();
             if (e.Key == Key.F4 && Keyboard.Modifiers == ModifierKeys.Alt) menuArquivo.FecharJanela();
             if (e.Key == Key.O && Keyboard.Modifiers == ModifierKeys.Control) menuArquivo.AbrirArquivo();
             if (e.Key == Key.S && Keyboard.Modifiers == ModifierKeys.Control) menuArquivo.SalvarArquivo();
@@ -123,21 +136,10 @@ namespace BlocoDeNotas
         // Menu Exibir
         private void BarraDeStatus_Click(object sender, RoutedEventArgs e) => menuExibir.BarraDeStatus();
         private void SliderTamanhoFonteMenu_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (tamanhoFontaLabelMenu != null)
-            {
-                tamanhoFontaLabelMenu.Text = $"{(int) tamanhoFonteSliderMenu.Value}";
-                editorDeTexto.FontSize = (int) tamanhoFonteSliderMenu.Value;
-                tamanhoFonteLabel.Text = $"{(int)tamanhoFonteSliderMenu.Value}";
-                tamanhoFonteSlider.Value = tamanhoFonteSliderMenu.Value;
-            }
-        }
-
+        { if (tamanhoFonteLabel != null) menuExibir.SliderMudarFonteMenu((int)e.NewValue); }
 
         // Ferramentas barra de menu
         private void MiniBlock_Click(object sender, RoutedEventArgs e) => new MiniBloco(mainWindow, this).Show();
-        private void Config_Click(object sender, RoutedEventArgs e) { }//mainWindow.MudarTela(new Configuracoes(mainWindow, this));
-
-        
+        private void Config_Click(object sender, RoutedEventArgs e) => mainWindow.MudarTela(new Configuracoes(mainWindow, this));
     }
 }
