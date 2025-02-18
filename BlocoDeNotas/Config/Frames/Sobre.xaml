@@ -6,13 +6,65 @@
       xmlns:local="clr-namespace:BlocoDeNotas.Config.Frames"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Sobre">
+      Title="Sobre" Loaded="Page_Loaded">
 
     <Grid>
         <Border Background="{DynamicResource LayerFillColorAltBrush}">
             <Border.CornerRadius>
                 <CornerRadius TopLeft="10" TopRight="10" BottomRight="0" BottomLeft="15"/>
             </Border.CornerRadius>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="56"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Sobre" FontSize="22" FontWeight="Bold" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="20,0,0,0">
+                    <TextBlock Text="Nome do produto: " FontSize="16" FontWeight="Medium" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                    <TextBlock Text="Bloco de Notas - Beta" FontSize="16" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="20,0,0,0">
+                    <TextBlock Text="Versão do produto: " FontSize="16" FontWeight="Medium" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                    <TextBlock x:Name="versaoProduto" Text="" FontSize="16" Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+                </StackPanel>
+                <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="20,0,0,0">
+                    <TextBlock Text="Desenvolvedor: " FontSize="16" FontWeight="Medium" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                    <TextBlock x:Name="devNome" Text="" FontSize="16" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="20,0,0,0">
+                    <TextBlock Text="SO: " FontSize="16" FontWeight="Medium" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                    <TextBlock x:Name="osNome" Text="" FontSize="16" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="20,0,0,0">
+                    <TextBlock Text="Versão do SO: " FontSize="16" FontWeight="Medium" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                    <TextBlock x:Name="osVersao" Text="" FontSize="16" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="20,0,0,0">
+                    <TextBlock Text="Compilação do SO: " FontSize="16" FontWeight="Medium" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                    <TextBlock x:Name="osBuild" Text="" FontSize="16" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="20,0,0,0">
+                    <TextBlock Text="Versão do .NET Runtime: " FontSize="16" FontWeight="Medium" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                    <TextBlock x:Name="netVersion" Text="" FontSize="16" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="20,0,0,0">
+                    <TextBlock Text="Github: " FontSize="16" FontWeight="Medium" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                    <TextBlock FontSize="16" Foreground="{DynamicResource TextFillColorPrimaryBrush}">
+                        <Hyperlink NavigateUri="https://github.com/gustavofns/BlocoDeNotas" RequestNavigate="Github_RequestNavigate">https://github.com/gustavofns/BlocoDeNotas</Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
         </Border>
     </Grid>
 </Page>

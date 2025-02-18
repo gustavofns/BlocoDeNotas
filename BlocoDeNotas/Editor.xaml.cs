@@ -76,7 +76,8 @@ namespace BlocoDeNotas
         public void CarregarConfig()
         {
             personalizacao.MudarTema(Properties.Settings.Default.Tema);
-            personalizacao.AplicarCordeFundo("Magenta");
+            personalizacao.AplicarCordeFundo(Properties.Settings.Default.CorDeFundo);
+            carregarConfig.ConfigFonte(Properties.Settings.Default.TamanhoFonte);
             carregarConfig.ConfigBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
         }
 

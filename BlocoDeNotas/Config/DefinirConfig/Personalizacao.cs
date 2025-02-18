@@ -41,7 +41,7 @@ namespace BlocoDeNotas.Config.DefinirConfig
                     break;
             }
             AplicarTema(themeMode);
-            editor.editorDeTexto.Background = (Brush)Application.Current.Resources["TextOnAccentFillColorPrimaryBrush"];
+            AplicarCordeFundo("Sistema");
         }
 
         // Aplica o tema
