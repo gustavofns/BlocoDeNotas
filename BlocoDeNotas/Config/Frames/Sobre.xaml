@@ -11,7 +11,7 @@
     <Grid>
         <Border Background="{DynamicResource LayerFillColorAltBrush}">
             <Border.CornerRadius>
-                <CornerRadius TopLeft="10" TopRight="10" BottomRight="0" BottomLeft="15"/>
+                <CornerRadius TopLeft="10" TopRight="0" BottomRight="0" BottomLeft="0"/>
             </Border.CornerRadius>
             <Grid>
                 <Grid.ColumnDefinitions>

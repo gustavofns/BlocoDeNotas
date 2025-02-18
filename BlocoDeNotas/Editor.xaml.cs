@@ -72,6 +72,12 @@ namespace BlocoDeNotas
             editorDeTexto.Focus();
         }
 
+        private void Page_LayoutUpdated(object sender, EventArgs e)
+        {
+            
+        }
+
+
         // Carregar Configurações
         public void CarregarConfig()
         {
@@ -79,6 +85,7 @@ namespace BlocoDeNotas
             personalizacao.AplicarCordeFundo(Properties.Settings.Default.CorDeFundo);
             carregarConfig.ConfigFonte(Properties.Settings.Default.TamanhoFonte);
             carregarConfig.ConfigBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
+            personalizacao.UsarUIColorida(true);
         }
 
         // Quando ocorre uma mudança no texto

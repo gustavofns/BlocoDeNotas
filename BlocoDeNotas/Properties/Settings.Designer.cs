@@ -70,5 +70,17 @@ namespace BlocoDeNotas.Properties {
                 this["CorDeFundo"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CorUI {
+            get {
+                return ((bool)(this["CorUI"]));
+            }
+            set {
+                this["CorUI"] = value;
+            }
+        }
     }
 }

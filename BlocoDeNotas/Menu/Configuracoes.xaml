@@ -10,7 +10,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="46"/>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -18,7 +18,7 @@
             <RowDefinition Height="0"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Menu Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="{StaticResource SymbolThemeFontFamily}" Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}" FontStretch="Medium" FontSize="16">
+        <Menu Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="{StaticResource SymbolThemeFontFamily}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontStretch="Medium" FontSize="16">
             <MenuItem Header="&#xE72B;" Click="Voltar_Click"/>
         </Menu>
         <TextBlock Text="Configurações" Grid.Row="0" Grid.Column="1" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" FontWeight="Bold" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
@@ -27,11 +27,11 @@
             <ListView.Items>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="&#xE790;" FontSize="16" FontFamily="{DynamicResource SymbolThemeFontFamily}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBlock Text="Tema" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="10"/>
+                    <TextBlock Text="Tema" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="15,0,0,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="&#xE946;" FontSize="16" FontFamily="{DynamicResource SymbolThemeFontFamily}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBlock Text="Sobre" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="10"/>
+                    <TextBlock Text="Sobre" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="15,0,0,0"/>
                 </StackPanel>
             </ListView.Items>
         </ListView>

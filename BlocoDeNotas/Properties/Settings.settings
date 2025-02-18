@@ -14,5 +14,8 @@
     <Setting Name="CorDeFundo" Type="System.String" Scope="User">
       <Value Profile="(Default)">Sistema</Value>
     </Setting>
+    <Setting Name="CorUI" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

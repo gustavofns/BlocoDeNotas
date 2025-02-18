@@ -6,10 +6,12 @@ namespace BlocoDeNotas.Menu
 {
     public class MenuArquivo
     {
+        // Atributos e objetos
         private MainWindow mainWindow;
         private Editor editor;
         private OperacoesComArquivos operacoesComArquivos;
 
+        // Construtor da classe
         public MenuArquivo(MainWindow mainWindow, Editor editor)
         {
             this.mainWindow = mainWindow;
@@ -17,7 +19,7 @@ namespace BlocoDeNotas.Menu
             operacoesComArquivos = new OperacoesComArquivos(mainWindow, editor);
         }
 
-
+        // Cria uma nova janela
         public void NovaJanela()
         {
             var novaJanela = new MainWindow()
@@ -27,11 +29,13 @@ namespace BlocoDeNotas.Menu
             novaJanela.Show();
         }
 
+        // Fecha a janela
         public void FecharJanela()
         {
             mainWindow.Close();
         }
 
+        // Abre um arquivo
         public async void AbrirArquivo()
         {
             try
@@ -44,10 +48,12 @@ namespace BlocoDeNotas.Menu
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao abrir o arquivo:\n {ex.Message}", "Bloco de notas", MessageBoxButton.OK);
+                MessageBox.Show($"Erro ao abrir o arquivo:\n {ex.Message}", 
+                    "Bloco de notas", MessageBoxButton.OK);
             }
         }
 
+        // Salva um arquivo
         public async void SalvarArquivo()
         {
             try
@@ -62,11 +68,13 @@ namespace BlocoDeNotas.Menu
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao salvar o arquivo:\n {ex.Message}", "Bloco de notas", MessageBoxButton.OK);
+                MessageBox.Show($"Erro ao salvar o arquivo:\n {ex.Message}", 
+                    "Bloco de notas", MessageBoxButton.OK);
             }
 
         }
 
+        // Salva um arquivo como
         public async void SalvarArquivoComo()
         {
             try
@@ -75,10 +83,12 @@ namespace BlocoDeNotas.Menu
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao salvar o arquivo:\n {ex.Message}", "Bloco de notas", MessageBoxButton.OK);
+                MessageBox.Show($"Erro ao salvar o arquivo:\n {ex.Message}", 
+                    "Bloco de notas", MessageBoxButton.OK);
             }
         }
 
+        // Fecha um arquivo
         public void FecharArquivo()
         {
             editor.Documento.Clear();
@@ -88,10 +98,13 @@ namespace BlocoDeNotas.Menu
             mainWindow.Title = "Bloco de notas";
         }
 
+        // Sair do aplicativo
         public void Sair()
         {
 
-            if (MessageBox.Show("Tem certeza que deseja sair do aplicativo?\nTodos os documentos não salvos serão perdidos!", "Bloco de notas", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Tem certeza que deseja sair do aplicativo?\n" +
+                "Todos os documentos não salvos serão perdidos!", 
+                "Bloco de notas", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 Application.Current.Shutdown();
             else return;
         }

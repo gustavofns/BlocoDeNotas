@@ -29,5 +29,12 @@
             Properties.Settings.Default.CorDeFundo = cor;
             Properties.Settings.Default.Save();
         }
+
+        // Habilita cor na UI
+        public void SalvarCorUI(bool cor)
+        {
+            Properties.Settings.Default.CorUI = cor;
+            Properties.Settings.Default.Save();
+        }
     }
 }

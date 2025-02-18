@@ -23,6 +23,7 @@ namespace BlocoDeNotas.Config.Frames
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             radioButtomCkecked(Properties.Settings.Default.Tema);
+            corUI.IsChecked = Properties.Settings.Default.CorUI;
         }
 
         private void MudarTema_Click(object sender, RoutedEventArgs e)
@@ -48,6 +49,11 @@ namespace BlocoDeNotas.Config.Frames
                     TemaSistema_Checked.IsChecked = true;
                     break;
             }
+        }
+
+        private void CorUI_Checked(object sender, RoutedEventArgs e)
+        { 
+
         }
     }
 }

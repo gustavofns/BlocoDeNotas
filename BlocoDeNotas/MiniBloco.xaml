@@ -16,7 +16,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Label x:Name="titulo" Content="Bloco de notas" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" Margin="15,0,0,0"/>
-        <Menu Grid.Row="0" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Right" FontFamily="{StaticResource SymbolThemeFontFamily}" Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}" FontStretch="Medium" FontSize="16">
+        <Menu Grid.Row="0" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Right" FontFamily="{StaticResource SymbolThemeFontFamily}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontStretch="Medium" FontSize="16">
             <MenuItem Header="&#xE771;" Visibility="Collapsed"/>
             <MenuItem Header="&#xEE47;" Click="Editor_Click"/>
         </Menu>

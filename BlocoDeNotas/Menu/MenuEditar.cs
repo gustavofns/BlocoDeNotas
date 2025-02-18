@@ -4,13 +4,15 @@ namespace BlocoDeNotas.Menu
 {
     public class MenuEditar
     {
+        // Atributos e objetos
         private Editor editor;
-
+        // Construtor da classe
         public MenuEditar(Editor editor)
         {
             this.editor = editor;
         }
 
+        // Recorta um texto selecionado
         public void Recortar()
         {
             try
@@ -25,10 +27,12 @@ namespace BlocoDeNotas.Menu
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Não foi possível recortar o documento:\n{ex.Message}", "Bloco de notas", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Não foi possível recortar o documento:\n{ex.Message}", 
+                    "Bloco de notas", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
+        // Copia um texto selecionado
         public void Copiar()
         {
             try
@@ -42,12 +46,13 @@ namespace BlocoDeNotas.Menu
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Não foi possível copiar o documento:\n{ex.Message}", "Bloco de notas", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Não foi possível copiar o documento:\n{ex.Message}", 
+                    "Bloco de notas", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
 
-        // Cola o texto da área de transferência
+        // Cola um texto selecionado da área de transferência
         public void Colar()
         {
             try
@@ -67,15 +72,18 @@ namespace BlocoDeNotas.Menu
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Não foi possível colar o documento:\n{ex.Message}", "Bloco de notas", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Não foi possível colar o documento:\n{ex.Message}", 
+                    "Bloco de notas", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
+        // Exclui um texto selecionado
         public void Excluir()
         {
             editor.editorDeTexto.SelectedText = string.Empty;
         }
 
+        // Seleciona todo o texto
         public void SelecionarTudo()
         {
             editor.editorDeTexto.SelectAll();

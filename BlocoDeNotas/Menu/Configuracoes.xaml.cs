@@ -10,10 +10,12 @@ namespace BlocoDeNotas.Menu
     /// </summary>
     public partial class Configuracoes : Page
     {
+        // Atributos e objetos
         private MainWindow mainWindow;
         private Editor editor;
         private Config.Frames.Tema tema;
 
+        // Construtor da classe
         public Configuracoes(MainWindow mainWindow, Editor editor)
         {
             InitializeComponent();
@@ -22,22 +24,25 @@ namespace BlocoDeNotas.Menu
             tema = new Config.Frames.Tema(editor);
         }
 
+        //  Eventos de carragamento da página de configurações
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             mainWindow.Title = "Configurações";
             frameConfig.NavigationService.Navigate(tema);
         }
 
+        // Voltar para o editor
         private void Voltar_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(editor);
             mainWindow.Title = "Bloco de Notas";
         }
 
+        // Evento de seleção de configuração
         private void Config_Selection(object sender, SelectionChangedEventArgs e)
         {
             string config = string.Empty;
-
+            // Percorre a lista de configurações
             foreach (StackPanel stackPanel in ConfigListeview.Items)
             {
                 if (stackPanel == ConfigListeview.SelectedItem)
@@ -52,7 +57,7 @@ namespace BlocoDeNotas.Menu
                     }
                 }
             }
-
+            // Navega para a página de configuração selecionada
             switch (config)
             {
                 case "Tema":
@@ -60,6 +65,10 @@ namespace BlocoDeNotas.Menu
                     break;
                 case "Sobre":
                     frameConfig.NavigationService.Navigate(new Config.Frames.Sobre());
+                    break;
+                default:
+                    MessageBox.Show("Configuração não implementada",
+                        "Bloco de notas", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
             }
         }
