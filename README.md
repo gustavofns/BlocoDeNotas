@@ -1,5 +1,5 @@
 # Bloco de Notas
-Projeto de um bloco de notas moderno desenvolvido em C# utilizando o framework .NET 9 para fins educacionais.
+Projeto de um bloco de notas moderno desenvolvido em C# utilizando o framework .NET 9.
 
   
 ![bloco_clar](https://github.com/user-attachments/assets/77f8f2fe-fd06-482a-a563-be3c8aac0efe)
