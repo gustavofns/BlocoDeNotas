@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using System.Diagnostics;
-using System.Management;
 using System.Reflection;
 using System.Runtime.Versioning;
 using System.Windows;
@@ -40,13 +39,7 @@ namespace BlocoDeNotas.Config.Frames
         {
             var os = string.Empty;
 
-            ManagementClass managementClass = new ManagementClass("Win32_OperatingSystem");
-            foreach (ManagementObject managementObject in managementClass.GetInstances())
-            {
-                os = managementObject["Caption"].ToString();
-                break;
-            }
-            return os.ToString();
+            return "";
         }
 
         // Obtém a versão do sistema operacional
