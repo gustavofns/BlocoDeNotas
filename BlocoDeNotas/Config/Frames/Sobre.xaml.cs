@@ -37,15 +37,21 @@ namespace BlocoDeNotas.Config.Frames
         // Obtém o nome do sistema operacional
         private string ObterOS()
         {
-            var os = string.Empty;
+            string os = string.Empty;
 
-            return "";
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
+            {
+                os = key.GetValue("ProductName").ToString();
+                os = os.Replace(os.Substring(0,10), "Windows 11");
+            }
+
+            return os;
         }
 
         // Obtém a versão do sistema operacional
         private string ObterVersao()
         {
-            using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"))
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
             {
                 return key.GetValue("DisplayVersion").ToString();
             }
@@ -54,7 +60,7 @@ namespace BlocoDeNotas.Config.Frames
         // Obtém a build do sistema operacional
         private string ObterBuild()
         {
-            using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion"))
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
             {
                 return key.GetValue("LCUVer").ToString().Remove(0,5);
             }
