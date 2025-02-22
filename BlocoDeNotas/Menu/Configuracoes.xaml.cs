@@ -41,34 +41,18 @@ namespace BlocoDeNotas.Menu
         // Evento de seleção de configuração
         private void Config_Selection(object sender, SelectionChangedEventArgs e)
         {
-            string config = string.Empty;
-            // Percorre a lista de configurações
-            foreach (StackPanel stackPanel in ConfigListeview.Items)
-            {
-                if (stackPanel == ConfigListeview.SelectedItem)
-                {
-                    foreach (var item in stackPanel.Children)
-                    {
-                        if (item is TextBlock textBlock)
-                        {
-                            config = textBlock.Text;
-                            break;
-                        }
-                    }
-                }
-            }
+            int itemSelecionado = ConfigListeview.SelectedIndex;
+
             // Navega para a página de configuração selecionada
-            switch (config)
+            switch (itemSelecionado)
             {
-                case "Tema":
+                case 0:
                     frameConfig.NavigationService.Navigate(tema);
                     break;
-                case "Sobre":
+                case 1:
                     frameConfig.NavigationService.Navigate(new Config.Frames.Sobre());
                     break;
                 default:
-                    MessageBox.Show("Configuração não implementada",
-                        "Bloco de notas", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
             }
         }

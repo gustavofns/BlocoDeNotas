@@ -27,7 +27,7 @@
                     <RadioButton x:Name="TemaEscuro_Checked" Content="Escuro" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Click="MudarTema_Click"/>
                     <RadioButton x:Name="TemaSistema_Checked" Content="Sistema" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Click="MudarTema_Click"/>
                 </StackPanel>
-                <CheckBox Grid.Row="3" Margin="40,0,0,0" x:Name="corUI" Content="Usar ícones coloridos de acordo com a cor destaque do Windows" IsChecked="True" Cursor="Hand" Checked="CorUI_Checked"/>
+                <CheckBox Grid.Row="3" Margin="40,0,0,0" x:Name="corUI" Content="Usar ícones coloridos de acordo com a cor destaque do Windows" Cursor="Hand" Checked="CorUI_Checked" Unchecked="CorUI_UnChecked"/>
             </Grid>
         </Border>
     </Grid>

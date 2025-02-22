@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 using System.Windows;
-using Microsoft.Win32;
 using Windows.UI.StartScreen;
 
 #pragma warning disable WPF0001
@@ -42,7 +36,6 @@ namespace BlocoDeNotas.Config.DefinirConfig
                     break;
             }
             AplicarTema(themeMode);
-            AplicarCordeFundo("Sistema");
         }
 
         // Aplica o tema
@@ -59,94 +52,6 @@ namespace BlocoDeNotas.Config.DefinirConfig
             }
         }
 
-        // Cor de fundo do editor
-        public void AplicarCordeFundo(string cor)
-        {
-            switch(cor)
-            {
-                case "Branco":
-                    editor.editorDeTexto.Background = Brushes.White;
-                    editor.editorDeTexto.Foreground = Brushes.Black;
-                    break;
-                case "Preto":
-                    editor.editorDeTexto.Background = Brushes.Black;
-                    editor.editorDeTexto.Foreground = Brushes.White;
-                    break;
-                case "Azul":
-                    editor.editorDeTexto.Background = Brushes.Blue;
-                    editor.editorDeTexto.Foreground = Brushes.White;
-                    break;
-                case "Vemelho":
-                    editor.editorDeTexto.Background = Brushes.Red;
-                    editor.editorDeTexto.Foreground = Brushes.White;
-                    break;
-                case "Verde":
-                    editor.editorDeTexto.Background = Brushes.Green;
-                    editor.editorDeTexto.Foreground = Brushes.White;
-                    break;
-                case "Amarelo":
-                    editor.editorDeTexto.Background = Brushes.Yellow;
-                    editor.editorDeTexto.Foreground = Brushes.Black;
-                    break;
-                case "Cinza":
-                    editor.editorDeTexto.Background = Brushes.Gray;
-                    editor.editorDeTexto.Foreground = Brushes.White;
-                    break;
-                case "Rosa":
-                    editor.editorDeTexto.Background = Brushes.Pink;
-                    editor.editorDeTexto.Foreground = Brushes.Black;
-                    break;
-                case "Laranja":
-                    editor.editorDeTexto.Background = Brushes.Orange;
-                    editor.editorDeTexto.Foreground = Brushes.Black;
-                    break;
-                case "Roxo":
-                    editor.editorDeTexto.Background = Brushes.Purple;
-                    editor.editorDeTexto.Foreground = Brushes.White;
-                    break;
-                case "Marrom":
-                    editor.editorDeTexto.Background = Brushes.Brown;
-                    editor.editorDeTexto.Foreground = Brushes.White;
-                    break;
-                case "Ciano":
-                    editor.editorDeTexto.Background = Brushes.Cyan;
-                    editor.editorDeTexto.Foreground = Brushes.Black;
-                    break;
-                case "Magenta":
-                    editor.editorDeTexto.Background = Brushes.Magenta;
-                    editor.editorDeTexto.Foreground = Brushes.White;
-                    break;
-                case "Lima":
-                    editor.editorDeTexto.Background = Brushes.Lime;
-                    editor.editorDeTexto.Foreground = Brushes.Black;
-                    break;
-                case "Teal":
-                    editor.editorDeTexto.Background = Brushes.Teal;
-                    editor.editorDeTexto.Foreground = Brushes.White;
-                    break;
-                case "Oliva":
-                    editor.editorDeTexto.Background = Brushes.Olive;
-                    editor.editorDeTexto.Foreground = Brushes.White;
-                    break;
-                case "Prata":
-                    editor.editorDeTexto.Background = Brushes.Silver;
-                    editor.editorDeTexto.Foreground = Brushes.Black;
-                    break;
-                case "Aqua":
-                    editor.editorDeTexto.Background = Brushes.Aqua;
-                    editor.editorDeTexto.Foreground = Brushes.Black;
-                    break;
-                case "Lavanda":
-                    editor.editorDeTexto.Background = Brushes.Lavender;
-                    editor.editorDeTexto.Foreground = Brushes.Black;
-                    break;
-                default:
-                    editor.editorDeTexto.Background = (Brush)Application.Current.Resources["TextOnAccentFillColorPrimaryBrush"];
-                    editor.editorDeTexto.Foreground = (Brush)Application.Current.Resources["TextFillColorPrimaryBrush"];
-                    break;
-            }
-        }
-
         // usar ícones coloridos
         public void UsarUIColorida(bool cor)
         {
@@ -155,7 +60,7 @@ namespace BlocoDeNotas.Config.DefinirConfig
             if (cor) ui = (Brush)Application.Current.Resources["AccentTextFillColorTertiaryBrush"];
             else ui = (Brush)Application.Current.Resources["TextFillColorPrimaryBrush"];
 
-            // Aplica a cor ao nenu principal
+            // Aplica a cor ao menu principal
             editor.iconeMenuArquivo.Foreground = ui;
             editor.iconeMenuEditar.Foreground = ui;
             editor.iconeMenuExibir.Foreground = ui;
@@ -174,8 +79,6 @@ namespace BlocoDeNotas.Config.DefinirConfig
             editor.iconeMenuAbrirNovaJanela.Foreground = ui;
             editor.iconeMenuMiniBloco.Foreground = ui;
             editor.iconeMenuConfig.Foreground = ui;
-
-           MudarTema(Properties.Settings.Default.Tema);
         }
     }
 }

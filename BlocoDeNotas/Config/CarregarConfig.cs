@@ -1,4 +1,6 @@
-﻿using BlocoDeNotas.Menu;
+﻿using BlocoDeNotas.Config.DefinirConfig;
+using BlocoDeNotas.Menu;
+using System.Windows.Threading;
 
 namespace BlocoDeNotas.Config
 {
@@ -30,6 +32,22 @@ namespace BlocoDeNotas.Config
             editor.tamanhoFonteLabel.Text = $"{tamanhoFonte}";
             editor.tamanhoFontaLabelMenu.Text = $"{tamanhoFonte}";
             editor.tamanhoFonteSliderMenu.Value = tamanhoFonte;
+        }
+
+        // Configura as cores da UI
+        public void ConfigUI()
+        {
+            Personalizacao personalizacao = new Personalizacao(editor);
+
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(1);
+            dispatcherTimer.Tick += new EventHandler((sender, e) =>
+            {
+                personalizacao.UsarUIColorida(Properties.Settings.Default.UsarUIColorida);
+                ConfigBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
+            });
+
+            dispatcherTimer.Start();
         }
     }
 }

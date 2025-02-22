@@ -1,10 +1,10 @@
 ﻿using Microsoft.Win32;
 using System.Diagnostics;
 using System.Reflection;
-using System.Runtime.Versioning;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using static System.Net.WebRequestMethods;
 
 #pragma warning disable CS8600
 #pragma warning disable CS8602
@@ -42,7 +42,11 @@ namespace BlocoDeNotas.Config.Frames
             using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
             {
                 os = key.GetValue("ProductName").ToString();
-                os = os.Replace(os.Substring(0,10), "Windows 11");
+            }
+
+            if (Environment.OSVersion.Version.Build >= 22000)
+            {
+                os = os.Replace(os.Substring(0, 10), "Windows 11");
             }
 
             return os;
@@ -62,7 +66,7 @@ namespace BlocoDeNotas.Config.Frames
         {
             using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
             {
-                return key.GetValue("LCUVer").ToString().Remove(0,5);
+                return key.GetValue("LCUVer").ToString().Remove(0, 5);
             }
         }
 
@@ -78,6 +82,34 @@ namespace BlocoDeNotas.Config.Frames
             });
 
             e.Handled = true;
+        }
+
+        private void sobreSoftwareExpander_Expanded(object sender, System.Windows.RoutedEventArgs e)
+        {
+   
+            bool isExpanded = (sender as Expander).IsExpanded;
+            if (isExpanded) 
+            {
+                sobreSoftwareRow.Height = new GridLength(180);
+            }
+        }
+
+        private void sobreSoftwareExpander_Collapsed(object sender, RoutedEventArgs e)
+        {
+            bool isCollapsed = !(sender as Expander).IsExpanded;
+            if (isCollapsed)
+            {
+                sobreSoftwareRow.Height = new GridLength(56);
+            }
+        }
+
+        private void GitHub_Click(object sender, RoutedEventArgs e)
+        {
+            var link = "https://github.com/gustavofns/BlocoDeNotas";
+            Process.Start(new ProcessStartInfo(link)
+            {
+                UseShellExecute = true
+            });
         }
     }
 }

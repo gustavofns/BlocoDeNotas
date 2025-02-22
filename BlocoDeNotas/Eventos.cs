@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using BlocoDeNotas.Config.DefinirConfig;
+using System.Reflection;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -69,7 +71,7 @@ namespace BlocoDeNotas
                     editor.colarConfigRapidas.Visibility = Visibility.Collapsed;
                 }
 
-            });
+            }); 
             dispatcherTimer.Start();
         }
 

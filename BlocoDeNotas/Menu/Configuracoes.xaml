@@ -26,11 +26,11 @@
         <ListView x:Name="ConfigListeview" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="Config_Selection" SelectedIndex="0">
             <ListView.Items>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="&#xE790;" FontSize="16" FontFamily="{DynamicResource SymbolThemeFontFamily}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock Text="&#xE790;" FontSize="18" FontFamily="{DynamicResource SymbolThemeFontFamily}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <TextBlock Text="Tema" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="15,0,0,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="&#xE946;" FontSize="16" FontFamily="{DynamicResource SymbolThemeFontFamily}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock Text="&#xE946;" FontSize="18" FontFamily="{DynamicResource SymbolThemeFontFamily}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <TextBlock Text="Sobre" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="15,0,0,0"/>
                 </StackPanel>
             </ListView.Items>

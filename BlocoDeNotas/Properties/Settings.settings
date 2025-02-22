@@ -11,10 +11,7 @@
     <Setting Name="TamanhoFonte" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">14</Value>
     </Setting>
-    <Setting Name="CorDeFundo" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Sistema</Value>
-    </Setting>
-    <Setting Name="CorUI" Type="System.Boolean" Scope="User">
+    <Setting Name="UsarUIColorida" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>

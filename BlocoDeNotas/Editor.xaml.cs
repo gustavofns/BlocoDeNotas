@@ -7,8 +7,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 #pragma warning disable WPF0001
+#pragma warning disable CS8622
 
 namespace BlocoDeNotas
 {
@@ -72,20 +74,13 @@ namespace BlocoDeNotas
             editorDeTexto.Focus();
         }
 
-        private void Page_LayoutUpdated(object sender, EventArgs e)
-        {
-            
-        }
-
-
         // Carregar Configurações
         public void CarregarConfig()
         {
             personalizacao.MudarTema(Properties.Settings.Default.Tema);
-            personalizacao.AplicarCordeFundo(Properties.Settings.Default.CorDeFundo);
             carregarConfig.ConfigFonte(Properties.Settings.Default.TamanhoFonte);
             carregarConfig.ConfigBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
-            personalizacao.UsarUIColorida(true);
+            carregarConfig.ConfigUI();
         }
 
         // Quando ocorre uma mudança no texto

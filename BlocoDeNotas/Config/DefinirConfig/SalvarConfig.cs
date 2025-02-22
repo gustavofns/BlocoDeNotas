@@ -23,17 +23,10 @@
             Properties.Settings.Default.Save();
         }
 
-        // Salvar a cor de fundo
-        public void SalvarCordeFundo(string cor)
-        {
-            Properties.Settings.Default.CorDeFundo = cor;
-            Properties.Settings.Default.Save();
-        }
-
         // Habilita cor na UI
-        public void SalvarCorUI(bool cor)
+        public void UsarUIColorida(bool cor)
         {
-            Properties.Settings.Default.CorUI = cor;
+            Properties.Settings.Default.UsarUIColorida = cor;
             Properties.Settings.Default.Save();
         }
     }

@@ -61,25 +61,13 @@ namespace BlocoDeNotas.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Sistema")]
-        public string CorDeFundo {
-            get {
-                return ((string)(this["CorDeFundo"]));
-            }
-            set {
-                this["CorDeFundo"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool CorUI {
+        public bool UsarUIColorida {
             get {
-                return ((bool)(this["CorUI"]));
+                return ((bool)(this["UsarUIColorida"]));
             }
             set {
-                this["CorUI"] = value;
+                this["UsarUIColorida"] = value;
             }
         }
     }
