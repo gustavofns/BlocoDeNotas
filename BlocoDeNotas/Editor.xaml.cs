@@ -143,6 +143,6 @@ namespace BlocoDeNotas
 
         // Ferramentas barra de menu
         private void MiniBlock_Click(object sender, RoutedEventArgs e) => new MiniBloco(mainWindow, this).Show();
-        private void Config_Click(object sender, RoutedEventArgs e) => mainWindow.MudarTela(new Configuracoes(mainWindow, this));
+        private void Config_Click(object sender, RoutedEventArgs e) => mainWindow.Main.Navigate(new Configuracoes(mainWindow, this));
     }
 }

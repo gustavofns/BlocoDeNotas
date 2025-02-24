@@ -98,10 +98,24 @@
             <MenuItem x:Name="colarConfigRapidas" Visibility="Collapsed" Header="&#xE77F;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="Colar_Click"/>
             <MenuItem x:Name="excluirConfigRapidas" Visibility="Collapsed" Header="&#xECC9;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="Excluir_Click"/>
         </Menu>
+        
+        <!-- Menu direito -->
         <Menu Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontFamily="{StaticResource SymbolThemeFontFamily}" FontStretch="Medium" FontSize="16">
-            <MenuItem x:Name="iconeMenuAbrirNovaJanela" Header="&#xE8A7;" Click="NovaJanela_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
-            <MenuItem x:Name="iconeMenuMiniBloco"  Header="&#xEE49;" Click="MiniBlock_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
-            <MenuItem x:Name="iconeMenuConfig" Header="&#xE713;" Click="Config_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}"/>
+            <MenuItem x:Name="iconeMenuAbrirNovaJanela" Header="&#xE8A7;" Click="NovaJanela_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}">
+                <MenuItem.ToolTip>
+                    <TextBlock Text="Abrir nova janela" FontSize="14" FontFamily="Segoe UI Variable" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                </MenuItem.ToolTip>
+            </MenuItem>
+            <MenuItem x:Name="iconeMenuMiniBloco"  Header="&#xEE49;" Click="MiniBlock_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}">
+                <MenuItem.ToolTip>
+                    <TextBlock Text="Abrir no mini bloco" FontSize="14" FontFamily="Segoe UI Variable" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                </MenuItem.ToolTip>
+            </MenuItem>
+            <MenuItem x:Name="iconeMenuConfig" Header="&#xE713;" Click="Config_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}">
+                <MenuItem.ToolTip>
+                    <TextBlock Text="Configurações" FontSize="14" FontFamily="Segoe UI Variable" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                </MenuItem.ToolTip>
+            </MenuItem>
         </Menu>
         <Separator Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="1"/>
 

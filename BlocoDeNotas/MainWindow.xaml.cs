@@ -15,13 +15,7 @@ namespace BlocoDeNotas
         {
             VerificarOS();
             InitializeComponent();
-            MudarTela(new Editor(this));
-        }
-
-        // Muda a tela do aplicativo
-        public void MudarTela(Page page)
-        {
-            frame.Navigate(page);
+            Main.Navigate(new Editor(this));
         }
 
         // Move a janela do aplicativo

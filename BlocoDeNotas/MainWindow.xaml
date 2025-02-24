@@ -13,6 +13,6 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Frame x:Name="frame"/>
+        <Frame x:Name="Main"/>
     </Grid>
 </Window>

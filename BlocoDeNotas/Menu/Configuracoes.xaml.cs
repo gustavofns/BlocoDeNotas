@@ -28,13 +28,13 @@ namespace BlocoDeNotas.Menu
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             mainWindow.Title = "Configurações";
-            frameConfig.NavigationService.Navigate(tema);
+            Config.Navigate(tema);
         }
 
         // Voltar para o editor
         private void Voltar_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(editor);
+            mainWindow.Main.Navigate(editor);
             mainWindow.Title = "Bloco de Notas";
         }
 
@@ -47,10 +47,10 @@ namespace BlocoDeNotas.Menu
             switch (itemSelecionado)
             {
                 case 0:
-                    frameConfig.NavigationService.Navigate(tema);
+                    Config.NavigationService.Navigate(tema);
                     break;
                 case 1:
-                    frameConfig.NavigationService.Navigate(new Config.Frames.Sobre());
+                    Config.NavigationService.Navigate(new Config.Frames.Sobre());
                     break;
                 default:
                     break;
