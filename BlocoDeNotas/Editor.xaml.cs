@@ -1,4 +1,6 @@
 ﻿using BlocoDeNotas.Config;
+using BlocoDeNotas.Config.DefinirConfig;
+using BlocoDeNotas.Config.Frames;
 using BlocoDeNotas.Menu;
 using System.Text;
 using System.Windows;
@@ -24,9 +26,11 @@ namespace BlocoDeNotas
         private MenuEditar menuEditar;
         private MenuExibir menuExibir;
         private MenuFerramentas menuFerramentas;
-        private Config.AplicarConfig.Fonte fonte;
-        private Config.AplicarConfig.Tema tema;
-        private Config.AplicarConfig.UI ui;
+        private CarregarConfig carregarConfig;
+        private Personalizacao personalizacao;
+        private string arquivo = String.Empty;
+        private StringBuilder documento = new StringBuilder();
+        private bool textoModificado = false;
 
         // Construtor da classe
         public Editor(MainWindow mainWindow)
@@ -36,12 +40,30 @@ namespace BlocoDeNotas
             eventos = new Eventos(mainWindow, this);
             menuArquivo = new MenuArquivo(mainWindow, this);
             menuEditar = new MenuEditar(this);
-            menuExibir = new MenuExibir(this);
-            menuFerramentas = new MenuFerramentas(this);
-            fonte = new Config.AplicarConfig.Fonte(this);
-            tema = new Config.AplicarConfig.Tema(this);
-            ui = new Config.AplicarConfig.UI(this);
+            menuExibir = new MenuExibir(mainWindow, this);
+            menuFerramentas = new MenuFerramentas(mainWindow, this);
+            carregarConfig = new CarregarConfig(mainWindow, this);
+            personalizacao = new Personalizacao(this);
             CarregarConfig();
+        }
+
+        // Getters e setters
+        public string Arquivo
+        {
+            get { return arquivo; }
+            set { arquivo = value; }
+        }
+
+        public StringBuilder Documento
+        {
+            get { return documento; }
+            set { documento = value; }
+        }
+
+        public bool TextoModificado
+        {
+            get { return textoModificado; }
+            set { textoModificado = value; }
         }
 
         // Eventos
@@ -55,12 +77,13 @@ namespace BlocoDeNotas
         // Carregar Configurações
         public void CarregarConfig()
         {
-            tema.MudarTema(Properties.Settings.Default.Tema);
-            fonte.CarregarTamanhoFonte(Properties.Settings.Default.TamanhoFonte);
-            menuExibir.CarregarBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
-            ui.IconesColoridos(Properties.Settings.Default.UsarUIColorida);
-            ui.FerramentasRapidas(Properties.Settings.Default.FerramentasRapidas);
-            ui.AplicarConfigUI();
+            personalizacao.MudarTema(Properties.Settings.Default.Tema);
+            carregarConfig.ConfigFonte(Properties.Settings.Default.TamanhoFonte);
+            carregarConfig.ConfigBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
+            personalizacao.UsarUIColorida(Properties.Settings.Default.UsarUIColorida);
+            carregarConfig.ConfigBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
+            personalizacao.UsarFerramentasRapidas(Properties.Settings.Default.FerramentasRapidas);
+            carregarConfig.ConfigUI();
         }
 
         // Quando ocorre uma mudança no texto
@@ -69,7 +92,6 @@ namespace BlocoDeNotas
             eventos.AtualizarRotulos();
             eventos.VerificarTextoModificado();
             eventos.AtualizarBarraDeTítulo();
-            eventos.VerificarDesfazerRefazer();
         }
 
         // Quando o texto é selecionado
@@ -94,8 +116,6 @@ namespace BlocoDeNotas
             if (e.Key == Key.S && Keyboard.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift)) menuArquivo.SalvarArquivoComo();
             if (e.Key == Key.F4 && Keyboard.Modifiers == (ModifierKeys.Control | ModifierKeys.Alt)) menuArquivo.Sair();
             // Menu Editar
-            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.Z) menuEditar.Desfazer();
-            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.Y) menuEditar.Refazer();
             if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.X) menuEditar.Recortar();
             if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.C) menuEditar.Copiar();
             if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.V) menuEditar.Colar();
@@ -113,15 +133,10 @@ namespace BlocoDeNotas
         private void Sair_Click(object sender, RoutedEventArgs e) => menuArquivo.Sair();
 
         // Menu Editar
-        private void Desfazer_Click(object sender, RoutedEventArgs e) => menuEditar.Desfazer();
-        private void Refazer_Click(object sender, RoutedEventArgs e) => menuEditar.Refazer();
         private void Recortar_Click(object sender, RoutedEventArgs e) => menuEditar.Recortar();
         private void Copiar_Click(object sender, RoutedEventArgs e) => menuEditar.Copiar();
         private void Colar_Click(object sender, RoutedEventArgs e) => menuEditar.Colar();
         private void Excluir_Click(object sender, RoutedEventArgs e) => menuEditar.Excluir();
-        private void InserirHora_Click(object sender, RoutedEventArgs e) => menuEditar.InserirHoraAtual();
-        private void InserirData_Click(object sender, RoutedEventArgs e) => menuEditar.InserirDataAtual();
-        private void InserirDataHora_Click(object sender, RoutedEventArgs e) => menuEditar.InserirDataHoraAtual();
         private void SelecionarTudo_Click(object sender, RoutedEventArgs e) => menuEditar.SelecionarTudo();
 
         // Menu Exibir

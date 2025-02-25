@@ -25,8 +25,8 @@ namespace BlocoDeNotas
         }
 
         /* 
-         * Verifica a versão do sistema operacional:
-         * - Removido o suporte para Windows 11 21H2
+         * Verifica a versão do sistema operacional
+         * - Removido o suporte para Windows 11 21H2 (25/02/2025)
          */
         public void VerificarOS()
         {
