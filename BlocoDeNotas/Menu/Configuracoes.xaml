@@ -23,7 +23,7 @@
         </Menu>
         <TextBlock Text="Configurações" Grid.Row="0" Grid.Column="1" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" FontWeight="Bold" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
         <Frame x:Name="Config" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"/>
-        <ListView x:Name="ConfigListeview" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="Config_Selection" SelectedIndex="0" Margin="15,0,15,0">
+        <ListView x:Name="ConfigListeview" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="Config_Selection" SelectedIndex="0" Margin="5,0,5,0">
             <ListView.Items>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="&#xE790;" FontSize="18" FontFamily="{DynamicResource SymbolThemeFontFamily}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Left" VerticalAlignment="Center"/>

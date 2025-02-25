@@ -80,6 +80,8 @@ namespace BlocoDeNotas
             personalizacao.MudarTema(Properties.Settings.Default.Tema);
             carregarConfig.ConfigFonte(Properties.Settings.Default.TamanhoFonte);
             carregarConfig.ConfigBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
+            personalizacao.UsarUIColorida(Properties.Settings.Default.UsarUIColorida);
+            carregarConfig.ConfigBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
             carregarConfig.ConfigUI();
         }
 

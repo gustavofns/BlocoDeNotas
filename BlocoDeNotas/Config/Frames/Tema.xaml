@@ -18,16 +18,21 @@
                     <RowDefinition Height="25"/>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="32"/>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="32"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="Tema" FontSize="22" FontWeight="Bold" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
                 <TextBlock Text="Selecione o tema padrão do aplicativo:" FontWeight="Medium" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Margin="40,0" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
-                <StackPanel Grid.Row="2" Margin="60,0,0,0">
+                <StackPanel Grid.Row="2" Margin="60,0,60,0">
                     <RadioButton x:Name="TemaClaro_Checked" Content="Claro" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Click="MudarTema_Click"/>
                     <RadioButton x:Name="TemaEscuro_Checked" Content="Escuro" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Click="MudarTema_Click"/>
                     <RadioButton x:Name="TemaSistema_Checked" Content="Sistema" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Click="MudarTema_Click"/>
                 </StackPanel>
+                
                 <CheckBox Grid.Row="3" Margin="40,0,0,0" x:Name="corUI" Content="Usar ícones coloridos de acordo com a cor destaque do Windows" Cursor="Hand" Checked="CorUI_Checked" Unchecked="CorUI_UnChecked"/>
+                <CheckBox Grid.Row="4" Margin="40,0,0,0" x:Name="FerramentasRapidas" Content="Habilitar as ferramentas rápida" IsChecked="True" IsEnabled="False" Visibility="Hidden"/>
+                <CheckBox Grid.Row="5" Margin="40,0,0,0" x:Name="IconesMenus" Content="Usar ícones nos menus" IsChecked="True" IsEnabled="False" Visibility="Hidden"/>
             </Grid>
         </Border>
     </Grid>

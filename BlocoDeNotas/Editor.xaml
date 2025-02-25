@@ -9,7 +9,7 @@
       Title="Editor" Loaded="Page_Loaded" KeyDown="AtalhosDoTeclado_KeyDown">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="290"/>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="{DynamicResource LayerOnMicaBaseAltFillColorDefaultBrush}"/>
         <Separator Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Top"/>
-        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="14">
+        <Menu Grid.Row="0" Grid.Column="0" FontSize="14">
             <MenuItem>
                 <MenuItem.Header>
                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
@@ -87,7 +87,9 @@
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
+        </Menu>
             <!-- Ferramentas rápidas-->
+        <Menu Grid.Row="0" Grid.Column="1" x:Name="MenuFerramentasRapidas" Visibility="Visible">
             <Separator/>
             <MenuItem x:Name="abrirConfigRapidas" Header="&#xE838;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="AbrirArquivo_Click"/>
             <MenuItem x:Name="salvarConfigRapidas" Header="&#xE74E;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="SalvarArquivo_Click"/>
