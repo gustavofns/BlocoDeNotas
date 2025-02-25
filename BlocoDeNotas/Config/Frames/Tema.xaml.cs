@@ -24,13 +24,13 @@ namespace BlocoDeNotas.Config.Frames
             this.editor = editor;
             personalizacao = new DefinirConfig.Personalizacao(editor);
             salvarConfig = new DefinirConfig.SalvarConfig();
-
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             radioButtomCkecked(Properties.Settings.Default.Tema);
-            CorUIChecked(Properties.Settings.Default.UsarUIColorida);
+            corUI.IsChecked = Properties.Settings.Default.UsarUIColorida;
+            ferramentasRapidas.IsChecked = Properties.Settings.Default.FerramentasRapidas;
         }
 
         private void MudarTema_Click(object sender, RoutedEventArgs e)
@@ -70,9 +70,16 @@ namespace BlocoDeNotas.Config.Frames
             personalizacao.UsarUIColorida(false);
         }
 
-        private void CorUIChecked(bool Checked)
-        { 
-            corUI.IsChecked = Checked;
+        private void FerramentasRapidas_Checked(object sender, RoutedEventArgs e)
+        {
+            salvarConfig.UsarFerramentasRapidas(true);
+            personalizacao.UsarFerramentasRapidas(true);
+        }
+
+        private void FerramentasRapidas_UnChecked(object sender, RoutedEventArgs e)
+        {
+            salvarConfig.UsarFerramentasRapidas(false);
+            personalizacao.UsarFerramentasRapidas(false);
         }
     }
 }

@@ -45,6 +45,7 @@ namespace BlocoDeNotas.Config
             {
                 personalizacao.UsarUIColorida(Properties.Settings.Default.UsarUIColorida);
                 ConfigBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
+                personalizacao.UsarFerramentasRapidas(Properties.Settings.Default.FerramentasRapidas);
             });
 
             dispatcherTimer.Start();

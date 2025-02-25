@@ -27,7 +27,7 @@
             <ListView.Items>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="&#xE790;" FontSize="18" FontFamily="{DynamicResource SymbolThemeFontFamily}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBlock Text="Tema" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="15,0,0,0"/>
+                    <TextBlock Text="Personalização" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="15,0,0,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="&#xE946;" FontSize="18" FontFamily="{DynamicResource SymbolThemeFontFamily}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" HorizontalAlignment="Left" VerticalAlignment="Center"/>

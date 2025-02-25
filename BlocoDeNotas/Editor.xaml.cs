@@ -82,6 +82,7 @@ namespace BlocoDeNotas
             carregarConfig.ConfigBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
             personalizacao.UsarUIColorida(Properties.Settings.Default.UsarUIColorida);
             carregarConfig.ConfigBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
+            personalizacao.UsarFerramentasRapidas(Properties.Settings.Default.FerramentasRapidas);
             carregarConfig.ConfigUI();
         }
 
