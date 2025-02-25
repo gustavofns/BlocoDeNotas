@@ -29,5 +29,12 @@
             Properties.Settings.Default.UsarUIColorida = cor;
             Properties.Settings.Default.Save();
         }
+
+        // Usar ferramentar rápidas
+        public void UsarFerramentasRapidas(bool usar)
+        {
+            Properties.Settings.Default.FerramentasRapidas = usar;
+            Properties.Settings.Default.Save();
+        }
     }
 }

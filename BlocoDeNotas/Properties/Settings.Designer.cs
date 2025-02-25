@@ -70,5 +70,17 @@ namespace BlocoDeNotas.Properties {
                 this["UsarUIColorida"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FerramentasRapidas {
+            get {
+                return ((bool)(this["FerramentasRapidas"]));
+            }
+            set {
+                this["FerramentasRapidas"] = value;
+            }
+        }
     }
 }
