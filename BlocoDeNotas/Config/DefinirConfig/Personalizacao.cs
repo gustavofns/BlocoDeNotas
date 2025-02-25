@@ -80,6 +80,12 @@ namespace BlocoDeNotas.Config.DefinirConfig
             editor.iconeMenuMiniBloco.Foreground = ui;
             editor.iconeMenuConfig.Foreground = ui;
         }
+
+        public void UsarFerramentasRapidas(bool usar)
+        {
+            if (usar) editor.MenuFerramentasRapidas.Visibility = Visibility.Visible; 
+            else editor.MenuFerramentasRapidas.Visibility = Visibility.Hidden;
+        }
     }
 }
 
