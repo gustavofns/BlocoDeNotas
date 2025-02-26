@@ -52,7 +52,7 @@ namespace BlocoDeNotas.Menu
                     Config.NavigationService.Navigate(personalizacao);
                     break;
                 case 1:
-                    Config.NavigationService.Navigate(new Config.Frames.Sobre());
+                    Config.NavigationService.Navigate(new Config.Sobre());
                     break;
                 default:
                     break;
