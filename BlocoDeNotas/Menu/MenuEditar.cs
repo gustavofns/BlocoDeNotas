@@ -88,7 +88,5 @@ namespace BlocoDeNotas.Menu
         {
             editor.editorDeTexto.SelectAll();
         }
-
-
     }
 }
