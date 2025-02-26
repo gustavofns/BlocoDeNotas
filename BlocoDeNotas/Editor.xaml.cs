@@ -21,31 +21,16 @@ namespace BlocoDeNotas
     {
         // Atributos e objetos
         private MainWindow mainWindow;
+        private Config.AplicarConfig.Tema tema;
+        private Config.AplicarConfig.UI ui;
         private Eventos eventos;
         private MenuArquivo menuArquivo;
         private MenuEditar menuEditar;
         private MenuExibir menuExibir;
         private MenuFerramentas menuFerramentas;
-        private CarregarConfig carregarConfig;
-        private Personalizacao personalizacao;
         private string arquivo = String.Empty;
         private StringBuilder documento = new StringBuilder();
         private bool textoModificado = false;
-
-        // Construtor da classe
-        public Editor(MainWindow mainWindow)
-        {
-            InitializeComponent();
-            this.mainWindow = mainWindow;
-            eventos = new Eventos(mainWindow, this);
-            menuArquivo = new MenuArquivo(mainWindow, this);
-            menuEditar = new MenuEditar(this);
-            menuExibir = new MenuExibir(mainWindow, this);
-            menuFerramentas = new MenuFerramentas(mainWindow, this);
-            carregarConfig = new CarregarConfig(mainWindow, this);
-            personalizacao = new Personalizacao(this);
-            CarregarConfig();
-        }
 
         // Getters e setters
         public string Arquivo
@@ -66,6 +51,22 @@ namespace BlocoDeNotas
             set { textoModificado = value; }
         }
 
+        // Construtor da classe
+        public Editor(MainWindow mainWindow)
+        {
+            InitializeComponent();
+            this.mainWindow = mainWindow;
+            eventos = new Eventos(mainWindow, this);
+            menuArquivo = new MenuArquivo(mainWindow, this);
+            menuEditar = new MenuEditar(this);
+            menuExibir = new MenuExibir(mainWindow, this);
+            menuFerramentas = new MenuFerramentas(mainWindow, this);
+
+            tema = new Config.AplicarConfig.Tema(this);
+            ui = new Config.AplicarConfig.UI(this);
+            CarregarConfig();
+        }
+
         // Eventos
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -77,13 +78,12 @@ namespace BlocoDeNotas
         // Carregar Configurações
         public void CarregarConfig()
         {
-            personalizacao.MudarTema(Properties.Settings.Default.Tema);
-            carregarConfig.ConfigFonte(Properties.Settings.Default.TamanhoFonte);
-            carregarConfig.ConfigBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
-            personalizacao.UsarUIColorida(Properties.Settings.Default.UsarUIColorida);
-            carregarConfig.ConfigBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
-            personalizacao.UsarFerramentasRapidas(Properties.Settings.Default.FerramentasRapidas);
-            carregarConfig.ConfigUI();
+            tema.MudarTema(Properties.Settings.Default.Tema);
+            menuExibir.CarregarTamanhoFonte(Properties.Settings.Default.TamanhoFonte);
+            menuExibir.CarregarBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
+            ui.IconesColoridos(Properties.Settings.Default.UsarUIColorida);
+            ui.FerramentasRapidas(Properties.Settings.Default.FerramentasRapidas);
+            ui.AplicarConfigUI();
         }
 
         // Quando ocorre uma mudança no texto

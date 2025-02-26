@@ -20,11 +20,11 @@ namespace BlocoDeNotas.Config.AplicarConfig
         }
 
         // Usar icones coloridos
-        public void IconesColoridos(bool config)
+        public void IconesColoridos(bool cor)
         {
             var ui = (Brush)Application.Current.Resources[""];
 
-            if (config) ui = (Brush)Application.Current.Resources["AccentTextFillColorTertiaryBrush"];
+            if (cor) ui = (Brush)Application.Current.Resources["AccentTextFillColorTertiaryBrush"];
             else ui = (Brush)Application.Current.Resources["TextFillColorPrimaryBrush"];
 
             // Aplica a cor ao menu principal
@@ -49,23 +49,23 @@ namespace BlocoDeNotas.Config.AplicarConfig
         }
 
         // Habilita ou desabilta as ferramentas rápidas
-        public void FerramentasRapidas(bool config)
+        public void FerramentasRapidas(bool usar)
         {
-            if (config) editor.MenuFerramentasRapidas.Visibility = Visibility.Visible;
+            if (usar) editor.MenuFerramentasRapidas.Visibility = Visibility.Visible;
             else editor.MenuFerramentasRapidas.Visibility = Visibility.Hidden;
         }
 
         // Salvar configuração de ícones coloridos
-        public void SalvarConfigIconesColoridos(bool config)
+        public void SalvarConfigIconesColoridos(bool cor)
         {
-            Properties.Settings.Default.UsarUIColorida = config;
+            Properties.Settings.Default.UsarUIColorida = cor;
             Properties.Settings.Default.Save();
         }
 
         // Salvar configuração das ferramentas rápidas
-        public void SalvarConfigFerramentasRapidas(bool config)
+        public void SalvarConfigFerramentasRapidas(bool usar)
         {
-            Properties.Settings.Default.FerramentasRapidas = config;
+            Properties.Settings.Default.FerramentasRapidas = usar;
             Properties.Settings.Default.Save();
         }
 
@@ -79,8 +79,8 @@ namespace BlocoDeNotas.Config.AplicarConfig
             dispatcherTimer.Tick += new EventHandler((sender, e) =>
             {
                 IconesColoridos(Properties.Settings.Default.UsarUIColorida);
+                //ConfigBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
                 FerramentasRapidas(Properties.Settings.Default.FerramentasRapidas);
-                new MenuExibir(editor).CarregarBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
             });
 
             dispatcherTimer.Start();

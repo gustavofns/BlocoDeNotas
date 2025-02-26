@@ -21,30 +21,29 @@ namespace BlocoDeNotas.Config.AplicarConfig
         // Define o tema
         public void MudarTema(string tema)
         {
-            ThemeMode config;
+            ThemeMode themeMode;
 
             switch (tema)
             {
                 case "Claro":
-                    config = ThemeMode.Light;
+                    themeMode = ThemeMode.Light;
                     break;
                 case "Escuro":
-                    config = ThemeMode.Dark;
+                    themeMode = ThemeMode.Dark;
                     break;
                 default:
-                    config = ThemeMode.System;
+                    themeMode = ThemeMode.System;
                     break;
             }
 
-            AplicarConfigTema(config);
+            AplicarConfigTema(themeMode);
         }
 
-        // Aplica a configuração de tema
-        private void AplicarConfigTema(ThemeMode config)
+        private void AplicarConfigTema(ThemeMode themeMode)
         {
             try
             {
-                Application.Current.ThemeMode = config;
+                Application.Current.ThemeMode = themeMode;
             }
             catch (Exception) 
             {
@@ -54,9 +53,9 @@ namespace BlocoDeNotas.Config.AplicarConfig
         }
 
         // Salvar Configuração de tema
-        public void SalvarConfiguracaoTema(string config)
+        public void SalvarConfiguracaoTema(string tema)
         {
-            Properties.Settings.Default.Tema = config;
+            Properties.Settings.Default.Tema = tema;
             Properties.Settings.Default.Save();
         }
     }

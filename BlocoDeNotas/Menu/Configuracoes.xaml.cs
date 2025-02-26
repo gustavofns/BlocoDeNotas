@@ -13,8 +13,8 @@ namespace BlocoDeNotas.Menu
         // Atributos e objetos
         private MainWindow mainWindow;
         private Editor editor;
-        private Config.Frames.Tema tema;
         private String tituloEditor = string.Empty;
+        private Config.Personalizacao personalizacao;
 
         // Construtor da classe
         public Configuracoes(MainWindow mainWindow, Editor editor)
@@ -22,7 +22,7 @@ namespace BlocoDeNotas.Menu
             InitializeComponent();
             this.mainWindow = mainWindow;
             this.editor = editor;
-            tema = new Config.Frames.Tema(editor);
+            personalizacao = new Config.Personalizacao(editor);
         }
 
         //  Eventos de carragamento da página de configurações
@@ -30,7 +30,7 @@ namespace BlocoDeNotas.Menu
         {
             tituloEditor = mainWindow.Title;
             mainWindow.Title = "Configurações";
-            Config.Navigate(tema);
+            Config.Navigate(personalizacao);
         }
 
         // Voltar para o editor
@@ -49,7 +49,7 @@ namespace BlocoDeNotas.Menu
             switch (itemSelecionado)
             {
                 case 0:
-                    Config.NavigationService.Navigate(tema);
+                    Config.NavigationService.Navigate(personalizacao);
                     break;
                 case 1:
                     Config.NavigationService.Navigate(new Config.Frames.Sobre());
