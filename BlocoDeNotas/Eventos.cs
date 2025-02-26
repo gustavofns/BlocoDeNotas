@@ -1,5 +1,4 @@
-﻿using BlocoDeNotas.Config.DefinirConfig;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;

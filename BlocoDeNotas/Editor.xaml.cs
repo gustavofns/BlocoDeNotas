@@ -1,6 +1,4 @@
 ﻿using BlocoDeNotas.Config;
-using BlocoDeNotas.Config.DefinirConfig;
-using BlocoDeNotas.Config.Frames;
 using BlocoDeNotas.Menu;
 using System.Text;
 using System.Windows;
@@ -21,13 +19,13 @@ namespace BlocoDeNotas
     {
         // Atributos e objetos
         private MainWindow mainWindow;
-        private Config.AplicarConfig.Tema tema;
-        private Config.AplicarConfig.UI ui;
         private Eventos eventos;
         private MenuArquivo menuArquivo;
         private MenuEditar menuEditar;
         private MenuExibir menuExibir;
         private MenuFerramentas menuFerramentas;
+        private Config.AplicarConfig.Tema tema;
+        private Config.AplicarConfig.UI ui;
         private string arquivo = String.Empty;
         private StringBuilder documento = new StringBuilder();
         private bool textoModificado = false;
