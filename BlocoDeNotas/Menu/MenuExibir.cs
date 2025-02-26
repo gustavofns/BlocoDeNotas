@@ -36,7 +36,7 @@ namespace BlocoDeNotas.Menu
             editor.iconeBarraStatusMenu.Text = "\uE90E";
             editor.textoBarraStatusMenu.Text = "Ocultar a barra de status";
             editor.barraStatus.Height = new GridLength(36);
-            salvarConfig.SalvarStatusBarraDeStatus(true);
+            SalvarBarraDeStatus(true);
         }
 
         // Oculta a barra de status
@@ -48,14 +48,14 @@ namespace BlocoDeNotas.Menu
             editor.iconeBarraStatusMenu.Text = "\uE90E";
             editor.textoBarraStatusMenu.Text = "Mostrar a barra de status";
             editor.barraStatus.Height = new GridLength(0);
-            salvarConfig.SalvarStatusBarraDeStatus(false);
+            SalvarBarraDeStatus(false);
         }
 
         // Mostra o tamanho da fonte
         public void MudarTamFonte(int tamanhoFonte)
         {
             editor.editorDeTexto.FontSize = tamanhoFonte;
-            salvarConfig.SalvarTamanhoFonte(tamanhoFonte);
+            SalvarTamanhoFonte(tamanhoFonte);
         }
 
         // Slider para mudar o tamanho da fonte
@@ -84,6 +84,37 @@ namespace BlocoDeNotas.Menu
             editor.tamanhoFonteLabel.Text = "14";
             editor.tamanhoFontaLabelMenu.Text = "14";
             MudarTamFonte(14);
+        }
+
+        // Carrega a configuração da barra de status
+        public void CarregarBarraDeStatus(bool config)
+        {
+            if (config) MostrarBarraDeStatus();
+            else OcultarBarraDeStatus();
+        }
+
+        // Configura a fonte
+        public void CarregarTamanhoFonte(int tamanhoFonte)
+        {
+            editor.editorDeTexto.FontSize = tamanhoFonte;
+            editor.tamanhoFonteSlider.Value = tamanhoFonte;
+            editor.tamanhoFonteLabel.Text = $"{tamanhoFonte}";
+            editor.tamanhoFontaLabelMenu.Text = $"{tamanhoFonte}";
+            editor.tamanhoFonteSliderMenu.Value = tamanhoFonte;
+        }
+
+        // Salva a configuração da barra de status
+        public void SalvarBarraDeStatus(bool config)
+        {
+            Properties.Settings.Default.BarraDeStatus = config;
+            Properties.Settings.Default.Save();
+        }
+
+        // Salva a configuração do tamanho da fonte
+        public void SalvarTamanhoFonte(int tamanhoFonte)
+        {
+            Properties.Settings.Default.TamanhoFonte = tamanhoFonte;
+            Properties.Settings.Default.Save();
         }
     }
 }
