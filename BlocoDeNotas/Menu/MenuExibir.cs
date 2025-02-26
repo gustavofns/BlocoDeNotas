@@ -1,4 +1,4 @@
-﻿using BlocoDeNotas.Config.DefinirConfig;
+﻿using BlocoDeNotas.Config;
 using System.Windows;
 using System.Windows.Media;
 
@@ -9,14 +9,12 @@ namespace BlocoDeNotas.Menu
         // Atributos da classe
         MainWindow mainWindow;
         Editor editor;
-        SalvarConfig salvarConfig;
 
         // Construtor da classe
         public MenuExibir(MainWindow mainWindow, Editor editor)
         {
             this.mainWindow = mainWindow;
             this.editor = editor;
-            salvarConfig = new SalvarConfig();
         }
 
         // Mostra ou oculta a barra de status

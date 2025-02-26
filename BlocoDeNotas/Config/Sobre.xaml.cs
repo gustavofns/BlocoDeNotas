@@ -1,23 +1,32 @@
 ﻿using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Documents;
-using static System.Net.WebRequestMethods;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 #pragma warning disable CS8600
 #pragma warning disable CS8602
 #pragma warning disable CS8603
 
-namespace BlocoDeNotas.Config.Frames
+namespace BlocoDeNotas.Config
 {
     /// <summary>
     /// Interação lógica para Sobre.xam
     /// </summary>
     public partial class Sobre : Page
     {
-        // Construtor da classe
         public Sobre()
         {
             InitializeComponent();
@@ -86,9 +95,9 @@ namespace BlocoDeNotas.Config.Frames
 
         private void sobreSoftwareExpander_Expanded(object sender, System.Windows.RoutedEventArgs e)
         {
-   
+
             bool isExpanded = (sender as Expander).IsExpanded;
-            if (isExpanded) 
+            if (isExpanded)
             {
                 sobreSoftwareRow.Height = new GridLength(180);
             }
