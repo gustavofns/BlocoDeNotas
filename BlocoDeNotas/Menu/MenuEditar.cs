@@ -1,4 +1,9 @@
-﻿using System.Windows;
+﻿using System.Data;
+using System.Windows;
+using System.Windows.Media.TextFormatting;
+using System.Windows.Shapes;
+
+#pragma warning disable CS8618
 
 namespace BlocoDeNotas.Menu
 {
@@ -6,10 +11,23 @@ namespace BlocoDeNotas.Menu
     {
         // Atributos e objetos
         private Editor editor;
+
         // Construtor da classe
+        public MenuEditar() { }
+
         public MenuEditar(Editor editor)
         {
             this.editor = editor;
+        }
+
+        public void InserirEspaco()
+        {
+            if (!(editor.editorDeTexto.Text.EndsWith("\n") ||
+                editor.editorDeTexto.Text.EndsWith(" ") ||
+                editor.editorDeTexto.Text.Length == 0))
+            {
+                editor.editorDeTexto.Text += " ";
+            }
         }
 
         // Recorta um texto selecionado
@@ -65,7 +83,7 @@ namespace BlocoDeNotas.Menu
 
                 if (Clipboard.ContainsText())
                 {
-
+                    InserirEspaco();
                     editor.editorDeTexto.Text += Clipboard.GetText();
                     editor.editorDeTexto.CaretIndex = editor.editorDeTexto.Text.Length;
                 }
@@ -87,6 +105,29 @@ namespace BlocoDeNotas.Menu
         public void SelecionarTudo()
         {
             editor.editorDeTexto.SelectAll();
+        }
+
+        // Insere a hora atual
+        public void InserirHoraAtual()
+        {
+            InserirEspaco();
+            editor.editorDeTexto.Text = editor.editorDeTexto.Text + DateTime.Now.ToString("HH:mm:ss");
+            editor.editorDeTexto.CaretIndex = editor.editorDeTexto.Text.Length;
+        }
+
+        // Insere a data atual
+        public void InserirDataAtual()
+        {
+            InserirEspaco();
+            editor.editorDeTexto.Text = editor.editorDeTexto.Text + DateTime.Now.ToString("dd/MM/yyyy");
+            editor.editorDeTexto.CaretIndex = editor.editorDeTexto.Text.Length;
+        }
+
+        // Insere a data e hora atual
+        public void InserirDataHoraAtual()
+        {
+            InserirHoraAtual();
+            InserirDataAtual();
         }
     }
 }

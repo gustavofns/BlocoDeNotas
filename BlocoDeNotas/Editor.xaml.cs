@@ -24,6 +24,7 @@ namespace BlocoDeNotas
         private MenuEditar menuEditar;
         private MenuExibir menuExibir;
         private MenuFerramentas menuFerramentas;
+        private Config.AplicarConfig.Fonte fonte;
         private Config.AplicarConfig.Tema tema;
         private Config.AplicarConfig.UI ui;
         private string arquivo = String.Empty;
@@ -57,9 +58,9 @@ namespace BlocoDeNotas
             eventos = new Eventos(mainWindow, this);
             menuArquivo = new MenuArquivo(mainWindow, this);
             menuEditar = new MenuEditar(this);
-            menuExibir = new MenuExibir(mainWindow, this);
-            menuFerramentas = new MenuFerramentas(mainWindow, this);
-
+            menuExibir = new MenuExibir(this);
+            menuFerramentas = new MenuFerramentas(this);
+            fonte = new Config.AplicarConfig.Fonte(this);
             tema = new Config.AplicarConfig.Tema(this);
             ui = new Config.AplicarConfig.UI(this);
             CarregarConfig();
@@ -77,7 +78,7 @@ namespace BlocoDeNotas
         public void CarregarConfig()
         {
             tema.MudarTema(Properties.Settings.Default.Tema);
-            menuExibir.CarregarTamanhoFonte(Properties.Settings.Default.TamanhoFonte);
+            fonte.CarregarTamanhoFonte(Properties.Settings.Default.TamanhoFonte);
             menuExibir.CarregarBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
             ui.IconesColoridos(Properties.Settings.Default.UsarUIColorida);
             ui.FerramentasRapidas(Properties.Settings.Default.FerramentasRapidas);
@@ -135,6 +136,9 @@ namespace BlocoDeNotas
         private void Copiar_Click(object sender, RoutedEventArgs e) => menuEditar.Copiar();
         private void Colar_Click(object sender, RoutedEventArgs e) => menuEditar.Colar();
         private void Excluir_Click(object sender, RoutedEventArgs e) => menuEditar.Excluir();
+        private void InserirHora_Click(object sender, RoutedEventArgs e) => menuEditar.InserirHoraAtual();
+        private void InserirData_Click(object sender, RoutedEventArgs e) => menuEditar.InserirDataAtual();
+        private void InserirDataHora_Click(object sender, RoutedEventArgs e) => menuEditar.InserirDataHoraAtual();
         private void SelecionarTudo_Click(object sender, RoutedEventArgs e) => menuEditar.SelecionarTudo();
 
         // Menu Exibir

@@ -28,15 +28,64 @@
                         <TextBlock Text="Arquivo" FontSize="14" Margin="10,0,0,0"/>
                     </StackPanel>
                 </MenuItem.Header>
-                <MenuItem Header="Nova janela" Click="NovaJanela_Click" InputGestureText="Ctrl+Shift+N"/>
-                <MenuItem Header="Fechar janela" Click="FecharJanela_Click" InputGestureText="Alt+F4"/>
+                <MenuItem Click="NovaJanela_Click" InputGestureText="Ctrl+Shift+N">
+                    <MenuItem.Header>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock Text="&#xE8A7;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular"/>
+                            <TextBlock Text="Nova janela" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Click="FecharJanela_Click" InputGestureText="Alt+F4">
+                    <MenuItem.Header>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock Text="&#xE711;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular"/>
+                            <TextBlock Text="Fechar janela"  Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
                 <Separator/>
-                <MenuItem Header="Abrir" Click="AbrirArquivo_Click" InputGestureText="Ctrl+O"/>
-                <MenuItem Header="Salvar" Click="SalvarArquivo_Click" InputGestureText="Ctrl+S"/>
-                <MenuItem Header="Salvar como..." Click="SalvarArquivoComo_Click" InputGestureText="Ctrl+Shift+S"/>
-                <MenuItem x:Name="fecharArquivo" Header="Fechar arquivo" IsEnabled="False" Click="FecharArquivo_Click"/>
+                <MenuItem Click="AbrirArquivo_Click" InputGestureText="Ctrl+O">
+                    <MenuItem.Header>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock Text="&#xE838;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular"/>
+                            <TextBlock Text="Abrir" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Click="SalvarArquivo_Click" InputGestureText="Ctrl+S">
+                    <MenuItem.Header>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock Text="&#xE74E;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular"/>
+                            <TextBlock Text="Salvar" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Click="SalvarArquivoComo_Click" InputGestureText="Ctrl+Shift+S">
+                    <MenuItem.Header>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock Text="&#xE792;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular"/>
+                            <TextBlock Text="Salvar como..." Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem x:Name="fecharArquivo" IsEnabled="False" Click="FecharArquivo_Click">
+                    <MenuItem.Header>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock Text="&#xE8A5;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular"/>
+                            <TextBlock Text="Fechar arquivo" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
                 <Separator/>
-                <MenuItem Header="Sair do aplicativo" Click="Sair_Click" InputGestureText="Ctrl+Alt+F4"/>
+                <MenuItem Click="Sair_Click" InputGestureText="Ctrl+Alt+F4">
+                    <MenuItem.Header>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock Text="&#xE711;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular"/>
+                            <TextBlock Text="Sair do aplicativo" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
             </MenuItem>
             <MenuItem>
                 <MenuItem.Header>
@@ -50,6 +99,14 @@
                 <MenuItem x:Name="colarMenu" Header="Colar" IsEnabled="False" Click="Colar_Click" InputGestureText="Ctrl+V"/>
                 <MenuItem x:Name="excluirMenu" Header="Excluir" IsEnabled="False" Click="Excluir_Click" InputGestureText="Del"/>
                 <Separator/>
+                <MenuItem>
+                    <MenuItem.Header>
+                        <TextBlock Text="Data e hora" FontSize="14"/>
+                    </MenuItem.Header>
+                    <MenuItem Header="Inserir hora atual" Click="InserirHora_Click"/>
+                    <MenuItem Header="Inserir data atual" Click="InserirData_Click"/>
+                    <MenuItem Header="Inserir data e hora atual" Click="InserirDataHora_Click"/>
+                </MenuItem>
                 <MenuItem Header="Selecionar tudo" Click="SelecionarTudo_Click" InputGestureText="Ctrl+A"/>
             </MenuItem>
             <MenuItem>

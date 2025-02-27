@@ -33,7 +33,6 @@
 
                 <CheckBox Grid.Row="3" Margin="40,0,0,0" x:Name="IconesColoridos" Content="Usar ícones coloridos de acordo com a cor destaque do Windows" Checked="IconesColoridos_Checked" Unchecked="IconesColoridos_Checked"/>
                 <CheckBox Grid.Row="4" Margin="40,0,0,0" x:Name="FerramentasRapidas" Content="Habilitar as ferramentas rápidas na barra de menu" Checked="FerramentasRapidas_Checked" Unchecked="FerramentasRapidas_Checked"/>
-                <CheckBox Grid.Row="5" Margin="40,0,0,0" x:Name="IconesMenus" Content="Usar ícones nos menus" IsEnabled="False" Visibility="Hidden"/>
             </Grid>
         </Border>
     </Grid>
