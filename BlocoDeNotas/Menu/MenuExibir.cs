@@ -2,18 +2,21 @@
 using System.Windows;
 using System.Windows.Media;
 
+#pragma warning disable CS8618
+
 namespace BlocoDeNotas.Menu
 {
     public class MenuExibir
     {
         // Atributos da classe
-        MainWindow mainWindow;
         Editor editor;
 
         // Construtor da classe
-        public MenuExibir(MainWindow mainWindow, Editor editor)
+
+        public MenuExibir() { }
+
+        public MenuExibir(Editor editor)
         {
-            this.mainWindow = mainWindow;
             this.editor = editor;
         }
 
@@ -53,7 +56,6 @@ namespace BlocoDeNotas.Menu
         public void MudarTamFonte(int tamanhoFonte)
         {
             editor.editorDeTexto.FontSize = tamanhoFonte;
-            SalvarTamanhoFonte(tamanhoFonte);
         }
 
         // Slider para mudar o tamanho da fonte
@@ -91,27 +93,10 @@ namespace BlocoDeNotas.Menu
             else OcultarBarraDeStatus();
         }
 
-        // Configura a fonte
-        public void CarregarTamanhoFonte(int tamanhoFonte)
-        {
-            editor.editorDeTexto.FontSize = tamanhoFonte;
-            editor.tamanhoFonteSlider.Value = tamanhoFonte;
-            editor.tamanhoFonteLabel.Text = $"{tamanhoFonte}";
-            editor.tamanhoFontaLabelMenu.Text = $"{tamanhoFonte}";
-            editor.tamanhoFonteSliderMenu.Value = tamanhoFonte;
-        }
-
         // Salva a configuração da barra de status
         public void SalvarBarraDeStatus(bool config)
         {
             Properties.Settings.Default.BarraDeStatus = config;
-            Properties.Settings.Default.Save();
-        }
-
-        // Salva a configuração do tamanho da fonte
-        public void SalvarTamanhoFonte(int tamanhoFonte)
-        {
-            Properties.Settings.Default.TamanhoFonte = tamanhoFonte;
             Properties.Settings.Default.Save();
         }
     }

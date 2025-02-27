@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 
 #pragma warning disable WPF0001
+#pragma warning disable CS8618
 
 namespace BlocoDeNotas.Menu
 {
@@ -11,7 +12,9 @@ namespace BlocoDeNotas.Menu
         private Editor editor;
         private OperacoesComArquivos operacoesComArquivos;
 
-        // Construtor da classe
+        // Construtores da classe
+        public MenuArquivo() { }
+
         public MenuArquivo(MainWindow mainWindow, Editor editor)
         {
             this.mainWindow = mainWindow;
