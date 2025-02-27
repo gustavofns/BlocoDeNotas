@@ -1,13 +1,19 @@
-﻿namespace BlocoDeNotas.Menu
+﻿
+
+#pragma warning disable CS8618
+
+namespace BlocoDeNotas.Menu
 {
     public class MenuFerramentas
     {
-        MainWindow mainWindow;
+        // Atributos e objetos
         Editor editor;
 
-        public MenuFerramentas(MainWindow mainWindow, Editor editor)
+        // Construtores da classe
+        public MenuFerramentas() { }
+
+        public MenuFerramentas(Editor editor)
         {
-            this.mainWindow = mainWindow;
             this.editor = editor;
         }
     }
