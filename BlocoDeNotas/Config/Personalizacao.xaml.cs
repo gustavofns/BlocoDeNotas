@@ -52,7 +52,7 @@ namespace BlocoDeNotas.Config
 
         private void TemaSelecionado_Checked(String temaSelecionado)
         {
-            switch (temaSelecionado) 
+            switch (temaSelecionado)
             {
                 case "Claro":
                     TemaClaro_Checked.IsChecked = true;
@@ -66,6 +66,7 @@ namespace BlocoDeNotas.Config
             }
         }
 
+        // Habilita ou desabilita os ícones coloridos
         private void IconesColoridos_Checked(object sender, RoutedEventArgs e)
         {
             bool iconesColoridos = IconesColoridos.IsChecked.Value;
@@ -73,6 +74,7 @@ namespace BlocoDeNotas.Config
             ui.SalvarConfigIconesColoridos(iconesColoridos);
         }
 
+        // Habilita ou desabilita as ferramentas rápidas
         private void FerramentasRapidas_Checked(object sender, RoutedEventArgs e)
         {
             bool ferramentasRapidas = FerramentasRapidas.IsChecked.Value;

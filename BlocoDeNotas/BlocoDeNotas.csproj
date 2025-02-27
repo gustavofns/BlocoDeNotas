@@ -16,15 +16,15 @@
     <DelaySign>False</DelaySign>
     <SignAssembly>True</SignAssembly>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <AssemblyVersion>0.3.2.21</AssemblyVersion>
-    <FileVersion>0.3.2.21</FileVersion>
+    <AssemblyVersion>0.3.2.8</AssemblyVersion>
+    <FileVersion>0.3.2.8</FileVersion>
     <Product>Bloco de notas - Beta</Product>
     <Company>Gustavo Silva</Company>
     <Authors>Gustavo Silva</Authors>
     <Copyright>Gustavo Silva</Copyright>
     <Description>Bloco de notas - Beta</Description>
     <PackageReadmeFile>LICENSE</PackageReadmeFile>
-    <Version>0.3.2.21</Version>
+    <Version>0.3.2.8</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
