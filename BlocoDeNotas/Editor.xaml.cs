@@ -27,28 +27,6 @@ namespace BlocoDeNotas
         private Config.AplicarConfig.Fonte fonte;
         private Config.AplicarConfig.Tema tema;
         private Config.AplicarConfig.UI ui;
-        private string arquivo = String.Empty;
-        private StringBuilder documento = new StringBuilder();
-        private bool textoModificado = false;
-
-        // Getters e setters
-        public string Arquivo
-        {
-            get { return arquivo; }
-            set { arquivo = value; }
-        }
-
-        public StringBuilder Documento
-        {
-            get { return documento; }
-            set { documento = value; }
-        }
-
-        public bool TextoModificado
-        {
-            get { return textoModificado; }
-            set { textoModificado = value; }
-        }
 
         // Construtor da classe
         public Editor(MainWindow mainWindow)
@@ -91,6 +69,7 @@ namespace BlocoDeNotas
             eventos.AtualizarRotulos();
             eventos.VerificarTextoModificado();
             eventos.AtualizarBarraDeTítulo();
+            eventos.VerificarDesfazerRefazer();
         }
 
         // Quando o texto é selecionado
@@ -115,6 +94,8 @@ namespace BlocoDeNotas
             if (e.Key == Key.S && Keyboard.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift)) menuArquivo.SalvarArquivoComo();
             if (e.Key == Key.F4 && Keyboard.Modifiers == (ModifierKeys.Control | ModifierKeys.Alt)) menuArquivo.Sair();
             // Menu Editar
+            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.Z) menuEditar.Desfazer();
+            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.Y) menuEditar.Refazer();
             if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.X) menuEditar.Recortar();
             if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.C) menuEditar.Copiar();
             if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.V) menuEditar.Colar();
@@ -132,6 +113,8 @@ namespace BlocoDeNotas
         private void Sair_Click(object sender, RoutedEventArgs e) => menuArquivo.Sair();
 
         // Menu Editar
+        private void Desfazer_Click(object sender, RoutedEventArgs e) => menuEditar.Desfazer();
+        private void Refazer_Click(object sender, RoutedEventArgs e) => menuEditar.Refazer();
         private void Recortar_Click(object sender, RoutedEventArgs e) => menuEditar.Recortar();
         private void Copiar_Click(object sender, RoutedEventArgs e) => menuEditar.Copiar();
         private void Colar_Click(object sender, RoutedEventArgs e) => menuEditar.Colar();
