@@ -44,14 +44,14 @@ namespace BlocoDeNotas
 
                 using (var streamReader = new StreamReader(arquivo))
                 {
-                    editor.Arquivo = arquivo;
-                    editor.Documento.Clear();
+                    mainWindow.Arquivo = arquivo;
+                    mainWindow.Documento.Clear();
                     editor.editorDeTexto.Clear();
-                    editor.Documento.Append(await streamReader.ReadToEndAsync());
-                    editor.editorDeTexto.AppendText(editor.Documento.ToString());
+                    mainWindow.Documento.Append(await streamReader.ReadToEndAsync());
+                    editor.editorDeTexto.AppendText(mainWindow.Documento.ToString());
                     editor.editorDeTexto.CaretIndex = editor.editorDeTexto.Text.Length;
                     editor.fecharArquivo.IsEnabled = true;
-                    mainWindow.Title = $"Bloco de notas - {editor.Arquivo}";
+                    mainWindow.Title = $"Bloco de notas - {mainWindow.Arquivo}";
                 }
             }
             catch (ArgumentException)
@@ -96,9 +96,9 @@ namespace BlocoDeNotas
 
             if (fileDialog.ShowDialog() == true)
             {
-                editor.Arquivo = fileDialog.FileName;
+                mainWindow.Arquivo = fileDialog.FileName;
                 editor.fecharArquivo.IsEnabled = true;
-                mainWindow.Title = $"Bloco de notas - {editor.Arquivo}";
+                mainWindow.Title = $"Bloco de notas - {mainWindow.Arquivo}";
                 await GravarArquivoAsync();
             }
         }
@@ -108,15 +108,15 @@ namespace BlocoDeNotas
         {
             try
             {
-                using (var streamWriter = new StreamWriter(editor.Arquivo))
+                using (var streamWriter = new StreamWriter(mainWindow.Arquivo))
                 {
-                    editor.Documento.Clear();
-                    editor.Documento.Append(editor.editorDeTexto.Text);
+                    mainWindow.Documento.Clear();
+                    mainWindow.Documento.Append(editor.editorDeTexto.Text);
                     await streamWriter.WriteAsync(editor.editorDeTexto.Text);
                 }
-                mainWindow.Title = $"Bloco de notas - {editor.Arquivo} - O arquivo foi salvo com sucesso";
+                mainWindow.Title = $"Bloco de notas - {mainWindow.Arquivo} - O arquivo foi salvo com sucesso";
                 await Task.Delay(1000).AsAsyncAction();
-                mainWindow.Title = $"Bloco de notas - {editor.Arquivo}";
+                mainWindow.Title = $"Bloco de notas - {mainWindow.Arquivo}";
             }
             catch (ArgumentException)
             {

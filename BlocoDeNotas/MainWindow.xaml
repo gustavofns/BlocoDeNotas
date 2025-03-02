@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlocoDeNotas"
         mc:Ignorable="d"
-        Title="Bloco de notas" Height="620" Width="1100" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" MouseLeftButtonDown="MoverJanela">
+        Title="Bloco de notas" Height="600" Width="1100" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" MouseLeftButtonDown="MoverJanela">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

@@ -27,6 +27,7 @@ namespace BlocoDeNotas.Config
     /// </summary>
     public partial class Sobre : Page
     {
+        // Construtor da classe
         public Sobre()
         {
             InitializeComponent();
@@ -46,36 +47,57 @@ namespace BlocoDeNotas.Config
         // Obtém o nome do sistema operacional
         private string ObterOS()
         {
-            string os = string.Empty;
+            try
+            { 
+                string os = string.Empty;
 
-            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
-            {
-                os = key.GetValue("ProductName").ToString();
+                using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
+                {
+                    os = key.GetValue("ProductName").ToString();
+                }
+
+                if (Environment.OSVersion.Version.Build >= 22000)
+                {
+                    os = os.Replace(os.Substring(0, 10), "Windows 11");
+                }
+
+                return $"Microsoft {os}";
             }
-
-            if (Environment.OSVersion.Version.Build >= 22000)
+            catch (Exception)
             {
-                os = os.Replace(os.Substring(0, 10), "Windows 11");
+                return "Informação indisponível";
             }
-
-            return os;
         }
 
         // Obtém a versão do sistema operacional
         private string ObterVersao()
         {
-            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
+            try
             {
-                return key.GetValue("DisplayVersion").ToString();
+                using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
+                {
+                    return key.GetValue("DisplayVersion").ToString();
+                }
+            }
+            catch (Exception)
+            {
+                return "Informação indisponível";
             }
         }
 
         // Obtém a build do sistema operacional
         private string ObterBuild()
         {
-            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
+            try
+            { 
+                using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
+                {
+                    return key.GetValue("LCUVer").ToString().Remove(0, 5);
+                }
+            }
+            catch (Exception)
             {
-                return key.GetValue("LCUVer").ToString().Remove(0, 5);
+                return "Informação indisponível";
             }
         }
 
