@@ -27,6 +27,7 @@ namespace BlocoDeNotas.Config
     /// </summary>
     public partial class Sobre : Page
     {
+        // Construtor da classe
         public Sobre()
         {
             InitializeComponent();
