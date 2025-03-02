@@ -27,17 +27,25 @@ namespace BlocoDeNotas
 
         public void VerificarTextoModificado()
         {
-            if (editor.editorDeTexto.Text == editor.Documento.ToString()) editor.TextoModificado = false;
-            else editor.TextoModificado = true;
+            if (editor.editorDeTexto.Text == mainWindow.Documento.ToString()) mainWindow.TextoModificado = false;
+            else mainWindow.TextoModificado = true;
+        }
+
+        public void VerificarDesfazerRefazer()
+        {
+            if(editor.editorDeTexto.CanUndo) editor.desfazerMenu.IsEnabled = true;
+            else editor.desfazerMenu.IsEnabled = false;
+            if (editor.editorDeTexto.CanRedo) editor.refazerMenu.IsEnabled = true;
+            else editor.refazerMenu.IsEnabled = false;
         }
 
         public void AtualizarBarraDeTítulo()
         {
             string titulo = "Bloco de notas";
-            if (editor.editorDeTexto.Text == "" && editor.Arquivo == string.Empty) mainWindow.Title = titulo;
-            else if (!(editor.editorDeTexto.Text == "") && editor.Arquivo == string.Empty) mainWindow.Title = $"{titulo} - documento não salvo";
-            else if (editor.TextoModificado == true) mainWindow.Title = $"{titulo} - {editor.Arquivo} - documento modificado";
-            else mainWindow.Title = $"{titulo} - {editor.Arquivo}";
+            if (editor.editorDeTexto.Text == "" && mainWindow.Arquivo == string.Empty) mainWindow.Title = titulo;
+            else if (!(editor.editorDeTexto.Text == "") && mainWindow.Arquivo == string.Empty) mainWindow.Title = $"{titulo} - documento não salvo";
+            else if (mainWindow.TextoModificado == true) mainWindow.Title = $"{titulo} - {mainWindow.Arquivo} - documento modificado";
+            else mainWindow.Title = $"{titulo} - {mainWindow.Arquivo}";
         }
 
         public void RegistrarTeclas()
@@ -46,6 +54,8 @@ namespace BlocoDeNotas
             CommandManager.RegisterClassInputBinding(typeof(TextBox), new InputBinding(ApplicationCommands.NotACommand, new KeyGesture(Key.C, ModifierKeys.Control)));
             CommandManager.RegisterClassInputBinding(typeof(TextBox), new InputBinding(ApplicationCommands.NotACommand, new KeyGesture(Key.V, ModifierKeys.Control)));
             CommandManager.RegisterClassInputBinding(typeof(TextBox), new InputBinding(ApplicationCommands.NotACommand, new KeyGesture(Key.X, ModifierKeys.Control)));
+            CommandManager.RegisterClassInputBinding(typeof(TextBox), new InputBinding(ApplicationCommands.NotACommand, new KeyGesture(Key.Y, ModifierKeys.Control)));
+            CommandManager.RegisterClassInputBinding(typeof(TextBox), new InputBinding(ApplicationCommands.NotACommand, new KeyGesture(Key.Z, ModifierKeys.Control)));
             CommandManager.RegisterClassInputBinding(typeof(TextBox), new InputBinding(ApplicationCommands.NotACommand, new KeyGesture(Key.Delete)));
         }
 

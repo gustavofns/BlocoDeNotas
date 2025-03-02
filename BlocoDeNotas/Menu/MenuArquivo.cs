@@ -61,12 +61,12 @@ namespace BlocoDeNotas.Menu
         {
             try
             {
-                if (string.IsNullOrEmpty(editor.Arquivo))
+                if (string.IsNullOrEmpty(mainWindow.Arquivo))
                 {
                     await operacoesComArquivos.SalvarArquivoAsync("Selecione um local para salvar o documento");
                     return;
                 }
-                if (editor.TextoModificado) await operacoesComArquivos.GravarArquivoAsync();
+                if (mainWindow.TextoModificado) await operacoesComArquivos.GravarArquivoAsync();
                 else return;
             }
             catch (Exception ex)
@@ -94,9 +94,9 @@ namespace BlocoDeNotas.Menu
         // Fecha um arquivo
         public void FecharArquivo()
         {
-            editor.Documento.Clear();
+            mainWindow.Documento.Clear();
             editor.editorDeTexto.Clear();
-            editor.Arquivo = string.Empty;
+            mainWindow.Arquivo = string.Empty;
             editor.fecharArquivo.IsEnabled = false;
             mainWindow.Title = "Bloco de notas";
         }

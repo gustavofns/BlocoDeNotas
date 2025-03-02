@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+
 
 
 namespace BlocoDeNotas
@@ -10,11 +12,37 @@ namespace BlocoDeNotas
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Atributos da classe
+        private StringBuilder documento;
+        private string arquivo = string.Empty;
+        private bool textoModificado = false;
+
+        // Getters e Setters
+        public StringBuilder Documento
+        {
+            get { return documento; }
+            set { documento = value; }
+        }
+
+        public string Arquivo
+        {
+            get { return arquivo; }
+            set { arquivo = value; }
+        }
+
+
+        public bool TextoModificado
+        {
+            get { return textoModificado; }
+            set { textoModificado = value; }
+        }
+
         // Construtor da classe
         public MainWindow()
         {
             VerificarOS();
             InitializeComponent();
+            documento = new StringBuilder();
             Main.Navigate(new Editor(this));
         }
 

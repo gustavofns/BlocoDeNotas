@@ -23,10 +23,12 @@ namespace BlocoDeNotas.Config
     /// </summary>
     public partial class Personalizacao : Page
     {
+        // Atributos e objetos
         private Editor editor;
         private AplicarConfig.Tema tema;
         private AplicarConfig.UI ui;
 
+        // Construtor da classe
         public Personalizacao(Editor editor)
         {
             InitializeComponent();
@@ -35,6 +37,7 @@ namespace BlocoDeNotas.Config
             ui = new AplicarConfig.UI(editor);
         }
 
+        // Carregamento da página
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             TemaSelecionado_Checked(Properties.Settings.Default.Tema);
@@ -42,6 +45,7 @@ namespace BlocoDeNotas.Config
             FerramentasRapidas.IsChecked = Properties.Settings.Default.FerramentasRapidas;
         }
 
+        // Mudo o tema
         private void MudarTema_Click(object sender, RoutedEventArgs e)
         {
             RadioButton temaSelecionado = (RadioButton)sender;
@@ -50,6 +54,7 @@ namespace BlocoDeNotas.Config
             TemaSelecionado_Checked(temaSelecionado.Content.ToString());
         }
 
+        // Marca o tema selecionado no RadioButton
         private void TemaSelecionado_Checked(String temaSelecionado)
         {
             switch (temaSelecionado)

@@ -20,6 +20,7 @@ namespace BlocoDeNotas.Menu
             this.editor = editor;
         }
 
+        // Insere um espaço no final do texto
         public void InserirEspaco()
         {
             if (!(editor.editorDeTexto.Text.EndsWith("\n") ||
@@ -28,6 +29,20 @@ namespace BlocoDeNotas.Menu
             {
                 editor.editorDeTexto.Text += " ";
             }
+        }
+
+        // Desfaz a última ação
+        public void Desfazer()
+        {
+            editor.editorDeTexto.Undo();
+            editor.editorDeTexto.CaretIndex = editor.editorDeTexto.Text.Length;
+        }
+
+        // Refaz a última ação desfeita
+        public void Refazer()
+        {
+            editor.editorDeTexto.Redo();
+            editor.editorDeTexto.CaretIndex = editor.editorDeTexto.Text.Length;
         }
 
         // Recorta um texto selecionado

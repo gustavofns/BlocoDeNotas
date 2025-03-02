@@ -29,7 +29,7 @@ namespace BlocoDeNotas.Menu
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             tituloEditor = mainWindow.Title;
-            mainWindow.Title = "Configurações";
+            mainWindow.Title = Title;
             Config.Navigate(personalizacao);
         }
 
