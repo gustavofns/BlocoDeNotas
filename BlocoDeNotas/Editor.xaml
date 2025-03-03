@@ -273,13 +273,13 @@
             <!-- Item recortar -->
             <MenuItem x:Name="recortarConfigRapidas" Visibility="Collapsed" Header="&#xE8C6;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="Recortar_Click">
                 <MenuItem.ToolTip>
-                    <TextBlock Text="Excluir o texto selecionado e copiar para área de transferência" FontSize="14" FontFamily="Segoe UI Variable" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                    <TextBlock Text="Recortar o texto selecionado" FontSize="14" FontFamily="Segoe UI Variable" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
                 </MenuItem.ToolTip>
             </MenuItem>
             <!-- Item copiar -->
             <MenuItem x:Name="copiarConfigRapidas" Visibility="Collapsed" Header="&#xE8C8;" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Click="Copiar_Click">
                 <MenuItem.ToolTip>
-                    <TextBlock Text="Copiar o texto selecionado para a área de transferência" FontSize="14" FontFamily="Segoe UI Variable" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                    <TextBlock Text="Copiar o texto selecionado" FontSize="14" FontFamily="Segoe UI Variable" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
                 </MenuItem.ToolTip>
             </MenuItem>
             <!-- Item colar -->
@@ -303,7 +303,7 @@
                     <TextBlock Text="Abrir nova janela" FontSize="14" FontFamily="Segoe UI Variable" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
                 </MenuItem.ToolTip>
             </MenuItem>
-            <MenuItem x:Name="iconeMenuMiniBloco"  Header="&#xEE49;" Click="MiniBlock_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Visibility="Collapsed">
+            <MenuItem x:Name="iconeMenuMiniBloco"  Header="&#xEE49;" Click="MiniBlock_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Visibility="Visible">
                 <MenuItem.ToolTip>
                     <TextBlock Text="Abrir no minibloco" FontSize="14" FontFamily="Segoe UI Variable" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
                 </MenuItem.ToolTip>
