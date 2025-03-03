@@ -298,16 +298,19 @@
         
         <!-- Menu direito -->
         <Menu Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontFamily="{StaticResource SymbolThemeFontFamily}" FontStretch="Medium" FontSize="16">
+            <!-- Abre uma nova janela -->
             <MenuItem x:Name="iconeMenuAbrirNovaJanela" Header="&#xE8A7;" Click="NovaJanela_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}">
                 <MenuItem.ToolTip>
                     <TextBlock Text="Abrir nova janela" FontSize="14" FontFamily="Segoe UI Variable" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
                 </MenuItem.ToolTip>
             </MenuItem>
+            <!-- Recurso precisa ser implementado -->
             <MenuItem x:Name="iconeMenuMiniBloco"  Header="&#xEE49;" Click="MiniBlock_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Visibility="Collapsed">
                 <MenuItem.ToolTip>
                     <TextBlock Text="Abrir no minibloco" FontSize="14" FontFamily="Segoe UI Variable" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
                 </MenuItem.ToolTip>
             </MenuItem>
+            <!-- Abre as configurações -->
             <MenuItem x:Name="iconeMenuConfig" Header="&#xE713;" Click="Config_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}">
                 <MenuItem.ToolTip>
                     <TextBlock Text="Configurações" FontSize="14" FontFamily="Segoe UI Variable" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
