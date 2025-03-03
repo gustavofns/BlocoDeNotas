@@ -13,7 +13,6 @@ namespace BlocoDeNotas.Menu
         // Atributos e objetos
         private MainWindow mainWindow;
         private Editor editor;
-        private String tituloEditor = string.Empty;
         private Config.Personalizacao personalizacao;
 
         // Construtor da classe
@@ -28,7 +27,6 @@ namespace BlocoDeNotas.Menu
         //  Eventos de carragamento da página de configurações
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            tituloEditor = mainWindow.Title;
             mainWindow.Title = Title;
             Config.Navigate(personalizacao);
         }
@@ -36,8 +34,8 @@ namespace BlocoDeNotas.Menu
         // Voltar para o editor
         private void Voltar_Click(object sender, RoutedEventArgs e)
         {
+            new Eventos(mainWindow, editor).AtualizarBarraDeTítulo();
             mainWindow.Main.Navigate(editor);
-            mainWindow.Title = tituloEditor;
         }
 
         // Evento de seleção de configuração
