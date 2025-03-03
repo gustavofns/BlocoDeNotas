@@ -25,10 +25,8 @@ namespace BlocoDeNotas.Menu
         // Cria uma nova janela
         public void NovaJanela()
         {
-            var novaJanela = new MainWindow()
-            {
-                WindowStartupLocation = WindowStartupLocation.CenterOwner,
-            };
+            var novaJanela = new MainWindow();
+            novaJanela.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             novaJanela.Show();
         }
 

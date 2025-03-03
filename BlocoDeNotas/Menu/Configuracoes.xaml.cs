@@ -14,6 +14,7 @@ namespace BlocoDeNotas.Menu
         private MainWindow mainWindow;
         private Editor editor;
         private Config.Personalizacao personalizacao;
+        private Config.Sobre sobre;
 
         // Construtor da classe
         public Configuracoes(MainWindow mainWindow, Editor editor)
@@ -22,6 +23,7 @@ namespace BlocoDeNotas.Menu
             this.mainWindow = mainWindow;
             this.editor = editor;
             personalizacao = new Config.Personalizacao(editor);
+            sobre = new Config.Sobre();
         }
 
         //  Eventos de carragamento da página de configurações
@@ -50,7 +52,7 @@ namespace BlocoDeNotas.Menu
                     Config.NavigationService.Navigate(personalizacao);
                     break;
                 case 1:
-                    Config.NavigationService.Navigate(new Config.Sobre());
+                    Config.NavigationService.Navigate(sobre);
                     break;
                 default:
                     break;
