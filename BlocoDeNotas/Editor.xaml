@@ -12,13 +12,14 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="290"/>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="300" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="48"/>
             <RowDefinition Height="*"/>
             <RowDefinition x:Name="barraStatus" Height="36"/>
         </Grid.RowDefinitions>
+        <Frame x:Name="Ferramentas" Grid.Row="2"/>
         <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="{DynamicResource LayerOnMicaBaseAltFillColorDefaultBrush}"/>
         <Separator Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Top"/>
         <Menu Grid.Row="0" Grid.Column="0" FontSize="14">
@@ -302,9 +303,9 @@
                     <TextBlock Text="Abrir nova janela" FontSize="14" FontFamily="Segoe UI Variable" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
                 </MenuItem.ToolTip>
             </MenuItem>
-            <MenuItem x:Name="iconeMenuMiniBloco"  Header="&#xEE49;" Click="MiniBlock_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}">
+            <MenuItem x:Name="iconeMenuMiniBloco"  Header="&#xEE49;" Click="MiniBlock_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}" Visibility="Collapsed">
                 <MenuItem.ToolTip>
-                    <TextBlock Text="Abrir no mini bloco" FontSize="14" FontFamily="Segoe UI Variable" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+                    <TextBlock Text="Abrir no minibloco" FontSize="14" FontFamily="Segoe UI Variable" Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
                 </MenuItem.ToolTip>
             </MenuItem>
             <MenuItem x:Name="iconeMenuConfig" Header="&#xE713;" Click="Config_Click" FontWeight="Regular" Foreground="{DynamicResource AccentTextFillColorTertiaryBrush}">
