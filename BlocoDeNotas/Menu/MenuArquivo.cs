@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using BlocoDeNotas.IO;
+using System.Text;
+using System.Windows;
 
 #pragma warning disable WPF0001
 #pragma warning disable CS8618
@@ -10,6 +12,7 @@ namespace BlocoDeNotas.Menu
         // Atributos e objetos
         private MainWindow mainWindow;
         private Editor editor;
+        private Eventos eventos;
         private OperacoesComArquivos operacoesComArquivos;
 
         // Construtores da classe
@@ -19,7 +22,18 @@ namespace BlocoDeNotas.Menu
         {
             this.mainWindow = mainWindow;
             this.editor = editor;
-            operacoesComArquivos = new OperacoesComArquivos(mainWindow, editor);
+            eventos = new Eventos(mainWindow, editor);
+            operacoesComArquivos = new OperacoesComArquivos();
+        }
+
+        // Copia os atributos do arquivo
+        private void CopiarAtributos(string arquivo, string documento)
+        {
+            mainWindow.Arquivo = arquivo;
+            mainWindow.Documento.Append(documento);
+            editor.fecharArquivo.IsEnabled = true;
+            mainWindow.TextoModificado = false;
+            eventos.AtualizarBarraDeTítulo();
         }
 
         // Cria uma nova janela
@@ -41,10 +55,14 @@ namespace BlocoDeNotas.Menu
         {
             try
             {
-                string arquivo = await operacoesComArquivos.SelecionarArquivoTask();
-                if (!string.IsNullOrEmpty(arquivo))
+                string arquivo = await operacoesComArquivos.SelecionarArquivoAsync();
+                if(!(string.IsNullOrEmpty(arquivo)))
                 {
-                    await operacoesComArquivos.AbrirArquivoAsync(arquivo);
+                    FecharArquivo();
+                    CopiarAtributos(arquivo, await operacoesComArquivos.AbrirArquivoAsync(arquivo));
+                    editor.editorDeTexto.Text = await operacoesComArquivos.AbrirArquivoAsync(arquivo);
+                    if(editor.editorDeTexto.Text != null)
+                        editor.editorDeTexto.CaretIndex = editor.editorDeTexto.Text.Length;
                 }
             }
             catch (Exception ex)
@@ -61,10 +79,20 @@ namespace BlocoDeNotas.Menu
             {
                 if (string.IsNullOrEmpty(mainWindow.Arquivo))
                 {
-                    await operacoesComArquivos.SalvarArquivoAsync("Selecione um local para salvar o documento");
-                    return;
+                    string? arquivo = await operacoesComArquivos.SalvarArquivoAsync(editor.editorDeTexto.Text.ToString());
+                    if (!(string.IsNullOrEmpty(arquivo)))
+                        CopiarAtributos(arquivo, editor.editorDeTexto.Text.ToString());
+                    else return;
                 }
-                if (mainWindow.TextoModificado) await operacoesComArquivos.GravarArquivoAsync();
+                if (mainWindow.TextoModificado)
+                {
+                    mainWindow.Documento.Clear();
+                    CopiarAtributos(mainWindow.Arquivo, editor.editorDeTexto.Text.ToString());
+                    await operacoesComArquivos.GravarArquivoAsync(mainWindow.Arquivo, mainWindow.Documento.ToString());
+                    mainWindow.Title = $"Bloco de notas - {mainWindow.Arquivo} - O arquivo foi salvo com sucesso";
+                    await Task.Delay(1000).AsAsyncAction();
+                    eventos.AtualizarBarraDeTítulo();
+                }
                 else return;
             }
             catch (Exception ex)
@@ -80,7 +108,10 @@ namespace BlocoDeNotas.Menu
         {
             try
             {
-                await operacoesComArquivos.SalvarArquivoAsync("Selecione como deseja salvar o arquivo...");
+                string? arquivo = await operacoesComArquivos.SalvarArquivoAsync(editor.editorDeTexto.Text.ToString());
+                if (!(string.IsNullOrEmpty(arquivo)))
+                    CopiarAtributos(arquivo, editor.editorDeTexto.Text.ToString());
+                else return;
             }
             catch (Exception ex)
             {
@@ -95,8 +126,9 @@ namespace BlocoDeNotas.Menu
             mainWindow.Documento.Clear();
             editor.editorDeTexto.Clear();
             mainWindow.Arquivo = string.Empty;
+            mainWindow.TextoModificado = false;
             editor.fecharArquivo.IsEnabled = false;
-            mainWindow.Title = "Bloco de notas";
+            eventos.AtualizarBarraDeTítulo();
         }
 
         // Sair do aplicativo
