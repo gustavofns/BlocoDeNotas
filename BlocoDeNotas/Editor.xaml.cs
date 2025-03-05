@@ -87,20 +87,20 @@ namespace BlocoDeNotas
         private void AtalhosDoTeclado_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             // Menu arquivo
-            if (e.Key == Key.N && Keyboard.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift)) menuArquivo.NovaJanela();
-            if (e.Key == Key.F4 && Keyboard.Modifiers == ModifierKeys.Alt) menuArquivo.FecharJanela();
-            if (e.Key == Key.O && Keyboard.Modifiers == ModifierKeys.Control) menuArquivo.AbrirArquivo();
-            if (e.Key == Key.S && Keyboard.Modifiers == ModifierKeys.Control) menuArquivo.SalvarArquivo();
-            if (e.Key == Key.S && Keyboard.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift)) menuArquivo.SalvarArquivoComo();
-            if (e.Key == Key.F4 && Keyboard.Modifiers == (ModifierKeys.Control | ModifierKeys.Alt)) menuArquivo.Sair();
+            if (e.Key == Key.N && Keyboard.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift)) { menuArquivo.NovaJanela(); e.Handled = true; }
+            if (e.Key == Key.F4 && Keyboard.Modifiers == ModifierKeys.Alt) { menuArquivo.NovaJanela(); e.Handled = true; }
+            if (e.Key == Key.O && Keyboard.Modifiers == ModifierKeys.Control) { menuArquivo.AbrirArquivo(); e.Handled = true; }
+            if (e.Key == Key.S && Keyboard.Modifiers == ModifierKeys.Control) { menuArquivo.SalvarArquivo(); e.Handled = true; }
+            if (e.Key == Key.S && Keyboard.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift)) { menuArquivo.SalvarArquivoComo(); e.Handled = true; }
+            if (e.Key == Key.F4 && Keyboard.Modifiers == (ModifierKeys.Control | ModifierKeys.Alt)) { menuArquivo.Sair(); e.Handled = true; }
             // Menu Editar
-            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.Z) menuEditar.Desfazer();
-            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.Y) menuEditar.Refazer();
-            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.X) menuEditar.Recortar();
-            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.C) menuEditar.Copiar();
-            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.V) menuEditar.Colar();
-            if (e.Key == Key.Delete) menuEditar.Excluir();
-            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.A) menuEditar.SelecionarTudo();
+            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.Z) { menuEditar.Desfazer(); e.Handled = true; }
+            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.Y) { menuEditar.Refazer(); e.Handled = true; }
+            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.X) { menuEditar.Recortar(); e.Handled = true; }
+            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.C) { menuEditar.Copiar(); e.Handled = true; }
+            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.V) { menuEditar.Colar(); e.Handled = true; }
+            if (e.Key == Key.Delete) { menuEditar.Excluir(); e.Handled = true; }
+            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.A) { menuEditar.SelecionarTudo(); e.Handled = true; }
         }
 
         // Menu Arquivo

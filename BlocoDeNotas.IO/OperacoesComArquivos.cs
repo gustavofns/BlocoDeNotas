@@ -5,8 +5,6 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 
-#pragma warning disable CS8603
-
 namespace BlocoDeNotas.IO
 {
     public class OperacoesComArquivos
@@ -56,7 +54,7 @@ namespace BlocoDeNotas.IO
         }
 
         // Seleciona o local para salvar um arquivo e grava o arquivo
-        public async Task<string?> SalvarArquivoAsync(string texto)
+        public async Task<string?> SalvarArquivoAsync(string documento)
         {
             try
             {
@@ -68,7 +66,7 @@ namespace BlocoDeNotas.IO
 
                 if (fileDialog.ShowDialog() == true)
                 {
-                    await GravarArquivoAsync(fileDialog.FileName, texto);
+                    await GravarArquivoAsync(fileDialog.FileName, documento);
                     return fileDialog.FileName;
                 }
             }
@@ -81,13 +79,13 @@ namespace BlocoDeNotas.IO
         }
 
         // Grava um arquivo
-        public async Task GravarArquivoAsync(string arquivo, string texto)
+        public async Task GravarArquivoAsync(string arquivo, string documento)
         {
             try
             {
                 using (var streamWriter = new StreamWriter(arquivo))
                 {
-                    await streamWriter.WriteAsync(texto);
+                    await streamWriter.WriteAsync(documento);
                 }
             }
             catch (Exception e)

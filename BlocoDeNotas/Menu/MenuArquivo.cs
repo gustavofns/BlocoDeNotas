@@ -1,9 +1,9 @@
 ﻿using BlocoDeNotas.IO;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 
 #pragma warning disable WPF0001
-#pragma warning disable CS8618
 
 namespace BlocoDeNotas.Menu
 {
@@ -15,25 +15,12 @@ namespace BlocoDeNotas.Menu
         private Eventos eventos;
         private OperacoesComArquivos operacoesComArquivos;
 
-        // Construtores da classe
-        public MenuArquivo() { }
-
         public MenuArquivo(MainWindow mainWindow, Editor editor)
         {
             this.mainWindow = mainWindow;
             this.editor = editor;
             eventos = new Eventos(mainWindow, editor);
             operacoesComArquivos = new OperacoesComArquivos();
-        }
-
-        // Copia os atributos do arquivo
-        private void CopiarAtributos(string arquivo, string documento)
-        {
-            mainWindow.Arquivo = arquivo;
-            mainWindow.Documento.Append(documento);
-            editor.fecharArquivo.IsEnabled = true;
-            mainWindow.TextoModificado = false;
-            eventos.AtualizarBarraDeTítulo();
         }
 
         // Cria uma nova janela
@@ -50,74 +37,65 @@ namespace BlocoDeNotas.Menu
             mainWindow.Close();
         }
 
+        // Copia os atributos do arquivo
+        private async Task CopiarAtributos()
+        {
+            mainWindow.Documento.Append(await operacoesComArquivos.AbrirArquivoAsync(mainWindow.Arquivo));
+            editor.fecharArquivo.IsEnabled = true;
+            mainWindow.TextoModificado = false;
+            eventos.AtualizarBarraDeTítulo();
+        }
+
         // Abre um arquivo
         public async void AbrirArquivo()
         {
-            try
+            string? arquivo = await operacoesComArquivos.SelecionarArquivoAsync();
+            if (!(string.IsNullOrEmpty(arquivo)))
             {
-                string arquivo = await operacoesComArquivos.SelecionarArquivoAsync();
-                if(!(string.IsNullOrEmpty(arquivo)))
-                {
-                    FecharArquivo();
-                    CopiarAtributos(arquivo, await operacoesComArquivos.AbrirArquivoAsync(arquivo));
-                    editor.editorDeTexto.Text = await operacoesComArquivos.AbrirArquivoAsync(arquivo);
-                    if(editor.editorDeTexto.Text != null)
-                        editor.editorDeTexto.CaretIndex = editor.editorDeTexto.Text.Length;
-                }
+                FecharArquivo();
+                editor.editorDeTexto.Text = await operacoesComArquivos.AbrirArquivoAsync(arquivo);
+                if(editor.editorDeTexto.Text != null)
+                    editor.editorDeTexto.CaretIndex = editor.editorDeTexto.Text.Length;
+                mainWindow.Arquivo = arquivo;
+                await CopiarAtributos();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao abrir o arquivo:\n {ex.Message}", 
-                    "Bloco de notas", MessageBoxButton.OK);
-            }
+            else return;
         }
 
         // Salva um arquivo
         public async void SalvarArquivo()
         {
-            try
+            if (string.IsNullOrEmpty(mainWindow.Arquivo))
             {
-                if (string.IsNullOrEmpty(mainWindow.Arquivo))
+                string? arquivo = await operacoesComArquivos.SalvarArquivoAsync(editor.editorDeTexto.Text);
+                if (!(string.IsNullOrEmpty(arquivo)))
                 {
-                    string? arquivo = await operacoesComArquivos.SalvarArquivoAsync(editor.editorDeTexto.Text.ToString());
-                    if (!(string.IsNullOrEmpty(arquivo)))
-                        CopiarAtributos(arquivo, editor.editorDeTexto.Text.ToString());
-                    else return;
-                }
-                if (mainWindow.TextoModificado)
-                {
-                    mainWindow.Documento.Clear();
-                    CopiarAtributos(mainWindow.Arquivo, editor.editorDeTexto.Text.ToString());
-                    await operacoesComArquivos.GravarArquivoAsync(mainWindow.Arquivo, mainWindow.Documento.ToString());
-                    mainWindow.Title = $"Bloco de notas - {mainWindow.Arquivo} - O arquivo foi salvo com sucesso";
-                    await Task.Delay(1000).AsAsyncAction();
-                    eventos.AtualizarBarraDeTítulo();
+                    mainWindow.Arquivo = arquivo;
+                    await CopiarAtributos();
                 }
                 else return;
             }
-            catch (Exception ex)
+            if (mainWindow.TextoModificado)
             {
-                MessageBox.Show($"Erro ao salvar o arquivo:\n {ex.Message}", 
-                    "Bloco de notas", MessageBoxButton.OK);
+                mainWindow.Documento.Clear();
+                await operacoesComArquivos.GravarArquivoAsync(mainWindow.Arquivo, editor.editorDeTexto.Text);
+                mainWindow.Title = $"Bloco de notas - {mainWindow.Arquivo} - O arquivo foi salvo com sucesso";
+                await Task.Delay(1000).AsAsyncAction();
+                await CopiarAtributos();
             }
-
+            else return;
         }
 
         // Salva um arquivo como
         public async void SalvarArquivoComo()
         {
-            try
+            string? arquivo = await operacoesComArquivos.SalvarArquivoAsync(editor.editorDeTexto.Text);
+            if (!(string.IsNullOrEmpty(arquivo)))
             {
-                string? arquivo = await operacoesComArquivos.SalvarArquivoAsync(editor.editorDeTexto.Text.ToString());
-                if (!(string.IsNullOrEmpty(arquivo)))
-                    CopiarAtributos(arquivo, editor.editorDeTexto.Text.ToString());
-                else return;
+                mainWindow.Arquivo = arquivo;
+                await CopiarAtributos();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao salvar o arquivo:\n {ex.Message}", 
-                    "Bloco de notas", MessageBoxButton.OK);
-            }
+            else return;
         }
 
         // Fecha um arquivo
