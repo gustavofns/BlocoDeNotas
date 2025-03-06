@@ -73,7 +73,7 @@ namespace BlocoDeNotas.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool FerramentasRapidas {
             get {
                 return ((bool)(this["FerramentasRapidas"]));

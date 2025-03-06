@@ -8,7 +8,6 @@ using System.Windows.Media;
 using System.Windows.Threading;
 
 #pragma warning disable WPF0001
-#pragma warning disable CS8622
 
 namespace BlocoDeNotas
 {
@@ -37,7 +36,7 @@ namespace BlocoDeNotas
             menuArquivo = new MenuArquivo(mainWindow, this);
             menuEditar = new MenuEditar(this);
             menuExibir = new MenuExibir(this);
-            menuFerramentas = new MenuFerramentas(this);
+            menuFerramentas = new MenuFerramentas(mainWindow, this);
             fonte = new Config.AplicarConfig.Fonte(this);
             tema = new Config.AplicarConfig.Tema(this);
             ui = new Config.AplicarConfig.UI(this);

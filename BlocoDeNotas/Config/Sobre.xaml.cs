@@ -52,15 +52,11 @@ namespace BlocoDeNotas.Config
                 string os = string.Empty;
 
                 using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
-                {
                     os = key.GetValue("ProductName").ToString();
-                }
 
-                if (Environment.OSVersion.Version.Build >= 22000)
-                {
+                if (Environment.OSVersion.Version.Build >= 22000 )
                     os = os.Replace(os.Substring(0, 10), "Windows 11");
-                }
-
+   
                 return $"Microsoft {os}";
             }
             catch (Exception)
@@ -75,9 +71,7 @@ namespace BlocoDeNotas.Config
             try
             {
                 using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
-                {
                     return key.GetValue("DisplayVersion").ToString();
-                }
             }
             catch (Exception)
             {
@@ -91,9 +85,7 @@ namespace BlocoDeNotas.Config
             try
             { 
                 using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
-                {
-                    return key.GetValue("LCUVer").ToString().Remove(0, 5);
-                }
+                    return key.GetValue("CurrentBuild").ToString() + "." + key.GetValue("UBR").ToString();
             }
             catch (Exception)
             {
@@ -119,19 +111,17 @@ namespace BlocoDeNotas.Config
         {
 
             bool isExpanded = (sender as Expander).IsExpanded;
+
             if (isExpanded)
-            {
                 sobreSoftwareRow.Height = new GridLength(180);
-            }
         }
 
         private void sobreSoftwareExpander_Collapsed(object sender, RoutedEventArgs e)
         {
             bool isCollapsed = !(sender as Expander).IsExpanded;
             if (isCollapsed)
-            {
                 sobreSoftwareRow.Height = new GridLength(56);
-            }
+
         }
 
         private void GitHub_Click(object sender, RoutedEventArgs e)

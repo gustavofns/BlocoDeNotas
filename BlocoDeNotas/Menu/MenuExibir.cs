@@ -2,8 +2,6 @@
 using System.Windows;
 using System.Windows.Media;
 
-#pragma warning disable CS8618
-
 namespace BlocoDeNotas.Menu
 {
     public class MenuExibir
@@ -12,9 +10,6 @@ namespace BlocoDeNotas.Menu
         Editor editor;
 
         // Construtor da classe
-
-        public MenuExibir() { }
-
         public MenuExibir(Editor editor)
         {
             this.editor = editor;
