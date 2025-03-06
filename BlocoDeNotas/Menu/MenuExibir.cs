@@ -20,6 +20,20 @@ namespace BlocoDeNotas.Menu
             this.editor = editor;
         }
 
+        // Carrega a configuração da barra de status
+        public void CarregarBarraDeStatus(bool config)
+        {
+            if (config) MostrarBarraDeStatus();
+            else OcultarBarraDeStatus();
+        }
+
+        // Salva a configuração da barra de status
+        public void SalvarBarraDeStatus(bool config)
+        {
+            Properties.Settings.Default.BarraDeStatus = config;
+            Properties.Settings.Default.Save();
+        }
+
         // Mostra ou oculta a barra de status
         public void BarraDeStatus()
         {
@@ -52,52 +66,14 @@ namespace BlocoDeNotas.Menu
             SalvarBarraDeStatus(false);
         }
 
-        // Mostra o tamanho da fonte
-        public void MudarTamFonte(int tamanhoFonte)
+        // Mudar o tamanho da fonte no Slider
+        public void MudarTamanhoFonteSlider(int tamanhoFonte)
         {
             editor.editorDeTexto.FontSize = tamanhoFonte;
-        }
-
-        // Slider para mudar o tamanho da fonte
-        public void SliderMudarFonte(int tamanhoFonte)
-        {
-            editor.tamanhoFonteLabel.Text = $"{tamanhoFonte}";
-            editor.tamanhoFonteSliderMenu.Value = tamanhoFonte;
-            editor.tamanhoFontaLabelMenu.Text = $"{tamanhoFonte}";
-            MudarTamFonte(tamanhoFonte);
-        }
-
-        // Slider para mudar o tamanho da fonte no menu
-        public void SliderMudarFonteMenu(int tamanhoFonte)
-        {
-            editor.tamanhoFontaLabelMenu.Text = $"{tamanhoFonte}";
             editor.tamanhoFonteSlider.Value = tamanhoFonte;
+            editor.tamanhoFonteSliderMenu.Value = tamanhoFonte;
             editor.tamanhoFonteLabel.Text = $"{tamanhoFonte}";
-            MudarTamFonte(tamanhoFonte);
-        }
-
-        // Duplo click no slider
-        public void SliderDuploClick()
-        {
-            editor.tamanhoFonteSlider.Value = 14;
-            editor.tamanhoFonteSliderMenu.Value = 14;
-            editor.tamanhoFonteLabel.Text = "14";
-            editor.tamanhoFontaLabelMenu.Text = "14";
-            MudarTamFonte(14);
-        }
-
-        // Carrega a configuração da barra de status
-        public void CarregarBarraDeStatus(bool config)
-        {
-            if (config) MostrarBarraDeStatus();
-            else OcultarBarraDeStatus();
-        }
-
-        // Salva a configuração da barra de status
-        public void SalvarBarraDeStatus(bool config)
-        {
-            Properties.Settings.Default.BarraDeStatus = config;
-            Properties.Settings.Default.Save();
+            editor.tamanhoFontaLabelMenu.Text = $"{tamanhoFonte}";
         }
     }
 }

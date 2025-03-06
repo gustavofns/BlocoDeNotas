@@ -77,8 +77,8 @@ namespace BlocoDeNotas
 
         // Slider tamanho da fonte na barra de status
         private void SliderTamanhoFonte_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        { if (tamanhoFonteLabel != null) menuExibir.SliderMudarFonte((int)e.NewValue); }
-        private void Slider_DoubleClick(object sender, MouseButtonEventArgs e) => menuExibir.SliderDuploClick();
+        { if (tamanhoFonteLabel != null) menuExibir.MudarTamanhoFonteSlider((int)e.NewValue); }
+        private void Slider_DoubleClick(object sender, MouseButtonEventArgs e) => menuExibir.MudarTamanhoFonteSlider(14);
 
         // Atalhos do teclado
         private void AtalhosDoTeclado_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -124,7 +124,7 @@ namespace BlocoDeNotas
         // Menu Exibir
         private void BarraDeStatus_Click(object sender, RoutedEventArgs e) => menuExibir.BarraDeStatus();
         private void SliderTamanhoFonteMenu_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        { if (tamanhoFonteLabel != null) menuExibir.SliderMudarFonteMenu((int)e.NewValue); }
+        { if (tamanhoFonteLabel != null) menuExibir.MudarTamanhoFonteSlider((int)e.NewValue); }
 
         // Ferramentas barra de menu
         private void MiniBlock_Click(object sender, RoutedEventArgs e) => new MiniBloco(mainWindow, this).Show();
