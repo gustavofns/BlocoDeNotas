@@ -59,14 +59,13 @@ namespace BlocoDeNotas
             CommandManager.RegisterClassInputBinding(typeof(TextBox), new InputBinding(ApplicationCommands.NotACommand, new KeyGesture(Key.Delete)));
         }
 
+        // Verifica a área de transferência
         public void VerificarAreaDeTransferencia()
         {
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(1);
             dispatcherTimer.Tick += new EventHandler((sender, e) =>
             {
-                // Corrigido um bug que exibia o menu de colar mesmo sem ter nenhum texto na área de transferência
-                // Melhorado o tempo de carregamento da área de transferência
                 if (Clipboard.ContainsText())
                 {
                     editor.colarMenu.IsEnabled = true;

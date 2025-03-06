@@ -73,10 +73,7 @@ namespace BlocoDeNotas
         }
 
         // Quando o texto é selecionado
-        private void editorDeTexto_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-            eventos.TextoSelecionado();
-        }
+        private void editorDeTexto_SelectionChanged(object sender, RoutedEventArgs e) => eventos.TextoSelecionado();
 
         // Slider tamanho da fonte na barra de status
         private void SliderTamanhoFonte_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
