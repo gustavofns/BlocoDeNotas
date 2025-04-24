@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using BlocoDeNotas.Interfaces;
+using BlocoDeNotas.Interfaces.Menu;
+using BlocoDeNotas.Interfaces.Menu.MenuArquivo;
+using BlocoDeNotas.Menu.ItensMenuArquivo;
+
+namespace BlocoDeNotas.Menu
+{
+    public sealed class MenuArquivo : IMenuArquivo
+    {
+        private IGerenciamentoDeArquivos _gerenciamentoDeArquivos;
+        private IGerenciamentoDeJanelas _gerenciamentoDeJanelas;
+
+        public MenuArquivo(IGerenciamentoDeArquivos gerenciamentoDeArquivos, IGerenciamentoDeJanelas gerenciamentoDeJanelas)
+        {
+            _gerenciamentoDeArquivos = gerenciamentoDeArquivos;
+            _gerenciamentoDeJanelas = gerenciamentoDeJanelas;
+        }
+
+        public void AbrirArquivo() => _gerenciamentoDeArquivos.AbrirArquivo();
+        public void NovaJanela() => _gerenciamentoDeJanelas.NovaJanela();
+        public void FecharArquivo() => _gerenciamentoDeArquivos.FecharArquivo();
+        public void FecharJanela() => _gerenciamentoDeJanelas.FecharJanela();
+        public void Sair() => _gerenciamentoDeJanelas.Sair();
+        public void SalvarArquivo() => _gerenciamentoDeArquivos.SalvarArquivo();
+        public void SalvarArquivoComo() => _gerenciamentoDeArquivos.SalvarArquivoComo();
+    }
+}
