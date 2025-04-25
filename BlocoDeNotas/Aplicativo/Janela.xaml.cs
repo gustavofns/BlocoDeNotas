@@ -24,27 +24,28 @@ namespace BlocoDeNotas.Aplicativo
     {
         public string[] Args { get ; set; }
         public Frame FrameJanela { get ; set ; }
-        private readonly IEditor _editor;
+        private readonly IEditor _editorDeDocumentos;
 
         public Janela(String[] args)
         {
             Args = args;
             InitializeComponent();
             FrameJanela = Frame();
-            _editor = InicializarEditor();
+            _editorDeDocumentos = InicializarEditorDocumentos(this);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            FrameJanela.Navigate(_editor);
+            FrameJanela.Navigate(_editorDeDocumentos);
         }
 
-        private Frame Frame() { return _FrameJanela; }
-        private IEditor InicializarEditor() { return new Editor(this); }
-        public void TituloJanela(string titulo) { Title = titulo; } 
-        public double AlturaJanela() { return Height; }
-        public double LarguraJanela() { return Width; }
+        private Frame Frame() { return _FrameJanela;}
+        private IEditor InicializarEditorDocumentos(IJanela janela) { return new Editor(janela); }
+        public void TituloJanela(string titulo) { Title = titulo; }
+        public double AlturaJanela() { return Height;}
+        public double LarguraJanela() { return Width;}
         public void MostrarJanela() { Show(); }
         public void FecharJanela() { Close(); }
+
     }
 }

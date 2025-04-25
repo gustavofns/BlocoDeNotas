@@ -9,7 +9,7 @@ using BlocoDeNotas.Interfaces.Menu.MenuEditar;
 
 namespace BlocoDeNotas.Menu
 {
-    public class MenuEditar : IAcoesDoDocumento, ITextoSelecionado, IAreaDeTransferencia, IDataEHora
+    public sealed class MenuEditar : IAcoesDoDocumento, ITextoSelecionado, IAreaDeTransferencia, IDataEHora
     {
         private readonly IAcoesDoDocumento _acoesDoDocumento;
         private readonly ITextoSelecionado _textoSelecionado;

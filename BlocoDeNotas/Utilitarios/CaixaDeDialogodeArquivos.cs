@@ -19,13 +19,8 @@ namespace BlocoDeNotas.Utilitarios
             fileDialog.Title = titulo;
             fileDialog.Filter = _tiposDeArquivos;
             if (fileDialog.ShowDialog() == true)
-            {
                 return fileDialog.FileName;
-            }
-            else
-            {
-                return string.Empty;
-            }
+            else return string.Empty;
         }
     }
 }
