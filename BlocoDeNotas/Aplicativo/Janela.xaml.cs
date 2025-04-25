@@ -28,8 +28,8 @@ namespace BlocoDeNotas.Aplicativo
 
         public Janela(String[] args)
         {
-            Args = args;
             InitializeComponent();
+            Args = args;
             FrameJanela = Frame();
             _editorDeDocumentos = InicializarEditorDocumentos(this);
         }

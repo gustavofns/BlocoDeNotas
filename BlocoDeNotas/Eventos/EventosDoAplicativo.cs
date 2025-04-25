@@ -39,25 +39,21 @@ namespace BlocoDeNotas.Eventos
 
         private void VerificarAreaDeTransferencia(object? sender, EventArgs e)
         {
-            if (Clipboard.ContainsText())
-                _barraDeMenu.ColarMenu.IsEnabled = true;
-            else
-                _barraDeMenu.ColarMenu.IsEnabled = false;
+            bool areaDeTransferencia = Clipboard.ContainsText();
+            _barraDeMenu.ColarMenu.IsEnabled = areaDeTransferencia;
         }
 
         private void HabilitarMenuFechar(object? sender, EventArgs e)
         {
-            if (_editorDeDocumentos.Arquivo != string.Empty)
-                _barraDeMenu.FecharDocumentoMenu.IsEnabled = true;
-            else
-                _barraDeMenu.FecharDocumentoMenu.IsEnabled = false;
+            bool documentoVazio = string.IsNullOrEmpty(_editorDeDocumentos.Arquivo);
+            _barraDeMenu.FecharDocumentoMenu.IsEnabled = !documentoVazio;
         }
 
         private void AtualizarBarraDeTitulo(object? sender, EventArgs e)
         {
             string tituloAtualizado;
 
-            if (_editorDeDocumentos.Arquivo == string.Empty)
+            if (string.IsNullOrEmpty(_editorDeDocumentos.Arquivo))
             {
                 if (_editorDeDocumentos.Documento.Text.Length == 0)
                     tituloAtualizado = "Bloco de notas";

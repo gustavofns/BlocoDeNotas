@@ -23,9 +23,20 @@ namespace BlocoDeNotas.Utilitarios
 
         public void LerArquivo(string arquivo)
         {
-            if (arquivo == string.Empty)
+            if (string.IsNullOrEmpty(arquivo))
                 return;
+            LeituraDoArquivo(arquivo);
+        }
 
+        public void GravarArquivo(string arquivo)
+        {
+            if (string.IsNullOrEmpty(arquivo))
+                return;
+            GravacaoDoArquivo(arquivo);
+        }
+
+        private void LeituraDoArquivo(string arquivo)
+        {   
             try
             {
                 using (var sr = new StreamReader(arquivo))
@@ -43,11 +54,8 @@ namespace BlocoDeNotas.Utilitarios
             }
         }
 
-        public void GravarArquivo(string arquivo)
-        {
-            if (arquivo == string.Empty)
-                return;
-
+        private void GravacaoDoArquivo(string arquivo)
+        {   
             try
             {
                 using (var sw = new StreamWriter(arquivo))

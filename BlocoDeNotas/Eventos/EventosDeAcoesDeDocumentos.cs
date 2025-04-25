@@ -29,13 +29,10 @@ namespace BlocoDeNotas.Eventos
       
         private void AcoesDocumentos(object? sender, EventArgs e)
         { 
-            if (_documento.CanRedo)
-                _barraDeMenu.RefazerMenu.IsEnabled = true;
-            else _barraDeMenu.RefazerMenu.IsEnabled = false;
-     
-            if(_documento.CanUndo)
-                _barraDeMenu.DesfazerMenu.IsEnabled = true;
-            else _barraDeMenu.DesfazerMenu.IsEnabled = false;
+            bool refazer = _documento.CanRedo;
+            bool desfazer = _documento.CanUndo;
+            _barraDeMenu.RefazerMenu.IsEnabled = refazer;
+            _barraDeMenu.DesfazerMenu.IsEnabled = desfazer;
         }
     }
 }

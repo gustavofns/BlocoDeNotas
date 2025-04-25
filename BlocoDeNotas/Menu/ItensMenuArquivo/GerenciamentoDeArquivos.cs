@@ -21,10 +21,10 @@ namespace BlocoDeNotas.Menu.ItensMenuArquivo
     {
         private readonly IEditorDeDocumentos _editorDeDocumentos;
         private readonly ICaixaDeDialogodeArquivos _caixaDeDialogodeArquivos;
-        private readonly OperacoesComArquivos _operacoesComArquivo;
+        private readonly IOperacoesComArquivos _operacoesComArquivo;
 
         public GerenciamentoDeArquivos(IEditorDeDocumentos editorDeDocumentos, 
-            ICaixaDeDialogodeArquivos caixaDeDialogodeArquivos, OperacoesComArquivos operacoesComArquivo)
+            ICaixaDeDialogodeArquivos caixaDeDialogodeArquivos, IOperacoesComArquivos operacoesComArquivo)
         {
             _editorDeDocumentos = editorDeDocumentos;
             _caixaDeDialogodeArquivos = caixaDeDialogodeArquivos;
@@ -35,7 +35,8 @@ namespace BlocoDeNotas.Menu.ItensMenuArquivo
         {
             string arquivo = _caixaDeDialogodeArquivos.CaixaDeDialogo
                 (new OpenFileDialog(), "Selecione um documento para abrir");
-            if (arquivo != string.Empty)
+
+            if (!string.IsNullOrEmpty(arquivo))
             {
                 LimparEditor();
                 _operacoesComArquivo.LerArquivo(arquivo);
@@ -49,7 +50,7 @@ namespace BlocoDeNotas.Menu.ItensMenuArquivo
 
         public void SalvarArquivo()
         {
-            if (_editorDeDocumentos.Arquivo != string.Empty)
+            if (!string.IsNullOrEmpty(_editorDeDocumentos.Arquivo))
                 _operacoesComArquivo.GravarArquivo(_editorDeDocumentos.Arquivo);
             else SalvarArquivoComo();
         }
@@ -58,7 +59,8 @@ namespace BlocoDeNotas.Menu.ItensMenuArquivo
         {
             string arquivo = _caixaDeDialogodeArquivos.CaixaDeDialogo
                 (new SaveFileDialog(), "Selecione um local para salvar o documento");
-            if (arquivo != string.Empty)
+
+            if (!string.IsNullOrEmpty(arquivo))
                 _operacoesComArquivo.GravarArquivo(arquivo);
         }
 
