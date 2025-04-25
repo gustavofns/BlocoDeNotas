@@ -11,7 +11,6 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\Menu\MenuExibir\" />
-    <Folder Include="Menu\ItensMenuEditar\" />
     <Folder Include="Menu\ItensMenuExibir\" />
   </ItemGroup>
 

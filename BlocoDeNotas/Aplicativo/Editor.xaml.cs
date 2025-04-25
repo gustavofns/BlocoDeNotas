@@ -40,6 +40,7 @@ namespace BlocoDeNotas.Aplicativo
             _editorDeDocumentos = InicializarEditorDeDocumentos();
             _barraDeStatus = InicializarBarraDeStatus();
             _barraDeMenu = InicializarBarraMenu();
+            InicializarEventos();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -56,12 +57,19 @@ namespace BlocoDeNotas.Aplicativo
 
         private IBarraDeStatus InicializarBarraDeStatus()
         {
-            return new BarraDeStatus(_editorDeDocumentos);
+            return new BarraDeStatus(_editorDeDocumentos.Documento);
         }
 
         private IEditorDeDocumentos InicializarEditorDeDocumentos()
         {
-            return new EditorDeDocumentos(_janela);
+            return new EditorDeDocumentos();
+        }
+
+        private void InicializarEventos()
+        {
+            new EventosDeSelecaoTexto(_barraDeMenu, _editorDeDocumentos.Documento);
+            new EventosDoAplicativo(_janela, _editorDeDocumentos, _barraDeMenu);
+            new EventosDeAcoesDeDocumentos(_barraDeMenu, _editorDeDocumentos.Documento);
         }
     }
 }

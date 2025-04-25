@@ -23,12 +23,12 @@ namespace BlocoDeNotas.Aplicativo.Componentes
     /// </summary>
     public partial class BarraDeStatus : Page, IBarraDeStatus
     {
-        private readonly IEditorDeDocumentos _editorDeDocumentos;
+        private readonly TextBox _documento;
 
-        public BarraDeStatus(IEditorDeDocumentos editorDeDocumentos)
+        public BarraDeStatus(TextBox documento)
         {
             InitializeComponent();
-            _editorDeDocumentos = editorDeDocumentos;
+            _documento = documento;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

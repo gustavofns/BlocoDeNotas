@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace BlocoDeNotas.Interfaces.Componentes
 {
     public interface IBarraDeMenu
     {
-        void HabilitarFecharArquivo(bool fecharArquivo);
+        MenuItem FecharDocumentoMenu { get; set; }
+        MenuItem DesfazerMenu { get; set; }
+        MenuItem RefazerMenu { get; set; }
+        MenuItem RecortarMenu { get; set; }
+        MenuItem CopiarMenu { get; set; }
+        MenuItem ColarMenu { get; set; }
+        MenuItem ExcluirMenu { get; set; }
     }
 }

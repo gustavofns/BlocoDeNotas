@@ -11,6 +11,9 @@ namespace BlocoDeNotas.Eventos
 {
     public class Excecoes : IExcecoes
     {
+
+        public Excecoes() { }
+
         public void ExibirMensagemExcecao(string titulo, Exception ex)
         {
             MessageBox.Show(

@@ -12,6 +12,8 @@ namespace BlocoDeNotas.Utilitarios
     {
         private string _tiposDeArquivos = "Documentos de texto (*.txt)|*.txt|Todos os arquivos (*.*)|*.*";
 
+        public CaixaDeDialogodeArquivos() { }
+
         public string CaixaDeDialogo(FileDialog fileDialog, string titulo)
         {
             fileDialog.Title = titulo;

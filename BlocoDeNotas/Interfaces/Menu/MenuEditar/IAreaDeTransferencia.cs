@@ -9,7 +9,7 @@ namespace BlocoDeNotas.Interfaces.Menu.MenuEditar
     public interface IAreaDeTransferencia
     {
         void Copiar();
-        string Colar();
+        void Colar();
         void Recortar();
     }
 }

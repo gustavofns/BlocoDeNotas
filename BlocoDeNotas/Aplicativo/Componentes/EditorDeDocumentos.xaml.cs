@@ -27,34 +27,21 @@ namespace BlocoDeNotas.Aplicativo.Componentes
     /// </summary>
     public partial class EditorDeDocumentos : Page, IEditorDeDocumentos
     {
-        private readonly IJanela _janela;
-        private readonly IBarraDeTitulo _barraDeTitulo;
         public string Arquivo { get; set; }
         public TextBox Documento { get; set; }
         public StringBuilder DocumentoOriginal { get; set; }
 
-        public EditorDeDocumentos(IJanela janela)
+        public EditorDeDocumentos()
         {
             InitializeComponent();
-            _janela = janela;
             Arquivo = string.Empty;
             DocumentoOriginal = new StringBuilder();
             Documento = EditorDocumento;
-            _barraDeTitulo = InicializarBarraDeTitulo();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Documento.Focus();
-        }
-        private IBarraDeTitulo InicializarBarraDeTitulo()
-        {
-            return new BarraDeTitulo(_janela, this);
-        }
-
-        private void EditorDocumento_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            _barraDeTitulo.AtualizarBarraDeTitulo();
         }
     }
 }

@@ -7,112 +7,227 @@
       mc:Ignorable="d" 
       d:DesignHeight="40" d:DesignWidth="800"
       Title="BarraDeMenu">
-
     <Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Separator Grid.ColumnSpan="3" VerticalAlignment="Top"/>
-            <Separator Grid.ColumnSpan="3" VerticalAlignment="Bottom"/>
-            <Menu x:Name="MenuPrincipal" Grid.Column="0" Grid.ColumnSpan="3">
-                <!-- Menu Arquivo -->
-                <MenuItem x:Name="MenuArquivo">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Separator Grid.ColumnSpan="3" VerticalAlignment="Top"/>
+        <Separator Grid.ColumnSpan="3" VerticalAlignment="Bottom"/>
+        <Menu x:Name="MenuPrincipal" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Center" Padding="0,6,0,6">
+            <!-- Menu Arquivo -->
+            <MenuItem x:Name="MenuArquivo" Margin="5,0,0,0">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                        <TextBlock Text="Arquivo" FontSize="16"/>
+                    </StackPanel>
+                </MenuItem.Header>
+                <!-- Nova janela -->
+                <MenuItem x:Name="NovaJanela" Click="NovaJanela_Click">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
-                            <TextBlock Text="Arquivo" FontSize="16"/>
+                            <TextBlock Text="Nova janela" FontSize="14" Margin="0,0,5,0"/>
                         </StackPanel>
                     </MenuItem.Header>
-                    <!-- Nova janela -->
-                    <MenuItem x:Name="NovaJanela" Click="NovaJanela_Click">
-                        <MenuItem.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
-                                <TextBlock Text="Nova janela" FontSize="14" Margin="0,0,5,0"/>
-                            </StackPanel>
-                        </MenuItem.Header>
-                    </MenuItem>
-                    <!-- Fechar janela  -->
-                    <MenuItem x:Name="FecharJanela" Click="FecharJanela_Click">
-                        <MenuItem.Header>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
-                                <TextBlock Text="Fechar janela" FontSize="14" Margin="0,0,5,0"/>
-                            </StackPanel>
-                        </MenuItem.Header>
-                    </MenuItem>
-                    <Separator/>
-                    <!-- Abrir arquivo -->
-                    <MenuItem x:Name="AbrirArquivo" Click="AbrirArquivo_Click">
-                        <MenuItem.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
-                                <TextBlock Text="Abrir" FontSize="14" Margin="0,0,5,0"/>
-                            </StackPanel>
-                        </MenuItem.Header>
-                    </MenuItem>
-                    <!-- Salvar arquivo -->
-                    <MenuItem x:Name="SalvarArquivo" Click="SalvarArquivo_Click">
-                        <MenuItem.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
-                                <TextBlock Text="Salvar" FontSize="14" Margin="0,0,5,0"/>
-                            </StackPanel>
-                        </MenuItem.Header>
-                    </MenuItem>
-                    <!-- Salvar como -->
-                    <MenuItem x:Name="SalvarArquivoComo" Click="SalvarArquivoComo_Click">
-                        <MenuItem.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
-                                <TextBlock Text="Salvar como..." FontSize="14" Margin="0,0,5,0"/>
-                            </StackPanel>
-                        </MenuItem.Header>
-                    </MenuItem>
-                    <!-- Fechar arquivo-->
-                    <MenuItem x:Name="FecharArquivo" IsEnabled="False" Click="FecharArquivo_Click">
-                        <MenuItem.Header>
-                            <StackPanel Orientation="Horizontal" >
-                                <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
-                                <TextBlock Text="Fechar arquivo" FontSize="14" Margin="0,0,5,0"/>
-                            </StackPanel>
-                        </MenuItem.Header>
-                    </MenuItem>
-                    <Separator/>
-                    <!-- Sair do aplicativo -->
-                    <MenuItem x:Name="Sair" Click="Sair_Click">
-                        <MenuItem.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
-                                <TextBlock Text="Sair do aplicativo" FontSize="14" Margin="0,0,5,0"/>
-                            </StackPanel>
-                        </MenuItem.Header>
-                    </MenuItem>
+                </MenuItem>
+                <!-- Fechar janela  -->
+                <MenuItem x:Name="FecharJanela" Click="FecharJanela_Click">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                            <TextBlock Text="Fechar janela" FontSize="14" Margin="0,0,5,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <Separator/>
+                <!-- Abrir arquivo -->
+                <MenuItem x:Name="AbrirArquivo" Click="AbrirArquivo_Click">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                            <TextBlock Text="Abrir" FontSize="14" Margin="0,0,5,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <!-- Salvar arquivo -->
+                <MenuItem x:Name="SalvarArquivo" Click="SalvarArquivo_Click">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                            <TextBlock Text="Salvar" FontSize="14" Margin="0,0,5,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <!-- Salvar como -->
+                <MenuItem x:Name="SalvarArquivoComo" Click="SalvarArquivoComo_Click">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                            <TextBlock Text="Salvar como..." FontSize="14" Margin="0,0,5,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <!-- Fechar arquivo-->
+                <MenuItem x:Name="FecharArquivo" IsEnabled="False" Click="FecharArquivo_Click">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                            <TextBlock Text="Fechar arquivo" FontSize="14" Margin="0,0,5,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <Separator/>
+
+                <!-- Sair do aplicativo -->
+                <MenuItem x:Name="Sair" Click="Sair_Click">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                            <TextBlock Text="Sair do aplicativo" FontSize="14" Margin="0,0,5,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+            </MenuItem>
+
+
+            <!-- Menu Editar -->
+            <MenuItem x:Name="MenuEditar">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                        <TextBlock Text="Editar" FontSize="16"/>
+                    </StackPanel>
+                </MenuItem.Header>
+
+                <!-- Desfazer -->
+                <MenuItem x:Name="Desfazer" Click="Desfazer_Click" IsEnabled="False">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                            <TextBlock Text="Desfazer" FontSize="14" Margin="0,0,5,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
                 </MenuItem>
 
-                <!-- Menu Editar -->
-                <MenuItem x:Name="MenuEditar">
+                <!-- Refazer -->
+                <MenuItem x:Name="Refazer" Click="Refazer_Click" IsEnabled="False">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
-                            <TextBlock Text="Editar" FontSize="16"/>
+                            <TextBlock Text="Refazer" FontSize="14" Margin="0,0,5,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <Separator/>
+
+                <!-- Recortar -->
+                <MenuItem x:Name="Recortar" Click="Recortar_Click" IsEnabled="False">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                            <TextBlock Text="Recortar" FontSize="14" Margin="0,0,5,0"/>
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
 
-                <!-- Menu Exibir -->
-                <MenuItem x:Name="MenuExibir">
+                <!-- Copiar-->
+                <MenuItem x:Name="Copiar" Click="Copiar_Click" IsEnabled="False">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
-                            <TextBlock Text="Exibir" FontSize="16"/>
+                            <TextBlock Text="Copiar" FontSize="14" Margin="0,0,5,0"/>
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
-            </Menu>
-        </Grid>
+
+                <!-- Colar -->
+                <MenuItem x:Name="Colar" Click="Colar_Click" IsEnabled="False">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                            <TextBlock Text="Colar" FontSize="14" Margin="0,0,5,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+
+                <!--  Excluir -->
+                <MenuItem x:Name="Excluir" Click="Excluir_Click" IsEnabled="False">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                            <TextBlock Text="Excluir" FontSize="14" Margin="0,0,5,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <Separator/>
+
+                <!-- Selecionar tudo -->
+                <MenuItem x:Name="SelecionarTudo" Click="SelecionarTudo_Click">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                            <TextBlock Text="Selecionar tudo" FontSize="14" Margin="0,0,5,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <Separator/>
+
+                <!-- Hora e data -->
+                <MenuItem x:Name="HoraData">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                            <TextBlock Text="Hora e data" FontSize="14" Margin="0,0,5,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                    <!-- Hora -->
+                    <MenuItem x:Name="Hora" Click="Hora_Click">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                                <TextBlock Text="Inserir hora atual" FontSize="14" Margin="0,0,5,0"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <!-- Data -->
+                    <MenuItem x:Name="Data" Click="Data_Click">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                                <TextBlock Text="Inserir data atual" FontSize="14" Margin="0,0,5,0"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <!-- Hora e data -->
+                    <MenuItem x:Name="HoraeData" Click="HoraeData_Click">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                                <TextBlock Text="Inserir hora e data  atual" FontSize="14" Margin="0,0,5,0"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </MenuItem>
+            </MenuItem>
+
+
+            <!-- Menu Exibir -->
+            <MenuItem x:Name="MenuExibir">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="" FontSize="16" Margin="5,0,5,0" Visibility="Collapsed"/>
+                        <TextBlock Text="Exibir" FontSize="16"/>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+        </Menu>
+        <Separator Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Top"/>
+        <Separator Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom"/>
     </Grid>
 </Page>

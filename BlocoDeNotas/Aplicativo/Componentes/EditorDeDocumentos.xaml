@@ -9,7 +9,7 @@
       Title="EditorDeDocumentos" Loaded="Page_Loaded">
 
     <Grid>
-        <TextBox x:Name="EditorDocumento" TextChanged="EditorDocumento_TextChanged" Stylus.IsFlicksEnabled="False" Cursor="IBeam">
+        <TextBox x:Name="EditorDocumento">
             <TextBox.BorderThickness>0</TextBox.BorderThickness>
             <TextBox.Padding>15,10,15,10</TextBox.Padding>
             <TextBox.AcceptsTab>true</TextBox.AcceptsTab>

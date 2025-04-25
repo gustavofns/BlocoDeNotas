@@ -10,7 +10,7 @@ using BlocoDeNotas.Menu.ItensMenuArquivo;
 
 namespace BlocoDeNotas.Menu
 {
-    public sealed class MenuArquivo : IMenuArquivo
+    public sealed class MenuArquivo : IGerenciamentoDeArquivos, IGerenciamentoDeJanelas
     {
         private IGerenciamentoDeArquivos _gerenciamentoDeArquivos;
         private IGerenciamentoDeJanelas _gerenciamentoDeJanelas;

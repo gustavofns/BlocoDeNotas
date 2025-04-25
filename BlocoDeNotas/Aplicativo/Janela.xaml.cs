@@ -36,7 +36,6 @@ namespace BlocoDeNotas.Aplicativo
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Title = "Bloco de Notas";
             FrameJanela.Navigate(_editor);
         }
 

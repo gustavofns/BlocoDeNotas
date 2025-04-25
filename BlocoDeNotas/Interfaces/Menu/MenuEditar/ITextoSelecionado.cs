@@ -8,7 +8,6 @@ namespace BlocoDeNotas.Interfaces.Menu.MenuEditar
 {
     public interface ITextoSelecionado
     {
-        void InverterSelecao();
         void Excluir();
         void SelecionarTudo();
     }
