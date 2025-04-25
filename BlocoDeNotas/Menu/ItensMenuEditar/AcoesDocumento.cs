@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using BlocoDeNotas.Interfaces.Componentes;
+﻿using System.Windows.Controls;
 using BlocoDeNotas.Interfaces.Menu.MenuEditar;
 
 namespace BlocoDeNotas.Menu.ItensMenuEditar
 {
-    public class AcooesDocumento : IAcoesDoDocumento
+    public class AcoesDocumento : IAcoesDoDocumento
     {
         private readonly TextBox _documento;
 
-        public AcooesDocumento(TextBox documento)
+        public AcoesDocumento(TextBox documento)
         {
             _documento = documento;
         }
@@ -36,9 +30,6 @@ namespace BlocoDeNotas.Menu.ItensMenuEditar
             }
         }
 
-        private void IndiceCursor()
-        {
-            _documento.CaretIndex = _documento.Text.Length;
-        }
+        private void IndiceCursor() { _documento.CaretIndex = _documento.Text.Length; }
     }
 }

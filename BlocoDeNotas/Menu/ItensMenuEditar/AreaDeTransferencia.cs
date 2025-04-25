@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using BlocoDeNotas.Interfaces.Componentes;
 using BlocoDeNotas.Interfaces.Menu.MenuEditar;
 
 namespace BlocoDeNotas.Menu.ItensMenuEditar

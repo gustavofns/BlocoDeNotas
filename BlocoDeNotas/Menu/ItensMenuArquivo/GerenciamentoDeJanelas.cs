@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using BlocoDeNotas.Aplicativo;
 using BlocoDeNotas.Interfaces;
 using BlocoDeNotas.Interfaces.Menu.MenuArquivo;
@@ -30,14 +25,8 @@ namespace BlocoDeNotas.Menu.ItensMenuArquivo
             janela.Show();
         }
 
-        public void FecharJanela()
-        {
-            _janela.FecharJanela();
-        }
+        public void FecharJanela() { _janela.FecharJanela(); }
 
-        public void Sair()
-        {
-            Application.Current.Shutdown();
-        }
+        public void Sair() { Application.Current.Shutdown(); }
     }
 }

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BlocoDeNotas.Interfaces;
-using BlocoDeNotas.Interfaces.Menu;
-using BlocoDeNotas.Interfaces.Menu.MenuArquivo;
-using BlocoDeNotas.Menu.ItensMenuArquivo;
+﻿using BlocoDeNotas.Interfaces.Menu.MenuArquivo;
 
 namespace BlocoDeNotas.Menu
 {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using BlocoDeNotas.Interfaces.Componentes;
+﻿using System.Windows.Controls;
 using BlocoDeNotas.Interfaces.Menu.MenuEditar;
 
 namespace BlocoDeNotas.Menu.ItensMenuEditar
@@ -46,9 +40,6 @@ namespace BlocoDeNotas.Menu.ItensMenuEditar
                 _documento.Text += " ";
         }
 
-        private void IndiceCursor()
-        {
-            _documento.CaretIndex = _documento.Text.Length;
-        }
+        private void IndiceCursor() { _documento.CaretIndex = _documento.Text.Length; }
     }
 }

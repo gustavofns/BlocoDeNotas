@@ -1,8 +1,5 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
 using BlocoDeNotas.Aplicativo;
-using BlocoDeNotas.Aplicativo.Componentes;
 using BlocoDeNotas.Interfaces;
 
 #pragma warning disable WPF0001

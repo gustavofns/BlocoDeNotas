@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using BlocoDeNotas.Aplicativo;
-using BlocoDeNotas.Interfaces;
-using BlocoDeNotas.Interfaces.Componentes;
-using BlocoDeNotas.Interfaces.Eventos;
+﻿using BlocoDeNotas.Interfaces.Componentes;
 using BlocoDeNotas.Interfaces.Menu.MenuArquivo;
 using BlocoDeNotas.Interfaces.Utilitarios;
-using BlocoDeNotas.Utilitarios;
 using Microsoft.Win32;
 
 namespace BlocoDeNotas.Menu.ItensMenuArquivo
@@ -43,10 +31,7 @@ namespace BlocoDeNotas.Menu.ItensMenuArquivo
             }
         }
 
-        public void FecharArquivo()
-        {
-            LimparEditor();
-        }
+        public void FecharArquivo() { LimparEditor(); }
 
         public void SalvarArquivo()
         {

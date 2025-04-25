@@ -50,20 +50,9 @@ namespace BlocoDeNotas.Aplicativo
             FrameBarraMenu.Navigate(_barraDeMenu);
         }
 
-        private IBarraDeMenu InicializarBarraMenu() 
-        {
-            return new BarraDeMenu(_janela, _editorDeDocumentos);
-        }
-
-        private IBarraDeStatus InicializarBarraDeStatus()
-        {
-            return new BarraDeStatus(_editorDeDocumentos.Documento);
-        }
-
-        private IEditorDeDocumentos InicializarEditorDeDocumentos()
-        {
-            return new EditorDeDocumentos();
-        }
+        private IBarraDeMenu InicializarBarraMenu() { return new BarraDeMenu(_janela, _editorDeDocumentos); }
+        private IBarraDeStatus InicializarBarraDeStatus() { return new BarraDeStatus(_editorDeDocumentos.Documento); }
+        private IEditorDeDocumentos InicializarEditorDeDocumentos() { return new EditorDeDocumentos(); }
 
         private void InicializarEventos()
         {

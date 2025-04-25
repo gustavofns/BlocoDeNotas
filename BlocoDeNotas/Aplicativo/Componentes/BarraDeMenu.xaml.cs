@@ -1,23 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using BlocoDeNotas.Eventos;
 using BlocoDeNotas.Interfaces;
 using BlocoDeNotas.Interfaces.Componentes;
-using BlocoDeNotas.Interfaces.Eventos;
-using BlocoDeNotas.Interfaces.Menu;
-using BlocoDeNotas.Interfaces.Utilitarios;
 using BlocoDeNotas.Menu;
 using BlocoDeNotas.Menu.ItensMenuArquivo;
 using BlocoDeNotas.Menu.ItensMenuEditar;
@@ -70,7 +55,7 @@ namespace BlocoDeNotas.Aplicativo.Componentes
         private MenuEditar InicializarMenuEditar()
         {
             return new MenuEditar(
-                new AcooesDocumento(_editorDeDocumentos.Documento),
+                new AcoesDocumento(_editorDeDocumentos.Documento),
                 new TextoSelecionado(_editorDeDocumentos.Documento),
                 new AreaDeTransferencia(_editorDeDocumentos.Documento),
                 new DataEHora(_editorDeDocumentos.Documento)

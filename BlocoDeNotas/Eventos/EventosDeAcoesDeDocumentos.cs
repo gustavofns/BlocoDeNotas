@@ -22,10 +22,7 @@ namespace BlocoDeNotas.Eventos
             IniciarEvento();
         }
 
-        private void IniciarEvento()
-        {
-            _documento.SelectionChanged += AcoesDocumentos;
-        }
+        private void IniciarEvento() { _documento.SelectionChanged += AcoesDocumentos; }
       
         private void AcoesDocumentos(object? sender, EventArgs e)
         { 

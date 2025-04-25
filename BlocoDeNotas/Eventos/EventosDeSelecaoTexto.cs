@@ -26,10 +26,7 @@ namespace BlocoDeNotas.Eventos
             IniciarEvento();
         }
 
-        private void IniciarEvento()
-        {
-            _documento.SelectionChanged += TextoSelecionado;
-        }
+        private void IniciarEvento() { _documento.SelectionChanged += TextoSelecionado; }
 
         private void TextoSelecionado(object? sender, EventArgs e)
         {
