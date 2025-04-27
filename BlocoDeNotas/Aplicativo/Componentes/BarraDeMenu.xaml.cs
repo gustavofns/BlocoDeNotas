@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using BlocoDeNotas.Eventos;
 using BlocoDeNotas.Interfaces;
 using BlocoDeNotas.Interfaces.Componentes;
+using BlocoDeNotas.Interfaces.Menu;
 using BlocoDeNotas.Menu;
 using BlocoDeNotas.Menu.ItensMenuArquivo;
 using BlocoDeNotas.Menu.ItensMenuEditar;
@@ -15,54 +16,22 @@ namespace BlocoDeNotas.Aplicativo.Componentes
     /// </summary>
     public partial class BarraDeMenu : Page, IBarraDeMenu
     {
-        private readonly IJanela _janela;
-        private readonly IEditorDeDocumentos _editorDeDocumentos;
-        private readonly MenuArquivo _menuArquivo;
-        private readonly MenuEditar _menuEditar;
-        public MenuItem FecharDocumentoMenu { get; set; }
-        public MenuItem DesfazerMenu { get; set; }
-        public MenuItem RefazerMenu { get; set; }
-        public MenuItem RecortarMenu { get; set; }
-        public MenuItem CopiarMenu { get; set; }
-        public MenuItem ColarMenu { get; set; }
-        public MenuItem ExcluirMenu { get; set ; }
+        private readonly IMenuArquivo _menuArquivo;
+        private readonly IMenuEditar _menuEditar;
+        public MenuItem FecharDocumentoMenu { get { return FecharArquivo; }}
+        public MenuItem DesfazerMenu { get { return Desfazer; } }
+        public MenuItem RefazerMenu { get { return Refazer; } }
+        public MenuItem RecortarMenu { get { return Recortar; } }
+        public MenuItem CopiarMenu { get{ return Copiar;} }
+        public MenuItem ColarMenu { get { return Colar; } }
+        public MenuItem ExcluirMenu { get { return Excluir; } }
 
-        public BarraDeMenu(IJanela janela, IEditorDeDocumentos editorDeDocumentos)
+        public BarraDeMenu(IMenuArquivo menuArquivo, IMenuEditar menuEditar)
         {
             InitializeComponent();
-            _janela = janela;
-            _editorDeDocumentos = editorDeDocumentos;
-            _menuArquivo = InicializarMenuArquivo();
-            _menuEditar = InicializarMenuEditar();
-            FecharDocumentoMenu = FecharArquivo;
-            DesfazerMenu = Desfazer;
-            RefazerMenu = Refazer;
-            RecortarMenu = Recortar;
-            CopiarMenu = Copiar;
-            ColarMenu = Colar;
-            ExcluirMenu = Excluir; 
+            _menuArquivo = menuArquivo;
+            _menuEditar = menuEditar;
         }
-
-        private MenuArquivo InicializarMenuArquivo()
-        {
-            return new MenuArquivo(
-                new GerenciamentoDeArquivos(_editorDeDocumentos, new CaixaDeDialogodeArquivos(), 
-                    new OperacoesComArquivos(_editorDeDocumentos, new Excecoes())),
-                new GerenciamentoDeJanelas(_janela)
-            );
-        }
-
-        private MenuEditar InicializarMenuEditar()
-        {
-            return new MenuEditar(
-                new AcoesDocumento(_editorDeDocumentos.Documento),
-                new TextoSelecionado(_editorDeDocumentos.Documento),
-                new AreaDeTransferencia(_editorDeDocumentos.Documento),
-                new DataEHora(_editorDeDocumentos.Documento)
-            );
-        }
-
-
 
         // Menu Arquivo
         private void NovaJanela_Click(object sender, RoutedEventArgs e) => _menuArquivo.NovaJanela();
@@ -85,6 +54,10 @@ namespace BlocoDeNotas.Aplicativo.Componentes
         private void HoraeData_Click(object sender, RoutedEventArgs e) => _menuEditar.InserirDataHora();
 
         // Menu Exibir
+
+
+
+        // Configurações
 
     }
 }

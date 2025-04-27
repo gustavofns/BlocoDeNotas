@@ -1,8 +1,10 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using BlocoDeNotas.Aplicativo;
+using BlocoDeNotas.Aplicativo.Dependencias;
+using BlocoDeNotas.Config.Tema;
 using BlocoDeNotas.Interfaces;
-
-#pragma warning disable WPF0001
+using BlocoDeNotas.Properties;
 
 namespace BlocoDeNotas
 {
@@ -13,9 +15,8 @@ namespace BlocoDeNotas
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            Application.Current.ThemeMode = ThemeMode.None;
-            IJanela _janela = new Janela(e.Args);
-            _janela.MostrarJanela();
+            Tema.AplicarTema();
+            ContainerDeDependencias.RegistarDependencias(e.Args);
         }
     }
 }

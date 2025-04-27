@@ -1,8 +1,9 @@
-﻿using BlocoDeNotas.Interfaces.Menu.MenuArquivo;
+﻿using BlocoDeNotas.Interfaces.Menu;
+using BlocoDeNotas.Interfaces.Menu.MenuArquivo;
 
 namespace BlocoDeNotas.Menu
 {
-    public sealed class MenuArquivo : IGerenciamentoDeArquivos, IGerenciamentoDeJanelas
+    public sealed class MenuArquivo : IMenuArquivo
     {
         private IGerenciamentoDeArquivos _gerenciamentoDeArquivos;
         private IGerenciamentoDeJanelas _gerenciamentoDeJanelas;

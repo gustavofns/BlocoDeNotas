@@ -1,20 +1,10 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Threading;
-using BlocoDeNotas.Interfaces;
+﻿using System.Windows.Controls;
 using BlocoDeNotas.Interfaces.Componentes;
 using BlocoDeNotas.Interfaces.Eventos;
-using BlocoDeNotas.Interfaces.Menu;
 
 namespace BlocoDeNotas.Eventos
 {
-    public class EventosDeSelecaoTexto
+    public class EventosDeSelecaoTexto : IEventosDeSelecaoTexto
     {
         private readonly TextBox _documento;
         private readonly IBarraDeMenu _barraDeMenu;

@@ -19,7 +19,7 @@ namespace BlocoDeNotas.Eventos
             );
         }
 
-        public string TratarExcecao(Exception ex)
+        private string TratarExcecao(Exception ex)
         {
             switch (ex)
             {

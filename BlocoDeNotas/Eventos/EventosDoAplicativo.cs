@@ -2,10 +2,11 @@
 using System.Windows.Threading;
 using BlocoDeNotas.Interfaces;
 using BlocoDeNotas.Interfaces.Componentes;
+using BlocoDeNotas.Interfaces.Eventos;
 
 namespace BlocoDeNotas.Eventos
 {
-    public class EventosDoAplicativo
+    public class EventosDoAplicativo : IEventosDoAplicativo
     {
         private string _tituloAtual = string.Empty;
         private readonly IJanela _janela;

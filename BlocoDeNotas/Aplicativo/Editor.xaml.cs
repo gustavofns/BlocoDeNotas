@@ -1,24 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.RightsManagement;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using BlocoDeNotas.Aplicativo.Componentes;
 using BlocoDeNotas.Eventos;
 using BlocoDeNotas.Interfaces;
 using BlocoDeNotas.Interfaces.Componentes;
-using BlocoDeNotas.Interfaces.Eventos;
-using BlocoDeNotas.Interfaces.Utilitarios;
+using BlocoDeNotas.Interfaces.Menu;
+using BlocoDeNotas.Menu;
+using BlocoDeNotas.Menu.ItensMenuArquivo;
+using BlocoDeNotas.Menu.ItensMenuEditar;
 using BlocoDeNotas.Utilitarios;
 
 namespace BlocoDeNotas.Aplicativo
@@ -29,9 +18,11 @@ namespace BlocoDeNotas.Aplicativo
     public partial class Editor : Page, IEditor
     {
         private readonly IJanela _janela;
-        private readonly IBarraDeMenu _barraDeMenu;
         private readonly IEditorDeDocumentos _editorDeDocumentos;
         private readonly IBarraDeStatus _barraDeStatus;
+        private readonly IMenuArquivo _menuArquivo;
+        private readonly IMenuEditar _menuEditar;
+        private readonly IBarraDeMenu _barraDeMenu;
 
         public Editor(IJanela janela)
         {
@@ -39,9 +30,12 @@ namespace BlocoDeNotas.Aplicativo
             _janela = janela;
             _editorDeDocumentos = InicializarEditorDeDocumentos();
             _barraDeStatus = InicializarBarraDeStatus();
+            _menuArquivo = InicializarMenuArquivo();
+            _menuEditar = InicializarMenuEditar();
             _barraDeMenu = InicializarBarraMenu();
             InicializarEventos();
         }
+
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -50,9 +44,28 @@ namespace BlocoDeNotas.Aplicativo
             FrameBarraMenu.Navigate(_barraDeMenu);
         }
 
-        private IBarraDeMenu InicializarBarraMenu() { return new BarraDeMenu(_janela, _editorDeDocumentos); }
+        private IBarraDeMenu InicializarBarraMenu() { return new BarraDeMenu(_menuArquivo, _menuEditar); }
         private IBarraDeStatus InicializarBarraDeStatus() { return new BarraDeStatus(_editorDeDocumentos.Documento); }
         private IEditorDeDocumentos InicializarEditorDeDocumentos() { return new EditorDeDocumentos(); }
+
+        private IMenuEditar InicializarMenuEditar()
+        {
+            return new MenuEditar(
+                new AcoesDocumento(_editorDeDocumentos.Documento),
+                new TextoSelecionado(_editorDeDocumentos.Documento),
+                new AreaDeTransferencia(_editorDeDocumentos.Documento),
+                new DataEHora(_editorDeDocumentos.Documento)
+            );
+        }
+
+        private IMenuArquivo InicializarMenuArquivo()
+        {
+            return new MenuArquivo(
+                new GerenciamentoDeArquivos(_editorDeDocumentos, new CaixaDeDialogodeArquivos(),
+                    new OperacoesComArquivos(_editorDeDocumentos, new Excecoes())),
+                new GerenciamentoDeJanelas(_janela)
+            );
+        }
 
         private void InicializarEventos()
         {

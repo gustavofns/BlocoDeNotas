@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Diagnostics.Eventing.Reader;
+using System.IO;
 using BlocoDeNotas.Interfaces.Componentes;
 using BlocoDeNotas.Interfaces.Eventos;
 using BlocoDeNotas.Interfaces.Utilitarios;
@@ -45,7 +46,7 @@ namespace BlocoDeNotas.Utilitarios
             catch (Exception ex)
             {
                 _excecoes.ExibirMensagemExcecao(
-                    "Não foi possível abrir o documento", ex);
+                    "Não foi possível abrir o arquivo", ex);
             }
         }
 
@@ -64,7 +65,7 @@ namespace BlocoDeNotas.Utilitarios
             catch (Exception ex)
             {
                 _excecoes.ExibirMensagemExcecao(
-                    "Não foi possível salvar o documento", ex);
+                    "Não foi possível salvar o arquivo", ex);
             }
         }
     }

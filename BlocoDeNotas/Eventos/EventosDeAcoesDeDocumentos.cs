@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using BlocoDeNotas.Interfaces;
+﻿using System.Windows.Controls;
 using BlocoDeNotas.Interfaces.Componentes;
 using BlocoDeNotas.Interfaces.Eventos;
 
 namespace BlocoDeNotas.Eventos
 {
-    public class EventosDeAcoesDeDocumentos
+    public class EventosDeAcoesDeDocumentos : IEventosDeAcoesDeDocumentos
     {
         private readonly TextBox _documento;
         private readonly IBarraDeMenu _barraDeMenu;

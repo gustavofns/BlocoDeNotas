@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Editor" Loaded="Page_Loaded">
-
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="36"/>

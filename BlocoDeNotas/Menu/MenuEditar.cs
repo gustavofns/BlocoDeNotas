@@ -1,8 +1,9 @@
-﻿using BlocoDeNotas.Interfaces.Menu.MenuEditar;
+﻿using BlocoDeNotas.Interfaces.Menu;
+using BlocoDeNotas.Interfaces.Menu.MenuEditar;
 
 namespace BlocoDeNotas.Menu
 {
-    public sealed class MenuEditar : IAcoesDoDocumento, ITextoSelecionado, IAreaDeTransferencia, IDataEHora
+    public sealed class MenuEditar : IMenuEditar
     {
         private readonly IAcoesDoDocumento _acoesDoDocumento;
         private readonly ITextoSelecionado _textoSelecionado;
