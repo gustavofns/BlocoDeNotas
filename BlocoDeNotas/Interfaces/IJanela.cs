@@ -4,10 +4,9 @@ namespace BlocoDeNotas.Interfaces
 {
     public interface IJanela
     {
-        public string[] Args { get; set; }
         public Frame FrameJanela { get; }
-        void TituloJanela(string titulo);
         void MostrarJanela(IEditor editor);
+        void TituloJanela(string titulo);
         double AlturaJanela();
         double LarguraJanela();
         void FecharJanela();

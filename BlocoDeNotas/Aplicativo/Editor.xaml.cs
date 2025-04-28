@@ -17,61 +17,23 @@ namespace BlocoDeNotas.Aplicativo
     /// </summary>
     public partial class Editor : Page, IEditor
     {
-        private readonly IJanela _janela;
         private readonly IEditorDeDocumentos _editorDeDocumentos;
         private readonly IBarraDeStatus _barraDeStatus;
-        private readonly IMenuArquivo _menuArquivo;
-        private readonly IMenuEditar _menuEditar;
         private readonly IBarraDeMenu _barraDeMenu;
 
-        public Editor(IJanela janela)
+        public Editor(IEditorDeDocumentos editorDeDocumentos, IBarraDeStatus barraDeStatus, IBarraDeMenu barraDeMenu)
         {
             InitializeComponent();
-            _janela = janela;
-            _editorDeDocumentos = InicializarEditorDeDocumentos();
-            _barraDeStatus = InicializarBarraDeStatus();
-            _menuArquivo = InicializarMenuArquivo();
-            _menuEditar = InicializarMenuEditar();
-            _barraDeMenu = InicializarBarraMenu();
-            InicializarEventos();
+            _editorDeDocumentos = editorDeDocumentos;
+            _barraDeStatus = barraDeStatus;
+            _barraDeMenu = barraDeMenu;
         }
-
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             FrameEditorDeDocumentos.Navigate(_editorDeDocumentos);
             FrameBarraDeStatus.Navigate(_barraDeStatus);
             FrameBarraMenu.Navigate(_barraDeMenu);
-        }
-
-        private IBarraDeMenu InicializarBarraMenu() { return new BarraDeMenu(_menuArquivo, _menuEditar); }
-        private IBarraDeStatus InicializarBarraDeStatus() { return new BarraDeStatus(_editorDeDocumentos.Documento); }
-        private IEditorDeDocumentos InicializarEditorDeDocumentos() { return new EditorDeDocumentos(); }
-
-        private IMenuEditar InicializarMenuEditar()
-        {
-            return new MenuEditar(
-                new AcoesDocumento(_editorDeDocumentos.Documento),
-                new TextoSelecionado(_editorDeDocumentos.Documento),
-                new AreaDeTransferencia(_editorDeDocumentos.Documento),
-                new DataEHora(_editorDeDocumentos.Documento)
-            );
-        }
-
-        private IMenuArquivo InicializarMenuArquivo()
-        {
-            return new MenuArquivo(
-                new GerenciamentoDeArquivos(_editorDeDocumentos, new CaixaDeDialogodeArquivos(),
-                    new OperacoesComArquivos(_editorDeDocumentos, new Excecoes())),
-                new GerenciamentoDeJanelas(_janela)
-            );
-        }
-
-        private void InicializarEventos()
-        {
-            new EventosDeSelecaoTexto(_barraDeMenu, _editorDeDocumentos.Documento);
-            new EventosDoAplicativo(_janela, _editorDeDocumentos, _barraDeMenu);
-            new EventosDeAcoesDeDocumentos(_barraDeMenu, _editorDeDocumentos.Documento);
         }
     }
 }

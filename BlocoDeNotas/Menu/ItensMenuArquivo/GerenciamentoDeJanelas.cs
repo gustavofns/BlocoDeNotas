@@ -1,8 +1,10 @@
-﻿using System.Text.Encodings.Web;
+﻿using System.ComponentModel;
+using System.Text.Encodings.Web;
 using System.Windows;
 using BlocoDeNotas.Aplicativo;
 using BlocoDeNotas.Interfaces;
 using BlocoDeNotas.Interfaces.Menu.MenuArquivo;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BlocoDeNotas.Menu.ItensMenuArquivo
 {
@@ -17,8 +19,9 @@ namespace BlocoDeNotas.Menu.ItensMenuArquivo
 
         public void NovaJanela()
         {
-            IJanela janela = new Janela(Array.Empty<string>());
-            janela.MostrarJanela(new Editor(janela));
+            var provider = Programa.Dependencias(Array.Empty<string>());
+            var novaJanela = provider.GetRequiredService<IJanela>();
+            novaJanela.MostrarJanela(provider.GetRequiredService<IEditor>());
         }
       
 
