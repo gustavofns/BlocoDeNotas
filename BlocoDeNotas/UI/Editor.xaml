@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Editor" Loaded="Page_Loaded">
 
-    <Grid Background="OliveDrab">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="36"/>
             <RowDefinition Height="*"/>
@@ -16,5 +16,6 @@
         </Grid.RowDefinitions>
         <Frame Grid.Row="0" x:Name="BarraDeMenuFrame" NavigationUIVisibility="Hidden"/>
         <Frame Grid.Row="1" x:Name="EditorDeDocumentosFrame" NavigationUIVisibility="Hidden"/>
+        <Frame Grid.Row="2" x:Name="BarraDeStatusFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

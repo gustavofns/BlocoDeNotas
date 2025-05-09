@@ -1,6 +1,8 @@
 ﻿using BlocoDeNotas.Interfaces;
+using BlocoDeNotas.Interfaces.Navegacao;
 using BlocoDeNotas.Interfaces.UI;
 using BlocoDeNotas.Interfaces.UI.Configuracoes;
+using BlocoDeNotas.Janela;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,20 +21,23 @@ namespace BlocoDeNotas
     /// </summary>
     public partial class MainWindow : Window, IJanela
     {
+        private readonly INavegacao _navegacao;
         public string TituloJanela { get => Title; set => Title = value; }
         public double AlturaJanela { set => Height = value; }
         public double LarguraJanela { set => Width = value; }
         public double PosicaoXJanela { set => Left = value; }
         public double PosicaoYJanela { set => Top = value; }
 
-        public MainWindow()
+        public MainWindow(INavegacao navegacao, Frame frame)
         {
             InitializeComponent();
+            _navegacao = navegacao;
+            Content = frame;
         }
 
         public void FecharJanela() => Close();
         public void MostrarJanela() => Show();
-        public void NavegarPara(object objeto) => MainFrame.Navigate(objeto);
-        public void Voltar() => MainFrame.GoBack();
+        public void NavegarPara(object objeto) => _navegacao.NavegarPara(objeto);
+        public void Voltar() => _navegacao.Voltar();
     }
 }

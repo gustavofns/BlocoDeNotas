@@ -23,19 +23,22 @@ namespace BlocoDeNotas.UI
     public partial class Editor : Page, IEditor
     {
         private readonly IEditorDeDocumentos _editorDeDocumentos;
+        private readonly IBarraDeStatus _barraDeStatus;
         private readonly IBarraDeMenu _barraDeMenu;
 
-        public Editor(IEditorDeDocumentos editorDeDocumentos, IBarraDeMenu barraDeMenu)
+        public Editor(IEditorDeDocumentos editorDeDocumentos,IBarraDeStatus barraDeStatus ,IBarraDeMenu barraDeMenu)
         {
             InitializeComponent();
             _editorDeDocumentos = editorDeDocumentos;
+            _barraDeStatus = barraDeStatus;
             _barraDeMenu = barraDeMenu;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            EditorDeDocumentosFrame.Navigate(_editorDeDocumentos);
-            BarraDeMenuFrame.Navigate(_barraDeMenu);
+            EditorDeDocumentosFrame.Content = _editorDeDocumentos;  
+            BarraDeStatusFrame.Content = _barraDeStatus;
+            BarraDeMenuFrame.Content = _barraDeMenu;
         }
     }
 }

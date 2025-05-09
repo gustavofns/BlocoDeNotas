@@ -15,9 +15,9 @@ namespace BlocoDeNotas
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            IServiceProvider serviceProvider = Dependencias.ServiceProvider();
-            serviceProvider.GetService<IJanela>().NavegarPara(serviceProvider.GetService<IEditor>());
-            serviceProvider.GetService<IJanela>().MostrarJanela();
+            IServiceProvider serviceProvider = Dependencias.ConfigurarServiceProvider();
+            serviceProvider.GetRequiredService<IJanela>().NavegarPara(serviceProvider.GetRequiredService<IEditor>());
+            serviceProvider.GetRequiredService<IJanela>().MostrarJanela();
         }
     }
 
