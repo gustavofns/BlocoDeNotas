@@ -1,6 +1,10 @@
-﻿using System.Configuration;
+﻿using BlocoDeNotas.Interfaces;
+using BlocoDeNotas.Interfaces.UI;
+using Microsoft.Extensions.DependencyInjection;
+using System.Configuration;
 using System.Data;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace BlocoDeNotas
 {
@@ -9,6 +13,12 @@ namespace BlocoDeNotas
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            IServiceProvider serviceProvider = Dependencias.ServiceProvider();
+            serviceProvider.GetService<IJanela>().NavegarPara(serviceProvider.GetService<IEditor>());
+            serviceProvider.GetService<IJanela>().MostrarJanela();
+        }
     }
 
 }

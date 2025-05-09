@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="BlocoDeNotas.UI.Componentes.BarraDeMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BlocoDeNotas.UI.Componentes"
+             mc:Ignorable="d" 
+             d:DesignHeight="36" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.ColumnSpan="3"/>
+        <Menu Grid.Column="2" HorizontalAlignment="Right">
+            <Button x:Name="Avancar" Content="Avançar" Padding="8,4,8,4" Margin="0,4,0,4" Click="Avancar_Click"/>
+        </Menu>
+    </Grid>
+</UserControl>
