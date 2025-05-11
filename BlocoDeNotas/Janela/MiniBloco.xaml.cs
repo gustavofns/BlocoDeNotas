@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace BlocoDeNotas.Janela
 {
     /// <summary>
-    /// Lógica interna para Janela.xaml
+    /// Lógica interna para MiniBloco.xaml
     /// </summary>
-    public partial class Janela : Window
+    public partial class MiniBloco : Window
     {
-        public Janela()
+        public MiniBloco()
         {
             InitializeComponent();
         }

@@ -33,6 +33,11 @@ namespace BlocoDeNotas.UI.Configuracoes
             _editorDeDocumentos = editorDeDocumentos;
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            _janela.TituloJanela = "Configurações";
+        }
+
         private void Voltar_Click(object sender, RoutedEventArgs e)
         {
             _janela.Voltar();

@@ -13,9 +13,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Windows.Foundation.Metadata;
 
 namespace BlocoDeNotas
 {
+[Obsolete("Foi substituido por JanelaPrincipal.xaml.cs")]
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -36,6 +38,7 @@ namespace BlocoDeNotas
         }
 
         public void FecharJanela() => Close();
+ 
         public void MostrarJanela() => Show();
         public void NavegarPara(object objeto) => _navegacao.NavegarPara(objeto);
         public void Voltar() => _navegacao.Voltar();

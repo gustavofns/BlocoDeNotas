@@ -13,48 +13,34 @@ namespace BlocoDeNotas.Eventos
     public class AtualizarTituloDaJanela : IAtualizarTituloJanela
     {
         private readonly IJanela _janela;
-        private readonly IEditorDeDocumentos _editorDeDocumentos;
 
-        public AtualizarTituloDaJanela(IJanela janela, IEditorDeDocumentos editorDeDocumentos)
+        public AtualizarTituloDaJanela(IJanela janela)
         {
             _janela = janela;
-            _editorDeDocumentos = editorDeDocumentos;
-            Disparador();
         }
 
-        private void Disparador()
+        public void AtualizarTitulo(string arquivo, string documentoAtual, string documentoOriginal)
         {
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(1);
-            timer.Tick += AtualizarTitulo;
-            timer.Start();
+            string novoTitulo = NovoTitulo(arquivo, documentoAtual, documentoOriginal);
 
+            if (_janela.TituloJanela != novoTitulo)
+                _janela.TituloJanela = novoTitulo;
         }
-        
-        private void AtualizarTitulo(object? sender, EventArgs e)
+
+        private string NovoTitulo(string arquivo, string documentoAtual, string documentoOriginal)
         {
-            if (string.IsNullOrEmpty(_editorDeDocumentos.Arquivo))
+            if (string.IsNullOrEmpty(arquivo))
             {
-                if (_editorDeDocumentos.DocumentoAtual.Length != 0)
-                {
-                    _janela.TituloJanela = "Bloco de notas - documento não salvo";
-                }
-                else
-                {
-                    _janela.TituloJanela = "Bloco de notas";
-                }
-            
+                if (documentoAtual.Length != 0)
+                    return "Bloco de notas - documento não salvo";
+                else return "Bloco de notas";
+
             }
             else
             {
-                if (_editorDeDocumentos.DocumentoOriginal == _editorDeDocumentos.DocumentoAtual)
-                {
-                    _janela.TituloJanela = $"Bloco de notas - {_editorDeDocumentos.Arquivo}";
-                }
-                else
-                {
-                    _janela.TituloJanela = $"Bloco de notas - {_editorDeDocumentos.Arquivo} - documento modificado";
-                }
+                if (documentoOriginal == documentoAtual)
+                    return $"Bloco de notas - {arquivo}";
+                else return $"Bloco de notas - {arquivo} - documento modificado";
             }
         }
     }

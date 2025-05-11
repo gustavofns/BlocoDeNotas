@@ -1,4 +1,5 @@
-﻿using BlocoDeNotas.Interfaces.UI.Componentes;
+﻿using BlocoDeNotas.Interfaces.Eventos;
+using BlocoDeNotas.Interfaces.UI.Componentes;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace BlocoDeNotas.UI.Componentes
     /// </summary>
     public partial class EditorDeDocumentos : UserControl, IEditorDeDocumentos
     {
+        private readonly IAtualizarTituloJanela _atualizarTituloJanela;
         public string Arquivo { get; set; }
         public string DocumentoOriginal { get; set; }
 
@@ -85,11 +87,12 @@ namespace BlocoDeNotas.UI.Componentes
         }
 
         // Construtor da classe
-        public EditorDeDocumentos()
+        public EditorDeDocumentos(IAtualizarTituloJanela atualizarTituloJanela)
         {
             InitializeComponent();
             Arquivo = string.Empty;
             DocumentoOriginal = string.Empty;
+            _atualizarTituloJanela = atualizarTituloJanela;
         }
 
         // Evento de carregamento do controle
@@ -100,11 +103,19 @@ namespace BlocoDeNotas.UI.Componentes
                 Documento.Focus();
                 Documento.CaretIndex = Documento.Text.Length;
             }
+            AtualizarTitulo();
         }
 
         // Métodos para manipulação do documento
         public void Desfazer() => Documento.Undo();
         public void Refazer() => Documento.Redo();
         public void SelecionarTudo() => Documento.SelectAll();
+        private void AtualizarTitulo() => _atualizarTituloJanela.AtualizarTitulo(Arquivo, DocumentoAtual, DocumentoOriginal);
+
+        // Evento para atualizar o título quando o texto do documento é alterado
+        private void Documento_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            AtualizarTitulo();
+        }
     }
 }

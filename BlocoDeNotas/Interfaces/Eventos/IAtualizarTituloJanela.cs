@@ -8,6 +8,6 @@ namespace BlocoDeNotas.Interfaces.Eventos
 {
     public interface IAtualizarTituloJanela
     {
-
+        public void AtualizarTitulo(string arquivo, string documentoAtual, string documentoOriginal);
     }
 }

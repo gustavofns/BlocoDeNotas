@@ -13,10 +13,6 @@ namespace BlocoDeNotas.Interfaces.Janela
     public interface IJanela
     {
         string TituloJanela { get;  set; }
-        double AlturaJanela { set; }
-        double LarguraJanela { set; }
-        double PosicaoXJanela { set; }  
-        double PosicaoYJanela { set; }
 
         void Voltar();
         void MostrarJanela();

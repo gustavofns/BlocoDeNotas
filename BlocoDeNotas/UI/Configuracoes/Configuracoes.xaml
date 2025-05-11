@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:BlocoDeNotas.UI.Configuracoes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Configuracoes">
+      Title="Configuracoes" Loaded="Page_Loaded">
 
     <Grid>
         <Button Content="Voltar" x:Name="Voltar" Click="Voltar_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" Padding="12,5"/>
