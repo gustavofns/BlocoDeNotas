@@ -10,5 +10,6 @@
 
     <Grid>
         <Button Content="Voltar" x:Name="Voltar" Click="Voltar_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" Padding="12,5"/>
+        <Button Content="Fonte" x:Name="Fonte" Click="Fonte_Click" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </Page>

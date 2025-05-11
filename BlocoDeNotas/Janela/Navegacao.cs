@@ -1,33 +1,43 @@
-﻿using BlocoDeNotas.Interfaces.Navegacao;
+﻿using BlocoDeNotas.Interfaces.Janela;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace BlocoDeNotas.Janela
 {
     public class Navegacao : INavegacao
     {
-        private readonly Frame _frame;
+        public Frame Frame { get; }
 
-        public Navegacao(Frame frame)
+        public Navegacao()
         {
-            _frame = frame;
+            Frame = CriarFrame();
+        }
+
+        private Frame CriarFrame()
+        {
+            var frame = new Frame()
+            {
+                NavigationUIVisibility = NavigationUIVisibility.Hidden,
+            };
+            return frame;
         }
 
         public void NavegarPara(object objeto)
         {
             if (objeto != null)
-               _frame.Navigate(objeto);
+               Frame.Navigate(objeto);
         }
 
         public bool Voltar()
         {
-            if(_frame.CanGoBack)
+            if(Frame.CanGoBack)
             {
-                _frame.GoBack();
+                Frame.GoBack();
                 return true;
             }
             else return false;

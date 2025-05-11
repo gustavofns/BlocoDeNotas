@@ -23,20 +23,88 @@ namespace BlocoDeNotas.UI.Componentes
     public partial class EditorDeDocumentos : UserControl, IEditorDeDocumentos
     {
         public string Arquivo { get; set; }
-        public StringBuilder DocumentoOriginal { get; set; }
-        public TextBox Documento { get; private set; }
+        public string DocumentoOriginal { get; set; }
 
+        // Obtém ou define o texto do documento atual
+        public string DocumentoAtual 
+        {
+            get { return Documento.Text; }
+            set { Documento.Text = value;}
+        }
+
+        // Obtém ou define a fonte do documento atual
+        public string Fonte 
+        {
+            get { return Documento.FontFamily.ToString(); }
+            set { Documento.FontFamily = new FontFamily(value); }
+        }
+        // Obtém o número de linhas do documento atual
+        public int Linhas
+        { 
+            get { return Documento.LineCount; }
+        }
+
+        // Obtém ou define se o documento atual deve quebrar linhas
+        public bool QuebraDeLinha
+        {
+            get { return Documento.TextWrapping == TextWrapping.Wrap; }
+            set
+            {
+                if (value) Documento.TextWrapping = TextWrapping.Wrap;
+                else Documento.TextWrapping = TextWrapping.NoWrap;
+            }
+        }
+
+        // Obtém ou define o tamanho da fonte do documento atual
+        public double TamanhoFonte
+        { 
+            get { return Documento.FontSize; }
+            set { Documento.FontSize = value; }
+        }
+
+        // Obtém o texto selecionado no documento atual
+        public string TextoSelecionado
+        {
+            get
+            {
+                if(Documento.SelectedText.Length > 0) return Documento.SelectedText;
+                else return string.Empty;
+            }
+        }
+
+        // Verifica se é possível desfazer a última ação
+        public bool PossivelDesfazer
+        {
+            get { return Documento.CanUndo; }
+        }
+
+        // Verifica se é possível refazer a última ação
+        public bool PossivelRefazer
+        {
+            get { return Documento.CanRedo; }
+        }
+
+        // Construtor da classe
         public EditorDeDocumentos()
         {
             InitializeComponent();
             Arquivo = string.Empty;
-            DocumentoOriginal = new StringBuilder();
-            Documento = DocumentoTextBox;
+            DocumentoOriginal = string.Empty;
         }
 
+        // Evento de carregamento do controle
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            DocumentoTextBox.Focus();
+            if(Documento.Focusable)
+            {
+                Documento.Focus();
+                Documento.CaretIndex = Documento.Text.Length;
+            }
         }
+
+        // Métodos para manipulação do documento
+        public void Desfazer() => Documento.Undo();
+        public void Refazer() => Documento.Redo();
+        public void SelecionarTudo() => Documento.SelectAll();
     }
 }

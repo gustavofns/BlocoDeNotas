@@ -16,9 +16,9 @@ using System.Windows.Shapes;
 
 namespace BlocoDeNotas.UI.Componentes
 {
-    /// <summary>
-    /// Interação lógica para BarraDeStatus.xam
-    /// </summary>
+    /// <summary>  
+    /// Interação lógica para BarraDeStatus.xam  
+    /// </summary>  
     public partial class BarraDeStatus : UserControl, IBarraDeStatus
     {
         private readonly IEditorDeDocumentos _editorDeDocumentos;
@@ -27,6 +27,23 @@ namespace BlocoDeNotas.UI.Componentes
         {
             InitializeComponent();
             _editorDeDocumentos = editorDeDocumentos;
+        }
+
+        private void linhasColunas_LayoutUpdated(object sender, EventArgs e)
+        {
+           linhasColunas.Content = $"Linhas: {_editorDeDocumentos.Linhas} | Texto Selecionado: {TextoSelecionado()}";
+        }
+
+        private string TextoSelecionado()
+        {
+            if (_editorDeDocumentos.TextoSelecionado != string.Empty)
+            {
+                return "Sim";
+            }
+            else
+            {
+                return "Não";
+            }
         }
     }
 }

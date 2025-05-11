@@ -9,8 +9,21 @@ namespace BlocoDeNotas.Interfaces.UI.Componentes
 {
     public interface IEditorDeDocumentos
     {
+        // Propriedades
         string Arquivo { get; set; }
-        StringBuilder DocumentoOriginal { get; set; }
-        TextBox Documento { get; }
+        string DocumentoAtual { get; set; }
+        string DocumentoOriginal { get; set; }
+        string Fonte { get; set; }
+        int Linhas { get;}
+        bool QuebraDeLinha { get; set; }
+        bool PossivelDesfazer { get; }
+        bool PossivelRefazer { get; }
+        double TamanhoFonte { get; set; }
+        string TextoSelecionado { get; }
+
+        // Métodos
+        void Desfazer();
+        void Refazer();
+        void SelecionarTudo();
     }
 }

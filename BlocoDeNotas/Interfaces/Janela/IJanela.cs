@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media.Media3D;
 
-namespace BlocoDeNotas.Interfaces
+namespace BlocoDeNotas.Interfaces.Janela
 {
     public interface IJanela
     {

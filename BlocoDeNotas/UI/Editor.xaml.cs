@@ -1,4 +1,5 @@
-﻿using BlocoDeNotas.Interfaces.UI;
+﻿using BlocoDeNotas.Interfaces.Eventos;
+using BlocoDeNotas.Interfaces.UI;
 using BlocoDeNotas.Interfaces.UI.Componentes;
 using System;
 using System.Collections.Generic;
@@ -25,13 +26,15 @@ namespace BlocoDeNotas.UI
         private readonly IEditorDeDocumentos _editorDeDocumentos;
         private readonly IBarraDeStatus _barraDeStatus;
         private readonly IBarraDeMenu _barraDeMenu;
+        private readonly IAtualizarTituloJanela _atualizarTituloJanela;
 
-        public Editor(IEditorDeDocumentos editorDeDocumentos,IBarraDeStatus barraDeStatus ,IBarraDeMenu barraDeMenu)
+        public Editor(IEditorDeDocumentos editorDeDocumentos,IBarraDeStatus barraDeStatus ,IBarraDeMenu barraDeMenu, IAtualizarTituloJanela atualizarTituloJanela)
         {
             InitializeComponent();
             _editorDeDocumentos = editorDeDocumentos;
             _barraDeStatus = barraDeStatus;
             _barraDeMenu = barraDeMenu;
+            _atualizarTituloJanela = atualizarTituloJanela;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

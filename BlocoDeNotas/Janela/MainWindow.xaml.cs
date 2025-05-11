@@ -1,5 +1,5 @@
 ﻿using BlocoDeNotas.Interfaces;
-using BlocoDeNotas.Interfaces.Navegacao;
+using BlocoDeNotas.Interfaces.Janela;
 using BlocoDeNotas.Interfaces.UI;
 using BlocoDeNotas.Interfaces.UI.Configuracoes;
 using BlocoDeNotas.Janela;
@@ -28,11 +28,11 @@ namespace BlocoDeNotas
         public double PosicaoXJanela { set => Left = value; }
         public double PosicaoYJanela { set => Top = value; }
 
-        public MainWindow(INavegacao navegacao, Frame frame)
+        public MainWindow(INavegacao navegacao)
         {
             InitializeComponent();
             _navegacao = navegacao;
-            Content = frame;
+            Content = _navegacao.Frame;
         }
 
         public void FecharJanela() => Close();

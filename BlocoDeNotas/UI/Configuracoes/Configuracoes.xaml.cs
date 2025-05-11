@@ -1,5 +1,5 @@
-﻿using BlocoDeNotas.Interfaces;
-using BlocoDeNotas.Interfaces.UI;
+﻿using BlocoDeNotas.Interfaces.Janela;
+using BlocoDeNotas.Interfaces.UI.Componentes;
 using BlocoDeNotas.Interfaces.UI.Configuracoes;
 using System;
 using System.Collections.Generic;
@@ -24,16 +24,24 @@ namespace BlocoDeNotas.UI.Configuracoes
     public partial class Configuracoes : Page, IConfiguracoes
     {
         private readonly IJanela _janela;
+        private readonly IEditorDeDocumentos _editorDeDocumentos;
 
-        public Configuracoes(IJanela janela)
+        public Configuracoes(IJanela janela, IEditorDeDocumentos editorDeDocumentos)
         {
             InitializeComponent();
             _janela = janela;
+            _editorDeDocumentos = editorDeDocumentos;
         }
 
         private void Voltar_Click(object sender, RoutedEventArgs e)
         {
             _janela.Voltar();
+        }
+
+        private void Fonte_Click(object sender, RoutedEventArgs e)
+        {
+            _editorDeDocumentos.Fonte = "Arial";
+            _editorDeDocumentos.TamanhoFonte = 20;
         }
     }
 }
