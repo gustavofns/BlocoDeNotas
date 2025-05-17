@@ -1,5 +1,6 @@
 ﻿using BlocoDeNotas.Interfaces;
 using BlocoDeNotas.Interfaces.Janela;
+using BlocoDeNotas.Interfaces.Menu.MenuArquivo;
 using BlocoDeNotas.Interfaces.UI;
 using BlocoDeNotas.Interfaces.UI.Componentes;
 using BlocoDeNotas.Interfaces.UI.Configuracoes;
@@ -26,19 +27,29 @@ namespace BlocoDeNotas.UI.Componentes
     /// </summary>
     public partial class BarraDeMenu : UserControl, IBarraDeMenu
     {
-        private readonly IConfiguracoes _configuracoes;
-        private readonly IJanela _janela;
+        private readonly IMenuArquivo _menuArquivo;
+        private readonly IEditorDeDocumentos _editorDeDocumentos;
 
-        public BarraDeMenu(IConfiguracoes configuracoes, IJanela janela)
+        public BarraDeMenu(IMenuArquivo menuArquivo, IEditorDeDocumentos editorDeDocumentos)
         {
             InitializeComponent();
-            _configuracoes = configuracoes;
-            _janela = janela;
+            _menuArquivo = menuArquivo;
+            _editorDeDocumentos = editorDeDocumentos;
         }
 
-        private void Avancar_Click(object sender, RoutedEventArgs e)
+        private void MenuArquivo_Click(object sender, RoutedEventArgs e)
         {
-            _janela.NavegarPara(_configuracoes);
+            if (string.IsNullOrEmpty(_editorDeDocumentos.Arquivo))
+                FecharArquivoMenu.IsEnabled = false;
+            else FecharArquivoMenu.IsEnabled = true;
         }
+
+        // Menu Arquivo
+        private void AbrirArquivoMenu_Click(object sender, RoutedEventArgs e) => _menuArquivo.AbrirArquivo();
+        private void SalvarArquivoMenu_Click(object sender, RoutedEventArgs e) => _menuArquivo.Salvar();
+        private void SalvarComoMenu_Click(object sender, RoutedEventArgs e) => _menuArquivo.SalvarComo();
+        private void FecharArquivoMenu_Click(object sender, RoutedEventArgs e) => _menuArquivo.FecharArquivo();
+        private void SairDoAplicativoMenu_Click(object sender, RoutedEventArgs e) => _menuArquivo.SairDoAplicativo();
+
     }
 }

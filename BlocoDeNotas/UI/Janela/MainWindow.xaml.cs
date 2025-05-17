@@ -2,6 +2,7 @@
 using BlocoDeNotas.Interfaces.Janela;
 using BlocoDeNotas.Interfaces.UI;
 using BlocoDeNotas.Interfaces.UI.Configuracoes;
+using BlocoDeNotas.Interfaces.UI.Janela;
 using BlocoDeNotas.Janela;
 using System.Text;
 using System.Windows;

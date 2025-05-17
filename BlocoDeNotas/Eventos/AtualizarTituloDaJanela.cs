@@ -19,6 +19,7 @@ namespace BlocoDeNotas.Eventos
             _janela = janela;
         }
 
+        // Atualiza o titulo da janela
         public void AtualizarTitulo(string arquivo, string documentoAtual, string documentoOriginal)
         {
             string novoTitulo = NovoTitulo(arquivo, documentoAtual, documentoOriginal);
@@ -27,6 +28,7 @@ namespace BlocoDeNotas.Eventos
                 _janela.TituloJanela = novoTitulo;
         }
 
+        // Gera um novo título dependo se o arquivo está salvo ou não, ou foi modificado
         private string NovoTitulo(string arquivo, string documentoAtual, string documentoOriginal)
         {
             if (string.IsNullOrEmpty(arquivo))

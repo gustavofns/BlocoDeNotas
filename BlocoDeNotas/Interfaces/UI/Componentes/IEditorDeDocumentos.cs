@@ -23,7 +23,10 @@ namespace BlocoDeNotas.Interfaces.UI.Componentes
 
         // Métodos
         void Desfazer();
+        void DefinirPosicaoDoCursorDeTexto();
         void Refazer();
         void SelecionarTudo();
+        void AtualizarTitulo();
+        void ExcluirTexto();
     }
 }

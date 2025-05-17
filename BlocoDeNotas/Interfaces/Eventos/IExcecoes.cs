@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlocoDeNotas.Interfaces.UI.Componentes
+namespace BlocoDeNotas.Interfaces.Eventos
 {
-    public interface IBarraDeMenu
+    public interface IExcecoes
     {
-        
+        void ExibirMensagemExcecao(Exception ex);
     }
 }

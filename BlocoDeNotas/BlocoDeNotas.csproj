@@ -8,6 +8,12 @@
     <UseWPF>true</UseWPF>
     <Platforms>AnyCPU;x64</Platforms>
     <SupportedOSPlatformVersion>10.0.22621.0</SupportedOSPlatformVersion>
+    <Version>0.1.0</Version>
+    <Authors>Gustavo Silva</Authors>
+    <PackageId>$(AssemblyName)</PackageId>
+    <Product>Bloco de notas</Product>
+    <Copyright>Gustavo F. N. Da Silva</Copyright>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -27,7 +33,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Interfaces\Janela\IJanela.cs" />
+    <Content Include="Icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Interfaces\UI\Janela\IJanela.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,8 +45,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\UI\Arquivo\" />
-    <Folder Include="UI\MenuContexto\" />
+    <Folder Include="Menu\MenuExibir\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
