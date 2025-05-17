@@ -8,6 +8,5 @@ namespace BlocoDeNotas.Interfaces.UI.Componentes
 {
     public interface IBarraDeMenu
     {
-        
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace BlocoDeNotas.Interfaces.UI.Janela
+namespace BlocoDeNotas.Interfaces.Janela
 {
     public interface INavegacao
     {

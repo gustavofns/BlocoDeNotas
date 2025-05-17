@@ -1,4 +1,4 @@
-﻿using BlocoDeNotas.Interfaces.UI.Janela;
+﻿using BlocoDeNotas.Interfaces.Janela;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace BlocoDeNotas.UI.Janela
+namespace BlocoDeNotas.Janela
 {
     public class Navegacao : INavegacao
     {

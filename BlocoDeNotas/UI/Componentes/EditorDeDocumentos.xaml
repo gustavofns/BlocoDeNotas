@@ -7,9 +7,7 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <Grid>
-        <TextBox x:Name="Documento" Style="{x:Null}" 
-                 Background="{DynamicResource TextOnAccentFillColorPrimaryBrush}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" 
-                 TextChanged="Documento_TextChanged">
+        <TextBox x:Name="Documento" Style="{x:Null}" TextChanged="Documento_TextChanged">
             <TextBox.AcceptsReturn>True</TextBox.AcceptsReturn>
             <TextBox.AcceptsTab>True</TextBox.AcceptsTab>
             <TextBox.BorderThickness>0</TextBox.BorderThickness>
@@ -18,49 +16,6 @@
             <TextBox.Padding>15,10,15,10</TextBox.Padding>
             <TextBox.HorizontalScrollBarVisibility>Auto</TextBox.HorizontalScrollBarVisibility>
             <TextBox.VerticalScrollBarVisibility>Auto</TextBox.VerticalScrollBarVisibility>
-            <TextBox.ContextMenu>
-                <ContextMenu>
-                    <MenuItem x:Name="RecortarMenuDeContexto" Click="RecortarMenuDeContexto_Click">
-                        <MenuItem.Header>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock FontFamily="Segoe UI Variable" Text="Recortar" FontSize="14"/>
-                            </StackPanel>
-                        </MenuItem.Header>
-                    </MenuItem>
-                    
-                    <MenuItem x:Name="CopiarMenuDeContexto" Click="CopiarMenuDeContexto_Click">
-                        <MenuItem.Header>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock FontFamily="Segoe UI Variable" Text="Copiar" FontSize="14"/>
-                            </StackPanel>
-                        </MenuItem.Header>
-                    </MenuItem>
-                    
-                    <MenuItem x:Name="ColarMenuDeContexto" Click="ColarMenuDeContexto_Click">
-                        <MenuItem.Header>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock FontFamily="Segoe UI Variable" Text="Colar" FontSize="14"/>
-                            </StackPanel>
-                        </MenuItem.Header>
-                    </MenuItem>
-
-                    <MenuItem x:Name="ExcluirMenuDeContexto" Click="ExcluirMenuDeContexto_Click">
-                        <MenuItem.Header>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock FontFamily="Segoe UI Variable" Text="Excluir" FontSize="14"/>
-                            </StackPanel>
-                        </MenuItem.Header>
-                    </MenuItem>
-           
-                    <MenuItem x:Name="SelecionarTudoMenuContexto" Click="SelecionarTudoMenuContexto_Click">
-                        <MenuItem.Header>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock FontFamily="Segoe UI Variable" Text="Selecionar tudo" FontSize="14"/>
-                            </StackPanel>
-                        </MenuItem.Header>
-                    </MenuItem>
-                </ContextMenu>
-            </TextBox.ContextMenu>
         </TextBox>
         <Separator VerticalAlignment="Top" Margin="0"/>
         <Separator VerticalAlignment="Bottom" Margin="0"/>

@@ -1,7 +1,6 @@
 ﻿using BlocoDeNotas.Interfaces.Config.Janela;
 using BlocoDeNotas.Interfaces.Janela;
 using BlocoDeNotas.Interfaces.UI.Configuracoes;
-using BlocoDeNotas.Interfaces.UI.Janela;
 using System;
 using System.Collections.Generic;
 using System.Linq;

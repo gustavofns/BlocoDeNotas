@@ -5,95 +5,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BlocoDeNotas.UI.Componentes"
              mc:Ignorable="d" 
-             d:DesignHeight="52" d:DesignWidth="800">
+             d:DesignHeight="36" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="{DynamicResource LayerOnMicaBaseAltFillColorDefaultBrush}"/>
         <Menu Grid.ColumnSpan="3">
-            <!-- Menu arquivo -->
-            <MenuItem x:Name="MenuArquivo" Click="MenuArquivo_Click">
+            <MenuItem Padding="5,7,5,6" Margin="5,0,0,0">
                 <MenuItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8B7;"  FontSize="16" Padding="5,0,5,0" VerticalAlignment="Center"/>
-                        <TextBlock FontFamily="Segoe UI Variable" Text="Arquivo" FontSize="16" Padding="5,0,5,0" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </MenuItem.Header >
-                <!-- Item abrir arquivo -->
-                <MenuItem x:Name="AbrirArquivoMenu" InputGestureText="Ctrl+O" Click="AbrirArquivoMenu_Click">
-                    <MenuItem.Header>
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8E5;" FontSize="16" FontWeight="Regular"/>
-                            <TextBlock FontFamily="Segoe UI Variable" Text="Abrir" FontSize="14" Margin="10,0,0,0"/>
-                        </StackPanel>
-                    </MenuItem.Header>
-                </MenuItem>
-                <!-- Item salvar arquivo -->
-                <MenuItem x:Name="SalvarArquivoMenu" InputGestureText="Ctrl+S" Click="SalvarArquivoMenu_Click">
-                    <MenuItem.Header>
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE74E;" FontSize="16" FontWeight="Regular"/>
-                            <TextBlock FontFamily="Segoe UI Variable" Text="Salvar" FontSize="14" Margin="10,0,0,0"/>
-                        </StackPanel>
-                    </MenuItem.Header>
-                </MenuItem>
-                <!-- Item salvar arquivo como... -->
-                <MenuItem x:Name="SalvarComoMenu" InputGestureText="Ctrl+Shift+S" Click="SalvarComoMenu_Click">
-                    <MenuItem.Header>
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE792;" FontSize="16" FontWeight="Regular"/>
-                            <TextBlock FontFamily="Segoe UI Variable" Text="Salvar como..." FontSize="14" Margin="10,0,0,0"/>
-                        </StackPanel>
-                    </MenuItem.Header>
-                </MenuItem>
-                <!-- Item fechar arquivo -->
-                <MenuItem x:Name="FecharArquivoMenu" IsEnabled="False" InputGestureText="Alt+X" Click="FecharArquivoMenu_Click">
-                    <MenuItem.Header>
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8A5;" FontSize="16" FontWeight="Regular"/>
-                            <TextBlock FontFamily="Segoe UI Variable" Text="Fechar arquivo" FontSize="14" Margin="10,0,0,0"/>
-                        </StackPanel>
-                    </MenuItem.Header>
-                </MenuItem>
-                <Separator/>
-                <!-- Item sair -->
-                <MenuItem x:Name="SairDoAplicativoMenu" InputGestureText="Alt+F4" Click="SairDoAplicativoMenu_Click">
-                    <MenuItem.Header>
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xF3B1;" FontSize="16" FontWeight="Regular"/>
-                            <TextBlock  Text="Sair do aplicativo" FontSize="14" Margin="10,0,0,0"/>
-                        </StackPanel>
-                    </MenuItem.Header>
-                </MenuItem>
-            </MenuItem>
-
-            <!-- Menu editar -->
-            <MenuItem>
-                <MenuItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xEC87;" FontSize="16" Padding="5,0,5,0" VerticalAlignment="Center"/>
-                        <TextBlock FontFamily="Segoe UI Variable" Text="Editar" FontSize="16" Padding="5,0,5,0" VerticalAlignment="Center" />
+                        <TextBlock Text="📁" FontSize="16" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                        <TextBlock Text="Arquivo" FontSize="14" Margin="5,0,5,0" VerticalAlignment="Center"/>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
 
-            <!-- Menu exibir -->
-            <MenuItem>
+            <MenuItem Padding="5,7,5,6" Margin="5,0,0,0">
                 <MenuItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE90E;" FontSize="16" Padding="5,0,5,0" VerticalAlignment="Center"/>
-                        <TextBlock FontFamily="Segoe UI Variable" Text="Exibir" FontSize="16" Padding="5,0,5,0" VerticalAlignment="Center"/>
+                        <TextBlock Text="📝" FontSize="16" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                        <TextBlock Text="Editar" FontSize="14" Margin="5,0,5,0" VerticalAlignment="Center"/>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
-            
+            <MenuItem Padding="5,7,5,6" Margin="5,0,0,0">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="👁️" FontSize="16" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                        <TextBlock Text="Exibir" FontSize="14" Margin="5,0,5,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
         </Menu>
         <Menu Grid.Column="2" HorizontalAlignment="Right">
-            <MenuItem x:Name="Configuracoes" FontSize="16"/>
+            <MenuItem x:Name="Avancar" FontSize="16" Header="Configurações" Click="Avancar_Click" Padding="5,7,5,6"/>
         </Menu>
-        <Separator Grid.ColumnSpan="3" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>
