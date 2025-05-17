@@ -19,6 +19,16 @@ using System.Windows.Navigation;
 using Windows.Devices.WiFiDirect.Services;
 using BlocoDeNotas.Interfaces.Config.Janela;
 using BlocoDeNotas.Config.Janela;
+using BlocoDeNotas.UI.Janela;
+using BlocoDeNotas.Interfaces.UI.Janela;
+using BlocoDeNotas.Interfaces.Menu.MenuArquivo.GerenciamentoDeArquivos;
+using BlocoDeNotas.Interfaces.Ferramentas;
+using BlocoDeNotas.Ferramentas;
+using BlocoDeNotas.Menu.MenuArquivo.GerenciamentoDeArquivos;
+using BlocoDeNotas.Interfaces.Menu.MenuArquivo;
+using BlocoDeNotas.Menu.MenuArquivo;
+using BlocoDeNotas.Interfaces.Menu.MenuEditar;
+using BlocoDeNotas.Menu.MenuEditar;
 
 namespace BlocoDeNotas
 {
@@ -29,31 +39,8 @@ namespace BlocoDeNotas
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            IServiceProvider serviceProvider = ConfigurarDependencias();
-            ConfigurarJanela(serviceProvider);
-        }
-
-        // Configura as dependências
-        static IServiceProvider ConfigurarDependencias()
-        {
-            var services = new ServiceCollection();
-            services.AddSingleton<INavegacao, Navegacao>();
-            services.AddSingleton<IConfiguracoesDaJanela, ConfigJanela>();
-            services.AddSingleton<IJanela, JanelaPrincipal>();
-            services.AddSingleton<IAtualizarTituloJanela, AtualizarTituloDaJanela>();
-            services.AddSingleton<IEditorDeDocumentos, EditorDeDocumentos>();
-            services.AddSingleton<IBarraDeStatus, BarraDeStatus>();
-            services.AddSingleton<IConfiguracoes, Configuracoes>();
-            services.AddSingleton<IBarraDeMenu, BarraDeMenu>();
-            services.AddSingleton<IEditor, Editor>();
-            return services.BuildServiceProvider();
-        }
-
-        static void ConfigurarJanela(IServiceProvider service)
-        {
-            var janela = service.GetRequiredService<IJanela>();
-            janela.NavegarPara(service.GetRequiredService<IEditor>());
-            janela.MostrarJanela();
+            IServiceProvider serviceProvider = Depencias.ConfigurarDependencias();
+            Depencias.ConfigurarJanela(serviceProvider);
         }
     }
 }
