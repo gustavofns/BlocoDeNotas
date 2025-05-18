@@ -33,7 +33,7 @@ namespace BlocoDeNotas.Menu.MenuArquivo
         public void AbrirArquivo() => _leituraDeArquivos.AbrirArquivo(_editorDeDocumentos);
         public void Salvar() => _gravacaoDeArquivos.Salvar(_editorDeDocumentos);
         public void SalvarComo() => _gravacaoDeArquivos.SalvarComo(_editorDeDocumentos);
-        public void FecharArquivo() => _gerenciamentoDaJanela.FecharArquivo();
-        public void SairDoAplicativo() => _gerenciamentoDaJanela.SairDoAplicativo();
+        public void FecharArquivo() => _gerenciamentoDaJanela.FecharArquivo(_editorDeDocumentos);
+        public void SairDoAplicativo() => _gerenciamentoDaJanela.SairDoAplicativo(_editorDeDocumentos);
     }
 }

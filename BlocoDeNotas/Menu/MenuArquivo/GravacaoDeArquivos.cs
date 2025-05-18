@@ -19,8 +19,7 @@ namespace BlocoDeNotas.Menu.MenuArquivo
         private readonly ICaixaDeDialogoArquivos _caixaDeDialogoArquivos;
         private readonly IExcecoes _excecoes;
 
-        public GravacaoDeArquivos(IEditorDeDocumentos editorDeDocumentos, 
-            ICaixaDeDialogoArquivos caixaDeDialogoArquivos, IExcecoes excecoes)
+        public GravacaoDeArquivos(ICaixaDeDialogoArquivos caixaDeDialogoArquivos, IExcecoes excecoes)
         {
             _arquivo = string.Empty;
             _caixaDeDialogoArquivos = caixaDeDialogoArquivos;
@@ -60,6 +59,7 @@ namespace BlocoDeNotas.Menu.MenuArquivo
                     sw.Write(editorDeDocumentos.DocumentoAtual);
                     editorDeDocumentos.DocumentoOriginal = 
                         editorDeDocumentos.DocumentoAtual;
+                    editorDeDocumentos.Arquivo = _arquivo;
                 }
             }
             catch(Exception ex)

@@ -15,15 +15,13 @@ namespace BlocoDeNotas.Menu.MenuArquivo
     public class GerenciamentoDaJanela : IGerenciamentoDaJanela
     {
         private IJanela _janela;
-        private IEditorDeDocumentos _editorDeDocumentos;
         private ICaixaDeMensagem _caixaDeMensagem;
         private IGravacaoDeArquivos _gravacaoDeArquivos;
 
-        public GerenciamentoDaJanela(IJanela janela, IEditorDeDocumentos editorDeDocumentos,
+        public GerenciamentoDaJanela(IJanela janela,
             ICaixaDeMensagem caixaDeMensagem, IGravacaoDeArquivos gravacaoDeArquivos)
         {
             _janela = janela;
-            _editorDeDocumentos = editorDeDocumentos;
             _caixaDeMensagem = caixaDeMensagem;
             _gravacaoDeArquivos = gravacaoDeArquivos;
         }
@@ -41,21 +39,21 @@ namespace BlocoDeNotas.Menu.MenuArquivo
         }
 
         // Fecha o arquivo atual
-        public void FecharArquivo()
+        public void FecharArquivo(IEditorDeDocumentos editorDeDocumentos)
         {
-            _editorDeDocumentos.Arquivo = string.Empty;
-            _editorDeDocumentos.DocumentoAtual = string.Empty;
-            _editorDeDocumentos.DocumentoOriginal = string.Empty;
+            editorDeDocumentos.Arquivo = string.Empty;
+            editorDeDocumentos.DocumentoAtual = string.Empty;
+            editorDeDocumentos.DocumentoOriginal = string.Empty;
         }
 
         // Sai do aplicativo
-        public void SairDoAplicativo()
+        public void SairDoAplicativo(IEditorDeDocumentos editorDeDocumentos)
         {
-            if (!string.IsNullOrEmpty(_editorDeDocumentos.DocumentoAtual) || !string.IsNullOrEmpty(_editorDeDocumentos.Arquivo))
+            if (!string.IsNullOrEmpty(editorDeDocumentos.DocumentoAtual) || !string.IsNullOrEmpty(editorDeDocumentos.Arquivo))
             {
-                if (_editorDeDocumentos.DocumentoAtual != _editorDeDocumentos.DocumentoOriginal)
+                if (editorDeDocumentos.DocumentoAtual != editorDeDocumentos.DocumentoOriginal)
                     if (_caixaDeMensagem.MostrarPergunta("Deseja salvar o documento antes de sair?"))
-                        _gravacaoDeArquivos.Salvar(_editorDeDocumentos);
+                        _gravacaoDeArquivos.Salvar(editorDeDocumentos);
             }
 
             if (!_caixaDeMensagem.MostrarPergunta("Tem certeza que deseja sair?"))

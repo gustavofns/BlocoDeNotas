@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlocoDeNotas.Interfaces.UI.Componentes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace BlocoDeNotas.Interfaces.Menu.MenuArquivo
     {
         void AbrirNovaJanela();
         void FecharJanela();
-        void FecharArquivo();
-        void SairDoAplicativo();
+        void FecharArquivo(IEditorDeDocumentos editorDeDocumentos);
+        void SairDoAplicativo(IEditorDeDocumentos editorDeDocumentos);
     }
 }

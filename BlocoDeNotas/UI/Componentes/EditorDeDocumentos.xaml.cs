@@ -29,6 +29,9 @@ namespace BlocoDeNotas.UI.Componentes
         private readonly IAreaDeTransferencia _areaDeTransferencia;
         private readonly IAcoesDoDocumento _acoesDoDocumento;
         private readonly IAtualizarTituloJanela _atualizarTituloJanela;
+        private readonly ILeituraDeArquivos _leituraDeArquivos;
+        private readonly IGravacaoDeArquivos _gravacaoDeArquivos;
+        private readonly IGerenciamentoDaJanela _gerenciamentoDaJanela;
         public string Arquivo { get; set; }
         public string DocumentoOriginal { get; set; }
 
@@ -84,7 +87,8 @@ namespace BlocoDeNotas.UI.Componentes
 
         // Construtor da classe
         public EditorDeDocumentos(IAreaDeTransferencia areaDeTransferencia, IAcoesDoDocumento acoesDoDocumento,
-            IAtualizarTituloJanela atualizarTituloJanela)
+            IAtualizarTituloJanela atualizarTituloJanela, ILeituraDeArquivos leituraDeArquivos, 
+            IGravacaoDeArquivos gravacaoDeArquivos, IGerenciamentoDaJanela gerenciamentoDaJanela)
         {
             InitializeComponent();
             Arquivo = string.Empty;
@@ -92,10 +96,19 @@ namespace BlocoDeNotas.UI.Componentes
             _areaDeTransferencia = areaDeTransferencia;
             _acoesDoDocumento = acoesDoDocumento;
             _atualizarTituloJanela = atualizarTituloJanela;
+            _leituraDeArquivos = leituraDeArquivos;
+            _gravacaoDeArquivos = gravacaoDeArquivos;
+            _gerenciamentoDaJanela = gerenciamentoDaJanela;
         }
 
         // Evento de carregamento do frame
-        private void UserControl_Loaded(object sender, RoutedEventArgs e) => AtualizarTitulo();
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        { 
+            AtualizarTitulo(); 
+            DefinirPosicaoDoCursorDeTexto();
+            Focus();
+        }
+
 
         // Métodos para manipulação do documento
         public void AtualizarTitulo() => _atualizarTituloJanela.AtualizarTitulo(Arquivo, DocumentoAtual, DocumentoOriginal);
@@ -115,15 +128,74 @@ namespace BlocoDeNotas.UI.Componentes
         private void ExcluirMenuDeContexto_Click(object sender, RoutedEventArgs e) => _acoesDoDocumento.Excluir(this);
         private void SelecionarTudoMenuContexto_Click(object sender, RoutedEventArgs e) => _acoesDoDocumento.SelecionarTudo(this);
 
+
+        // Atalhos do teclado
         private void UserControl_KeyUp(object sender, KeyEventArgs e)
         {
+            if(Keyboard.Modifiers == ModifierKeys.Control) 
+            {
+                switch(e.Key)
+                {
+                    case Key.A:
+                        _acoesDoDocumento.SelecionarTudo(this);
+                        e.Handled = true;
+                        break;
+                    case Key.C:
+                        _areaDeTransferencia.Copiar(this);
+                        e.Handled = true;
+                        break;
+                    case Key.O:
+                        _leituraDeArquivos.AbrirArquivo(this);
+                        e.Handled = true;
+                        break;
+                    case Key.S:
+                        if (e.Key == Key.S)
+                        { _gravacaoDeArquivos.Salvar(this); e.Handled = true; }
+                        break;
+                    case Key.V:
+                        _areaDeTransferencia.Colar(this);
+                        e.Handled = true;
+                        break;
+                    case Key.X:
+                        _areaDeTransferencia.Recortar(this);
+                        e.Handled = true;
+                        break;
+                    case Key.Z:
+                        _acoesDoDocumento.Desfazer(this);
+                        e.Handled = true;
+                        break;
+                    case Key.Y:
+                        _acoesDoDocumento.Refazer(this);
+                        e.Handled = true;
+                        break;
+                }
+            }
+
             if (Keyboard.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift) && e.Key == Key.S)
             {
                 if (e.Key == Key.S)
+                { _gravacaoDeArquivos.SalvarComo(this); e.Handled = true; }
+            }
+
+            if(Keyboard.Modifiers == ModifierKeys.Alt)
+            {
+                switch(e.Key)
                 {
-                    
-                    e.Handled = true;
+                    case Key.F4:
+                        _gerenciamentoDaJanela.SairDoAplicativo(this);
+                        e.Handled = true;
+                        break;
+                    case Key.X:
+                        _gerenciamentoDaJanela.FecharArquivo(this);
+                        e.Handled = true;
+                        break;
                 }
+            }
+
+            if(e.Key == Key.Delete)
+            {
+                _acoesDoDocumento.Excluir(this);
+                e.Handled = true;
             }
         }
     }

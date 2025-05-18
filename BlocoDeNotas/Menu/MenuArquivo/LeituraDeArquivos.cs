@@ -18,8 +18,7 @@ namespace BlocoDeNotas.Menu.MenuArquivo
         private readonly ICaixaDeDialogoArquivos _caixaDeDialogoArquivos;
         private readonly IExcecoes _excecoes;
 
-        public LeituraDeArquivos(IEditorDeDocumentos editorDeDocumentos ,
-            ICaixaDeDialogoArquivos caixaDeDialogoArquivos, IExcecoes excecoes)
+        public LeituraDeArquivos(ICaixaDeDialogoArquivos caixaDeDialogoArquivos, IExcecoes excecoes)
         {
             _arquivo = string.Empty;
             _caixaDeDialogoArquivos = caixaDeDialogoArquivos;
