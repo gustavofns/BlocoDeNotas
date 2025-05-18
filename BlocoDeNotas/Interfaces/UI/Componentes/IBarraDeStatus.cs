@@ -8,6 +8,6 @@ namespace BlocoDeNotas.Interfaces.UI.Componentes
 {
     public interface IBarraDeStatus
     {
-
+        
     }
 }

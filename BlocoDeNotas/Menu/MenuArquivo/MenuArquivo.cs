@@ -1,6 +1,5 @@
 ﻿using BlocoDeNotas.Interfaces.Ferramentas;
 using BlocoDeNotas.Interfaces.Menu.MenuArquivo;
-using BlocoDeNotas.Interfaces.Menu.MenuArquivo.GerenciamentoDeArquivos;
 using BlocoDeNotas.Interfaces.UI.Componentes;
 using BlocoDeNotas.UI.Componentes;
 using System;
@@ -16,47 +15,23 @@ namespace BlocoDeNotas.Menu.MenuArquivo
     {
         private readonly ILeituraDeArquivos _leituraDeArquivos;
         private readonly IGravacaoDeArquivos _gravacaoDeArquivos;
-        private readonly ICaixaDeMensagem _caixaDeMensagem;
-        private readonly IEditorDeDocumentos _editorDeDocumentos;
+        private readonly IGerenciamentoDaJanela _gerenciamentoDaJanela;
 
         public MenuArquivo(ILeituraDeArquivos leituraDeArquivos, IGravacaoDeArquivos gravacaoDeArquivos, 
-            ICaixaDeMensagem caixaDeMensagem, IEditorDeDocumentos editorDeDocumentos) 
+            IGerenciamentoDaJanela gerenciamentoDaJanela) 
         {
             _leituraDeArquivos = leituraDeArquivos;
             _gravacaoDeArquivos = gravacaoDeArquivos;
-            _caixaDeMensagem = caixaDeMensagem;
-            _editorDeDocumentos = editorDeDocumentos;
+            _gerenciamentoDaJanela = gerenciamentoDaJanela;
         }
 
 
-        public void AbrirNovaJanela() { throw new NotImplementedException(); }
-        public void FecharJanela() { throw new NotImplementedException(); }
+        public void AbrirNovaJanela() => _gerenciamentoDaJanela.AbrirNovaJanela();
+        public void FecharJanela() => _gerenciamentoDaJanela.FecharJanela();
         public void AbrirArquivo() => _leituraDeArquivos.AbrirArquivo();
         public void Salvar() => _gravacaoDeArquivos.Salvar();
         public void SalvarComo() => _gravacaoDeArquivos.SalvarComo();
-
-        // Fecha o arquivo atual
-        public void FecharArquivo()
-        {
-            _editorDeDocumentos.Arquivo = string.Empty;
-            _editorDeDocumentos.DocumentoAtual = string.Empty;
-            _editorDeDocumentos.DocumentoOriginal = string.Empty;
-        }
-
-        // Sai do aplicativo
-        public void SairDoAplicativo()
-        {
-            if (!_caixaDeMensagem.MostrarPergunta("Tem certeza que deseja sair?"))
-                return;
-
-            if (!string.IsNullOrEmpty(_editorDeDocumentos.DocumentoAtual) || !string.IsNullOrEmpty(_editorDeDocumentos.Arquivo))
-            {
-                if (_editorDeDocumentos.DocumentoAtual != _editorDeDocumentos.DocumentoOriginal)
-                    if (_caixaDeMensagem.MostrarPergunta("Deseja salvar o documento antes de sair?"))
-                        Salvar();
-            }
-
-            Application.Current.Shutdown();
-        }
+        public void FecharArquivo() => _gerenciamentoDaJanela.FecharArquivo();
+        public void SairDoAplicativo() => _gerenciamentoDaJanela.SairDoAplicativo();
     }
 }

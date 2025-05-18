@@ -1,6 +1,6 @@
 ﻿using BlocoDeNotas.Interfaces.Eventos;
 using BlocoDeNotas.Interfaces.Ferramentas;
-using BlocoDeNotas.Interfaces.Menu.MenuArquivo.GerenciamentoDeArquivos;
+using BlocoDeNotas.Interfaces.Menu.MenuArquivo;
 using BlocoDeNotas.Interfaces.UI.Componentes;
 using Microsoft.Win32;
 using System;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlocoDeNotas.Menu.MenuArquivo.GerenciamentoDeArquivos
+namespace BlocoDeNotas.Menu.MenuArquivo
 {
     public class LeituraDeArquivos : ILeituraDeArquivos
     {
@@ -51,6 +51,7 @@ namespace BlocoDeNotas.Menu.MenuArquivo.GerenciamentoDeArquivos
                     _editorDeDocumentos.DocumentoOriginal = documento;
                     _editorDeDocumentos.DocumentoAtual = documento;
                     _editorDeDocumentos.Arquivo = _arquivo;
+                    _editorDeDocumentos.DefinirPosicaoDoCursorDeTexto();
                 }
             }
             catch (Exception ex)

@@ -1,5 +1,6 @@
 ﻿using BlocoDeNotas.Interfaces.UI;
 using BlocoDeNotas.Interfaces.UI.Configuracoes;
+using BlocoDeNotas.Janela;
 using System;
 using System.Collections.Generic;
 using System.Linq;

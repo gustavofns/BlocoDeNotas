@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace BlocoDeNotas.Interfaces.Menu.MenuArquivo
 {
-    public interface IMenuArquivo
+    public interface IGerenciamentoDaJanela
     {
         void AbrirNovaJanela();
         void FecharJanela();
-        void AbrirArquivo();
-        void Salvar();
-        void SalvarComo();
         void FecharArquivo();
         void SairDoAplicativo();
     }

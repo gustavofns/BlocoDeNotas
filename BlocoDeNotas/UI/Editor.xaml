@@ -12,7 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="52"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="32"/>
+            <RowDefinition Height="32" x:Name="BarraDeStatusRow"/>
         </Grid.RowDefinitions>
         <Frame Grid.Row="0" x:Name="BarraDeMenuFrame" NavigationUIVisibility="Hidden"/>
         <Frame Grid.Row="1" x:Name="EditorDeDocumentosFrame" NavigationUIVisibility="Hidden"/>

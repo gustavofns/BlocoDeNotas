@@ -94,5 +94,29 @@ namespace BlocoDeNotas.Properties {
                 this["JanelaMaximada"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool QuebraDeLinha {
+            get {
+                return ((bool)(this["QuebraDeLinha"]));
+            }
+            set {
+                this["QuebraDeLinha"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool BarraDeStatus {
+            get {
+                return ((bool)(this["BarraDeStatus"]));
+            }
+            set {
+                this["BarraDeStatus"] = value;
+            }
+        }
     }
 }

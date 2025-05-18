@@ -22,8 +22,9 @@
                         <TextBlock FontFamily="Segoe UI Variable" Text="Arquivo" FontSize="16" Padding="5,0,5,0" VerticalAlignment="Center"/>
                     </StackPanel>
                 </MenuItem.Header >
+                
                 <!-- Item abrir arquivo -->
-                <MenuItem x:Name="AbrirArquivoMenu" InputGestureText="Ctrl+O" Click="AbrirArquivoMenu_Click">
+                <MenuItem x:Name="AbrirArquivoMenu" Click="AbrirArquivoMenu_Click">
                     <MenuItem.Header>
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
                             <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8E5;" FontSize="16" FontWeight="Regular"/>
@@ -31,8 +32,9 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
+                
                 <!-- Item salvar arquivo -->
-                <MenuItem x:Name="SalvarArquivoMenu" InputGestureText="Ctrl+S" Click="SalvarArquivoMenu_Click">
+                <MenuItem x:Name="SalvarArquivoMenu" Click="SalvarArquivoMenu_Click">
                     <MenuItem.Header>
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
                             <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE74E;" FontSize="16" FontWeight="Regular"/>
@@ -40,8 +42,9 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
+                
                 <!-- Item salvar arquivo como... -->
-                <MenuItem x:Name="SalvarComoMenu" InputGestureText="Ctrl+Shift+S" Click="SalvarComoMenu_Click">
+                <MenuItem x:Name="SalvarComoMenu" Click="SalvarComoMenu_Click">
                     <MenuItem.Header>
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
                             <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE792;" FontSize="16" FontWeight="Regular"/>
@@ -49,8 +52,9 @@
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
+                
                 <!-- Item fechar arquivo -->
-                <MenuItem x:Name="FecharArquivoMenu" IsEnabled="False" InputGestureText="Alt+X" Click="FecharArquivoMenu_Click">
+                <MenuItem x:Name="FecharArquivoMenu" IsEnabled="False" Click="FecharArquivoMenu_Click">
                     <MenuItem.Header>
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
                             <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8A5;" FontSize="16" FontWeight="Regular"/>
@@ -59,29 +63,142 @@
                     </MenuItem.Header>
                 </MenuItem>
                 <Separator/>
+                
                 <!-- Item sair -->
-                <MenuItem x:Name="SairDoAplicativoMenu" InputGestureText="Alt+F4" Click="SairDoAplicativoMenu_Click">
+                <MenuItem x:Name="SairDoAplicativoMenu" Click="SairDoAplicativoMenu_Click">
                     <MenuItem.Header>
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
                             <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xF3B1;" FontSize="16" FontWeight="Regular"/>
-                            <TextBlock  Text="Sair do aplicativo" FontSize="14" Margin="10,0,0,0"/>
+                            <TextBlock  FontFamily="Segoe UI Variable" Text="Sair do aplicativo" FontSize="14" Margin="10,0,0,0"/>
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
             </MenuItem>
 
             <!-- Menu editar -->
-            <MenuItem>
+            <MenuItem x:Name="MenuEditar">
                 <MenuItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xEC87;" FontSize="16" Padding="5,0,5,0" VerticalAlignment="Center"/>
                         <TextBlock FontFamily="Segoe UI Variable" Text="Editar" FontSize="16" Padding="5,0,5,0" VerticalAlignment="Center" />
                     </StackPanel>
                 </MenuItem.Header>
-            </MenuItem>
 
+                <!-- Item desfazer -->
+                <MenuItem x:Name="DesfazerMenu" Click="DesfazerMenu_Click">
+                    <MenuItem.Header>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE7A7;" FontSize="16" FontWeight="Regular"/>
+                            <TextBlock FontFamily="Segoe UI Variable" Text="Desfazer" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                
+                <!-- Item refazer -->
+                <MenuItem x:Name="RefazerMenu" Click="RefazerMenu_Click">
+                    <MenuItem.Header>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE7A6;"  FontSize="16" FontWeight="Regular"/>
+                            <TextBlock FontFamily="Segoe UI Variable" Text="Refazer" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <Separator/>
+                
+                <!-- Item recortar -->
+                <MenuItem x:Name="RecortarMenu" Click="RecortarMenu_Click">
+                    <MenuItem.Header>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8C6;" FontSize="16" FontWeight="Regular"/>
+                            <TextBlock FontFamily="Segoe UI Variable" Text="Recortar" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                
+                <!-- Item copiar -->
+                <MenuItem x:Name="CopiarMenu" Click="CopiarMenu_Click">
+                    <MenuItem.Header>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8C8;" FontSize="16" FontWeight="Regular"/>
+                            <TextBlock FontFamily="Segoe UI Variable" Text="Copiar" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                
+                <!-- Item colar -->
+                <MenuItem x:Name="ColarMenu" Click="ColarMenu_Click">
+                    <MenuItem.Header>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE77F;" FontSize="16" FontWeight="Regular"/>
+                            <TextBlock FontFamily="Segoe UI Variable" Text="Colar" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                
+                <!-- Item excluir -->
+                <MenuItem x:Name="ExcluirMenu" Click="ExcluirMenu_Click">
+                    <MenuItem.Header>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}"  Text="&#xE750;" FontSize="16" FontWeight="Regular"/>
+                            <TextBlock FontFamily="Segoe UI Variable" Text="Excluir" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <Separator/>
+                
+                <!-- Item data e hora -->
+                <MenuItem>
+                    <MenuItem.Header>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xEC92;" FontSize="16" FontWeight="Regular"/>
+                            <TextBlock FontFamily="Segoe UI Variable" Text="Data e hora" FontSize="14" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                    
+                    <!-- Item inserir hora -->
+                    <MenuItem x:Name="InserirHoraAtualMenu" Click="InserirHoraAtualMenu_Click">
+                        <MenuItem.Header>
+                            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                                <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE823;" FontSize="16" FontWeight="Regular"/>
+                                <TextBlock FontFamily="Segoe UI Variable" Text="Inserir hora atual" FontSize="14" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    
+                    <!-- Item inserir data -->
+                    <MenuItem x:Name="InserirDataAtual" Click="InserirDataAtual_Click">
+                        <MenuItem.Header>
+                            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                                <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE787;" FontSize="16" FontWeight="Regular"/>
+                                <TextBlock FontFamily="Segoe UI Variable" Text="Inserir data atual" FontSize="14" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    
+                    <!-- Item inserir data e hora -->
+                    <MenuItem x:Name="InserirDataeHoraAtual" Click="InserirDataeHoraAtual_Click">
+                        <MenuItem.Header>
+                            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                                <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xEC92;" FontSize="16" FontWeight="Regular"/>
+                                <TextBlock FontFamily="Segoe UI Variable" Text="Inserir data e hora atual" FontSize="14" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </MenuItem>
+                
+                <!-- Item selecionar tudo -->
+                <MenuItem x:Name="SelecionarTudo" Click="SelecionarTudo_Click">
+                    <MenuItem.Header>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8B3;" FontSize="16" FontWeight="Regular"/>
+                            <TextBlock FontFamily="Segoe UI Variable" Text="Selecionar tudo" FontSize="14" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+            </MenuItem>
+            
             <!-- Menu exibir -->
-            <MenuItem>
+            <MenuItem Visibility="Collapsed">
                 <MenuItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE90E;" FontSize="16" Padding="5,0,5,0" VerticalAlignment="Center"/>

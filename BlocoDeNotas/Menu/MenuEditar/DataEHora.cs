@@ -1,5 +1,6 @@
 ﻿using BlocoDeNotas.Interfaces.Menu.MenuEditar;
 using BlocoDeNotas.Interfaces.UI.Componentes;
+using BlocoDeNotas.UI.Componentes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace BlocoDeNotas.Menu.MenuEditar
         {
             _editorDeDocumentos.DocumentoAtual 
                 += DateTime.Now.ToString("dd/MM/yyyy");
+            PosicaoCursor();
         }
 
         // Insere a hora atual
@@ -29,6 +31,7 @@ namespace BlocoDeNotas.Menu.MenuEditar
         {
             _editorDeDocumentos.DocumentoAtual
                 += DateTime.Now.ToString("HH:mm:ss");
+            PosicaoCursor();
         }
 
         // Insere a data e hora atual
@@ -37,6 +40,12 @@ namespace BlocoDeNotas.Menu.MenuEditar
             InserirHora();
             _editorDeDocumentos.DocumentoAtual += " ";
             InserirData();
+        }
+
+        // Define a posição do cursor no documento
+        private void PosicaoCursor()
+        {
+            _editorDeDocumentos.DefinirPosicaoDoCursorDeTexto();
         }
     }
 }

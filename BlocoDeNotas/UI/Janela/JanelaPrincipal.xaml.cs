@@ -74,7 +74,7 @@ namespace BlocoDeNotas.Janela
 
         private void Window_LocationChanged(object sender, EventArgs e)
         {
-            if(WindowState == WindowState.Normal)
+            if (WindowState == WindowState.Normal)
                 _configuracoesDaJanela.SalvarPosicaoJanela(Left, Top);
         }
 

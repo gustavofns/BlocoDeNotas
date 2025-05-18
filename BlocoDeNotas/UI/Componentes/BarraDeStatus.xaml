@@ -5,12 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BlocoDeNotas.UI.Componentes"
              mc:Ignorable="d" 
-             d:DesignHeight="32" d:DesignWidth="800">
+             d:DesignHeight="32" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <Grid>
-        <StatusBar>
-            <StatusBarItem>
-                <Label Content="" x:Name="linhasColunas" LayoutUpdated="linhasColunas_LayoutUpdated"/>
-            </StatusBarItem>
-        </StatusBar>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" x:Name="linhasColunas" Margin="15,0,0,0"
+               VerticalAlignment="Center" HorizontalAlignment="Left"
+               FontFamily="Segoe UI Variable" FontSize="14" Content=""
+               Foreground="{DynamicResource TextFillColorPrimaryBrush}" 
+               LayoutUpdated="linhasColunas_LayoutUpdated"/>
     </Grid>
 </UserControl>

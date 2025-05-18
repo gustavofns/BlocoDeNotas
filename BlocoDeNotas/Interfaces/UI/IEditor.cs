@@ -8,6 +8,6 @@ namespace BlocoDeNotas.Interfaces.UI
 {
     public interface IEditor
     {
-
+        public void ExibirBarraDeStatus(bool config);
     }
 }

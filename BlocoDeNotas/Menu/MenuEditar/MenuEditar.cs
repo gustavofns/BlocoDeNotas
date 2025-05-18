@@ -13,12 +13,15 @@ namespace BlocoDeNotas.Menu.MenuEditar
         private readonly IAcoesDoDocumento _acoesDoDocumento;
         private readonly IAreaDeTransferencia _areaDeTransferencia;
         private readonly IEditorDeDocumentos _editorDeDocumentos;
+        private readonly IDataEHora _dataEHora;
 
-        public MenuEditar(IAcoesDoDocumento acoesDoDocumento, IAreaDeTransferencia areaDeTransferencia, IEditorDeDocumentos editorDeDocumentos)
+        public MenuEditar(IAcoesDoDocumento acoesDoDocumento, IAreaDeTransferencia areaDeTransferencia, 
+            IEditorDeDocumentos editorDeDocumentos, IDataEHora dataEHora)
         {
             _acoesDoDocumento = acoesDoDocumento;
             _areaDeTransferencia = areaDeTransferencia;
             _editorDeDocumentos = editorDeDocumentos;
+            _dataEHora = dataEHora;
         }
 
         public void Desfazer() => _acoesDoDocumento.Desfazer(_editorDeDocumentos);
@@ -28,8 +31,8 @@ namespace BlocoDeNotas.Menu.MenuEditar
         public void Copiar() => _areaDeTransferencia.Copiar(_editorDeDocumentos);
         public void Recortar () => _areaDeTransferencia.Recortar(_editorDeDocumentos);
         public void SelecionarTudo() => _acoesDoDocumento.SelecionarTudo(_editorDeDocumentos);
-        public void HoraAtual() { throw new NotImplementedException(); }
-        public void DataAtual() { throw new NotImplementedException(); }
-        public void DataEHoraAtual() { throw new NotImplementedException(); }
+        public void HoraAtual() => _dataEHora.InserirHora();
+        public void DataAtual() => _dataEHora.InserirData();
+        public void DataEHoraAtual() => _dataEHora.InserirDataHora();
     }
 }

@@ -28,7 +28,8 @@ namespace BlocoDeNotas.UI
         private readonly IBarraDeMenu _barraDeMenu;
         private readonly IAtualizarTituloJanela _atualizarTituloJanela;
 
-        public Editor(IEditorDeDocumentos editorDeDocumentos,IBarraDeStatus barraDeStatus ,IBarraDeMenu barraDeMenu, IAtualizarTituloJanela atualizarTituloJanela)
+        public Editor(IEditorDeDocumentos editorDeDocumentos,IBarraDeStatus barraDeStatus,
+            IBarraDeMenu barraDeMenu, IAtualizarTituloJanela atualizarTituloJanela)
         {
             InitializeComponent();
             _editorDeDocumentos = editorDeDocumentos;
@@ -39,9 +40,17 @@ namespace BlocoDeNotas.UI
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            ExibirBarraDeStatus(Properties.Settings.Default.BarraDeStatus);
             EditorDeDocumentosFrame.Content = _editorDeDocumentos;  
             BarraDeStatusFrame.Content = _barraDeStatus;
             BarraDeMenuFrame.Content = _barraDeMenu;
+        }
+
+        public void ExibirBarraDeStatus(bool config)
+        {
+            if(config)
+                BarraDeStatusRow.Height = new GridLength(32);
+            else BarraDeStatusRow.Height = new GridLength(0);
         }
     }
 }

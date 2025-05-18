@@ -113,6 +113,5 @@ namespace BlocoDeNotas.UI.Componentes
         private void ColarMenuDeContexto_Click(object sender, RoutedEventArgs e) => _areaDeTransferencia.Colar(this);
         private void ExcluirMenuDeContexto_Click(object sender, RoutedEventArgs e) => _acoesDoDocumento.Excluir(this);
         private void SelecionarTudoMenuContexto_Click(object sender, RoutedEventArgs e) => _acoesDoDocumento.SelecionarTudo(this);
-
     }
 }

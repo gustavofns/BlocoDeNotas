@@ -1,6 +1,6 @@
 ﻿using BlocoDeNotas.Interfaces.Eventos;
 using BlocoDeNotas.Interfaces.Ferramentas;
-using BlocoDeNotas.Interfaces.Menu.MenuArquivo.GerenciamentoDeArquivos;
+using BlocoDeNotas.Interfaces.Menu.MenuArquivo;
 using BlocoDeNotas.Interfaces.UI;
 using BlocoDeNotas.Interfaces.UI.Componentes;
 using Microsoft.Win32;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlocoDeNotas.Menu.MenuArquivo.GerenciamentoDeArquivos
+namespace BlocoDeNotas.Menu.MenuArquivo
 {
     public class GravacaoDeArquivos : IGravacaoDeArquivos
     {
@@ -29,6 +29,7 @@ namespace BlocoDeNotas.Menu.MenuArquivo.GerenciamentoDeArquivos
             _excecoes = excecoes;
         }
 
+        // Verifica se o arquivo possui um caminho, caso não possua pede selecionar um local para salvar e depois salva o arquivo
         public void Salvar()
         {
             _arquivo = _editorDeDocumentos.Arquivo;
@@ -37,6 +38,7 @@ namespace BlocoDeNotas.Menu.MenuArquivo.GerenciamentoDeArquivos
             else GravarArquivo();
         }
 
+        // Seleciona um local para salvar o arquivo e depois salva o arquivo
         public void SalvarComo()
         {
             _arquivo = _caixaDeDialogoArquivos.MostrarCaixaDeDialogo(
@@ -49,16 +51,17 @@ namespace BlocoDeNotas.Menu.MenuArquivo.GerenciamentoDeArquivos
             else GravarArquivo();
         }
 
+        // Grava o arquivo no armazenamento
         private void GravarArquivo()
         {
             try
             {
                 using(var sw = new StreamWriter(_arquivo))
                 {
-                    string documento = _editorDeDocumentos.DocumentoAtual;
-                    sw.WriteLine(documento);
-                    _editorDeDocumentos.DocumentoOriginal = documento;
-                    _editorDeDocumentos.Arquivo = _arquivo;
+                    sw.AutoFlush = true;
+                    sw.Write(_editorDeDocumentos.DocumentoAtual);
+                    _editorDeDocumentos.DocumentoOriginal = 
+                        _editorDeDocumentos.DocumentoAtual;
                 }
             }
             catch(Exception ex)

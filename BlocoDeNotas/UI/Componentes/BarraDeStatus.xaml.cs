@@ -29,21 +29,15 @@ namespace BlocoDeNotas.UI.Componentes
             _editorDeDocumentos = editorDeDocumentos;
         }
 
-        private void linhasColunas_LayoutUpdated(object sender, EventArgs e)
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-           linhasColunas.Content = $"Linhas: {_editorDeDocumentos.Linhas} | Texto Selecionado: {TextoSelecionado()}";
+            
         }
 
-        private string TextoSelecionado()
+
+        private void linhasColunas_LayoutUpdated(object sender, EventArgs e)
         {
-            if (_editorDeDocumentos.TextoSelecionado != string.Empty)
-            {
-                return "Sim";
-            }
-            else
-            {
-                return "Não";
-            }
+           linhasColunas.Content = $"Linha(s): {_editorDeDocumentos.Linhas} ";
         }
     }
 }

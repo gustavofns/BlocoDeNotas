@@ -14,11 +14,8 @@ namespace BlocoDeNotas.Menu.MenuEditar
         // Cola o texto da área de transferência no editor
         public void Colar(IEditorDeDocumentos editorDeDocumentos)
         {
-            if(Clipboard.ContainsText())
-            {
-                editorDeDocumentos.DocumentoAtual += Clipboard.GetText();
-                editorDeDocumentos.DefinirPosicaoDoCursorDeTexto();
-            }
+            ColarTexto(editorDeDocumentos);
+            editorDeDocumentos.DefinirPosicaoDoCursorDeTexto();
         }
 
         // Copia o texto selecionado para a área de transferência
@@ -32,15 +29,50 @@ namespace BlocoDeNotas.Menu.MenuEditar
         {
             CopiarTexto(editorDeDocumentos.TextoSelecionado);
             editorDeDocumentos.ExcluirTexto();
+            editorDeDocumentos.DefinirPosicaoDoCursorDeTexto();
         }
 
         // Método para copiar o texto para a área de transferência
         private void CopiarTexto(string texto)
         {
-            if (!string.IsNullOrEmpty(texto))
+            try
             {
-                Clipboard.Clear();
-                Clipboard.SetText(texto);
+                if (texto.Length > 0)
+                {
+                    Clipboard.Clear();
+                    Clipboard.SetDataObject(texto);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Não foi possível copiar o texto: \n{ex.Message}",
+                    "Bloco de notas",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
+            }
+        }
+
+        // Método para colar o texto da área de transferência
+        private void ColarTexto(IEditorDeDocumentos editorDeDocumentos)
+        {
+            if (Clipboard.ContainsText())
+            {
+                try
+                {
+                    editorDeDocumentos.DocumentoAtual += Clipboard.GetText();
+                    editorDeDocumentos.DefinirPosicaoDoCursorDeTexto();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        $"Não foi possível copiar o texto: \n{ex.Message}",
+                        "Bloco de notas",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error
+                    );
+                }
             }
         }
     }
