@@ -16,7 +16,6 @@ namespace BlocoDeNotas.Menu.MenuArquivo
     public class GravacaoDeArquivos : IGravacaoDeArquivos
     {
         private string _arquivo;
-        private readonly IEditorDeDocumentos _editorDeDocumentos;
         private readonly ICaixaDeDialogoArquivos _caixaDeDialogoArquivos;
         private readonly IExcecoes _excecoes;
 
@@ -24,22 +23,21 @@ namespace BlocoDeNotas.Menu.MenuArquivo
             ICaixaDeDialogoArquivos caixaDeDialogoArquivos, IExcecoes excecoes)
         {
             _arquivo = string.Empty;
-            _editorDeDocumentos = editorDeDocumentos;
             _caixaDeDialogoArquivos = caixaDeDialogoArquivos;
             _excecoes = excecoes;
         }
 
         // Verifica se o arquivo possui um caminho, caso não possua pede selecionar um local para salvar e depois salva o arquivo
-        public void Salvar()
+        public void Salvar(IEditorDeDocumentos editorDeDocumentos)
         {
-            _arquivo = _editorDeDocumentos.Arquivo;
+            _arquivo = editorDeDocumentos.Arquivo;
             if (string.IsNullOrEmpty(_arquivo))
-                SalvarComo();
-            else GravarArquivo();
+                SalvarComo(editorDeDocumentos);
+            else GravarArquivo(editorDeDocumentos);
         }
 
         // Seleciona um local para salvar o arquivo e depois salva o arquivo
-        public void SalvarComo()
+        public void SalvarComo(IEditorDeDocumentos editorDeDocumentos)
         {
             _arquivo = _caixaDeDialogoArquivos.MostrarCaixaDeDialogo(
                 new SaveFileDialog(),
@@ -48,20 +46,20 @@ namespace BlocoDeNotas.Menu.MenuArquivo
 
             if (string.IsNullOrEmpty(_arquivo))
                 return;
-            else GravarArquivo();
+            else GravarArquivo(editorDeDocumentos);
         }
 
         // Grava o arquivo no armazenamento
-        private void GravarArquivo()
+        private void GravarArquivo(IEditorDeDocumentos editorDeDocumentos)
         {
             try
             {
                 using(var sw = new StreamWriter(_arquivo))
                 {
                     sw.AutoFlush = true;
-                    sw.Write(_editorDeDocumentos.DocumentoAtual);
-                    _editorDeDocumentos.DocumentoOriginal = 
-                        _editorDeDocumentos.DocumentoAtual;
+                    sw.Write(editorDeDocumentos.DocumentoAtual);
+                    editorDeDocumentos.DocumentoOriginal = 
+                        editorDeDocumentos.DocumentoAtual;
                 }
             }
             catch(Exception ex)
@@ -71,7 +69,7 @@ namespace BlocoDeNotas.Menu.MenuArquivo
             finally
             {
                 _arquivo = string.Empty;
-                _editorDeDocumentos.AtualizarTitulo();
+                editorDeDocumentos.AtualizarTitulo();
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using BlocoDeNotas.Interfaces.Eventos;
+using BlocoDeNotas.Interfaces.Menu.MenuArquivo;
 using BlocoDeNotas.Interfaces.Menu.MenuEditar;
 using BlocoDeNotas.Interfaces.UI;
 using BlocoDeNotas.Interfaces.UI.Componentes;
@@ -113,5 +114,17 @@ namespace BlocoDeNotas.UI.Componentes
         private void ColarMenuDeContexto_Click(object sender, RoutedEventArgs e) => _areaDeTransferencia.Colar(this);
         private void ExcluirMenuDeContexto_Click(object sender, RoutedEventArgs e) => _acoesDoDocumento.Excluir(this);
         private void SelecionarTudoMenuContexto_Click(object sender, RoutedEventArgs e) => _acoesDoDocumento.SelecionarTudo(this);
+
+        private void UserControl_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Keyboard.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift) && e.Key == Key.S)
+            {
+                if (e.Key == Key.S)
+                {
+                    
+                    e.Handled = true;
+                }
+            }
+        }
     }
 }

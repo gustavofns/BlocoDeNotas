@@ -55,7 +55,7 @@ namespace BlocoDeNotas.Menu.MenuArquivo
             {
                 if (_editorDeDocumentos.DocumentoAtual != _editorDeDocumentos.DocumentoOriginal)
                     if (_caixaDeMensagem.MostrarPergunta("Deseja salvar o documento antes de sair?"))
-                        _gravacaoDeArquivos.Salvar();
+                        _gravacaoDeArquivos.Salvar(_editorDeDocumentos);
             }
 
             if (!_caixaDeMensagem.MostrarPergunta("Tem certeza que deseja sair?"))

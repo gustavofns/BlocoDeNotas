@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlocoDeNotas.Interfaces.UI.Componentes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace BlocoDeNotas.Interfaces.Menu.MenuArquivo
 {
     public interface IGravacaoDeArquivos
     {
-        void Salvar();
-        void SalvarComo();
+        void Salvar(IEditorDeDocumentos editorDeDocumentos);
+        void SalvarComo(IEditorDeDocumentos editorDeDocumentos);
     }
 }

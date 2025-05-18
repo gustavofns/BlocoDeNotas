@@ -37,8 +37,6 @@ namespace BlocoDeNotas.Interfaces
             services.AddSingleton<IConfiguracoesDaJanela, ConfigJanela>();
             services.AddSingleton<IJanela, JanelaPrincipal>();
             services.AddSingleton<IAtualizarTituloJanela, AtualizarTituloDaJanela>();
-            services.AddSingleton<IAreaDeTransferencia, AreaDeTransferencia>();
-            services.AddSingleton<IAcoesDoDocumento, AcoesDoDocumento>();
             services.AddSingleton<IEditorDeDocumentos, EditorDeDocumentos>();
             services.AddSingleton<ICaixaDeMensagem, CaixaDeMensagem>();
             services.AddSingleton<IExcecoes, Excecoes>();
@@ -47,8 +45,8 @@ namespace BlocoDeNotas.Interfaces
             services.AddSingleton<IGravacaoDeArquivos, GravacaoDeArquivos>();
             services.AddSingleton<IGerenciamentoDaJanela, GerenciamentoDaJanela>();
             services.AddSingleton<IMenuArquivo, MenuArquivo>();
-            services.AddSingleton<IAcoesDoDocumento, AcoesDoDocumento>();
             services.AddSingleton<IAreaDeTransferencia, AreaDeTransferencia>();
+            services.AddSingleton<IAcoesDoDocumento, AcoesDoDocumento>();
             services.AddSingleton<IDataEHora, DataEHora>();
             services.AddSingleton<IMenuEditar, MenuEditar>();
             services.AddSingleton<IBarraDeStatus, BarraDeStatus>();

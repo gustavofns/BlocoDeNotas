@@ -13,13 +13,15 @@ namespace BlocoDeNotas.Menu.MenuArquivo
 {
     public class MenuArquivo : IMenuArquivo
     {
+        private readonly IEditorDeDocumentos _editorDeDocumentos;
         private readonly ILeituraDeArquivos _leituraDeArquivos;
         private readonly IGravacaoDeArquivos _gravacaoDeArquivos;
         private readonly IGerenciamentoDaJanela _gerenciamentoDaJanela;
 
-        public MenuArquivo(ILeituraDeArquivos leituraDeArquivos, IGravacaoDeArquivos gravacaoDeArquivos, 
+        public MenuArquivo(IEditorDeDocumentos editorDeDocumentos, ILeituraDeArquivos leituraDeArquivos, IGravacaoDeArquivos gravacaoDeArquivos, 
             IGerenciamentoDaJanela gerenciamentoDaJanela) 
         {
+            _editorDeDocumentos = editorDeDocumentos;
             _leituraDeArquivos = leituraDeArquivos;
             _gravacaoDeArquivos = gravacaoDeArquivos;
             _gerenciamentoDaJanela = gerenciamentoDaJanela;
@@ -28,9 +30,9 @@ namespace BlocoDeNotas.Menu.MenuArquivo
 
         public void AbrirNovaJanela() => _gerenciamentoDaJanela.AbrirNovaJanela();
         public void FecharJanela() => _gerenciamentoDaJanela.FecharJanela();
-        public void AbrirArquivo() => _leituraDeArquivos.AbrirArquivo();
-        public void Salvar() => _gravacaoDeArquivos.Salvar();
-        public void SalvarComo() => _gravacaoDeArquivos.SalvarComo();
+        public void AbrirArquivo() => _leituraDeArquivos.AbrirArquivo(_editorDeDocumentos);
+        public void Salvar() => _gravacaoDeArquivos.Salvar(_editorDeDocumentos);
+        public void SalvarComo() => _gravacaoDeArquivos.SalvarComo(_editorDeDocumentos);
         public void FecharArquivo() => _gerenciamentoDaJanela.FecharArquivo();
         public void SairDoAplicativo() => _gerenciamentoDaJanela.SairDoAplicativo();
     }

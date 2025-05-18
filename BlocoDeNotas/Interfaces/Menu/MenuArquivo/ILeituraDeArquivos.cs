@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlocoDeNotas.Interfaces.UI.Componentes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace BlocoDeNotas.Interfaces.Menu.MenuArquivo
 {
     public interface ILeituraDeArquivos
     {
-        void AbrirArquivo();
+        void AbrirArquivo(IEditorDeDocumentos editorDeDocumentos);
     }
 }

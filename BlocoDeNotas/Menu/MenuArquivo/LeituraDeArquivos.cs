@@ -15,7 +15,6 @@ namespace BlocoDeNotas.Menu.MenuArquivo
     public class LeituraDeArquivos : ILeituraDeArquivos
     {
         private string _arquivo;
-        private readonly IEditorDeDocumentos _editorDeDocumentos;
         private readonly ICaixaDeDialogoArquivos _caixaDeDialogoArquivos;
         private readonly IExcecoes _excecoes;
 
@@ -23,13 +22,12 @@ namespace BlocoDeNotas.Menu.MenuArquivo
             ICaixaDeDialogoArquivos caixaDeDialogoArquivos, IExcecoes excecoes)
         {
             _arquivo = string.Empty;
-            _editorDeDocumentos = editorDeDocumentos;
             _caixaDeDialogoArquivos = caixaDeDialogoArquivos;
             _excecoes = excecoes;
         }
 
         // Seleciona um arquivo para abrir
-        public void AbrirArquivo()
+        public void AbrirArquivo(IEditorDeDocumentos editorDeDocumentos)
         {
             _arquivo = _caixaDeDialogoArquivos.MostrarCaixaDeDialogo(
                 new OpenFileDialog(),
@@ -37,21 +35,21 @@ namespace BlocoDeNotas.Menu.MenuArquivo
             );
             if (string.IsNullOrEmpty(_arquivo))
                 return;
-            else LerArquivo();
+            else LerArquivo(editorDeDocumentos);
         }
 
         // Faz leitura do arquivo
-        private void LerArquivo()
+        private void LerArquivo(IEditorDeDocumentos editorDeDocumentos)
         {
             try
             {
                 using(var sr = new StreamReader(_arquivo))
                 {
                     var documento = sr.ReadToEnd();
-                    _editorDeDocumentos.DocumentoOriginal = documento;
-                    _editorDeDocumentos.DocumentoAtual = documento;
-                    _editorDeDocumentos.Arquivo = _arquivo;
-                    _editorDeDocumentos.DefinirPosicaoDoCursorDeTexto();
+                    editorDeDocumentos.DocumentoOriginal = documento;
+                    editorDeDocumentos.DocumentoAtual = documento;
+                    editorDeDocumentos.Arquivo = _arquivo;
+                    editorDeDocumentos.DefinirPosicaoDoCursorDeTexto();
                 }
             }
             catch (Exception ex)
@@ -61,7 +59,7 @@ namespace BlocoDeNotas.Menu.MenuArquivo
             finally
             {
                 _arquivo = string.Empty;
-                _editorDeDocumentos.AtualizarTitulo();
+                editorDeDocumentos.AtualizarTitulo();
             }
         }
     }
