@@ -9,19 +9,12 @@ using System.Threading.Tasks;
 
 namespace BlocoDeNotas.Menu.MenuEditar
 {
-    public class DataEHora : IDataEHora
+    public class DataEHora(IEditorDeDocumentos editorDeDocumentos) : IDataEHora
     {
-        private readonly IEditorDeDocumentos _editorDeDocumentos;
-
-        public DataEHora(IEditorDeDocumentos editorDeDocumentos)
-        {
-            _editorDeDocumentos = editorDeDocumentos;
-        }
-
         // Insere a data atual
         public void InserirData()
         {
-            _editorDeDocumentos.DocumentoAtual 
+            editorDeDocumentos.DocumentoAtual 
                 += DateTime.Now.ToString("dd/MM/yyyy");
             PosicaoCursor();
         }
@@ -29,7 +22,7 @@ namespace BlocoDeNotas.Menu.MenuEditar
         // Insere a hora atual
         public void InserirHora()
         {
-            _editorDeDocumentos.DocumentoAtual
+            editorDeDocumentos.DocumentoAtual
                 += DateTime.Now.ToString("HH:mm:ss");
             PosicaoCursor();
         }
@@ -38,14 +31,14 @@ namespace BlocoDeNotas.Menu.MenuEditar
         public void InserirDataHora()
         {
             InserirHora();
-            _editorDeDocumentos.DocumentoAtual += " ";
+            editorDeDocumentos.DocumentoAtual += " ";
             InserirData();
         }
 
         // Define a posição do cursor no documento
         private void PosicaoCursor()
         {
-            _editorDeDocumentos.DefinirPosicaoDoCursorDeTexto();
+            editorDeDocumentos.DefinirPosicaoDoCursorDeTexto();
         }
     }
 }

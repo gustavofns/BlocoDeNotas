@@ -8,31 +8,18 @@ using System.Threading.Tasks;
 
 namespace BlocoDeNotas.Menu.MenuEditar
 {
-    public class MenuEditar : IMenuEditar
+    public class MenuEditar(IAcoesDoDocumento acoesDoDocumento, IAreaDeTransferencia areaDeTransferencia, 
+        IEditorDeDocumentos editorDeDocumentos, IDataEHora dataEHora) : IMenuEditar
     {
-        private readonly IAcoesDoDocumento _acoesDoDocumento;
-        private readonly IAreaDeTransferencia _areaDeTransferencia;
-        private readonly IEditorDeDocumentos _editorDeDocumentos;
-        private readonly IDataEHora _dataEHora;
-
-        public MenuEditar(IAcoesDoDocumento acoesDoDocumento, IAreaDeTransferencia areaDeTransferencia, 
-            IEditorDeDocumentos editorDeDocumentos, IDataEHora dataEHora)
-        {
-            _acoesDoDocumento = acoesDoDocumento;
-            _areaDeTransferencia = areaDeTransferencia;
-            _editorDeDocumentos = editorDeDocumentos;
-            _dataEHora = dataEHora;
-        }
-
-        public void Desfazer() => _acoesDoDocumento.Desfazer(_editorDeDocumentos);
-        public void Refazer() => _acoesDoDocumento.Refazer(_editorDeDocumentos);
-        public void Excluir() => _acoesDoDocumento.Excluir(_editorDeDocumentos);
-        public void Colar() => _areaDeTransferencia.Colar(_editorDeDocumentos);
-        public void Copiar() => _areaDeTransferencia.Copiar(_editorDeDocumentos);
-        public void Recortar () => _areaDeTransferencia.Recortar(_editorDeDocumentos);
-        public void SelecionarTudo() => _acoesDoDocumento.SelecionarTudo(_editorDeDocumentos);
-        public void HoraAtual() => _dataEHora.InserirHora();
-        public void DataAtual() => _dataEHora.InserirData();
-        public void DataEHoraAtual() => _dataEHora.InserirDataHora();
+        public void Desfazer() => acoesDoDocumento.Desfazer(editorDeDocumentos);
+        public void Refazer() => acoesDoDocumento.Refazer(editorDeDocumentos);
+        public void Excluir() => acoesDoDocumento.Excluir(editorDeDocumentos);
+        public void Colar() => areaDeTransferencia.Colar(editorDeDocumentos);
+        public void Copiar() => areaDeTransferencia.Copiar(editorDeDocumentos);
+        public void Recortar () => areaDeTransferencia.Recortar(editorDeDocumentos);
+        public void SelecionarTudo() => acoesDoDocumento.SelecionarTudo(editorDeDocumentos);
+        public void HoraAtual() => dataEHora.InserirHora();
+        public void DataAtual() => dataEHora.InserirData();
+        public void DataEHoraAtual() => dataEHora.InserirDataHora();
     }
 }

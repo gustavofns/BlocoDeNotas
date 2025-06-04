@@ -10,22 +10,16 @@ using System.Windows.Threading;
 
 namespace BlocoDeNotas.Eventos
 {
-    public class AtualizarTituloDaJanela : IAtualizarTituloJanela
+    public class AtualizarTituloDaJanela(IJanela janela) : IAtualizarTituloJanela
     {
-        private readonly IJanela _janela;
-
-        public AtualizarTituloDaJanela(IJanela janela)
-        {
-            _janela = janela;
-        }
 
         // Atualiza o titulo da janela
         public void AtualizarTitulo(string arquivo, string documentoAtual, string documentoOriginal)
         {
             string novoTitulo = NovoTitulo(arquivo, documentoAtual, documentoOriginal);
 
-            if (_janela.TituloJanela != novoTitulo)
-                _janela.TituloJanela = novoTitulo;
+            if (janela.TituloJanela != novoTitulo)
+                janela.TituloJanela = novoTitulo;
         }
 
         // Gera um novo título dependo se o arquivo está salvo ou não, ou foi modificado

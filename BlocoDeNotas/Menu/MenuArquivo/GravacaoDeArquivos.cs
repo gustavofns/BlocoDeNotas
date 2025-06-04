@@ -13,62 +13,51 @@ using System.Threading.Tasks;
 
 namespace BlocoDeNotas.Menu.MenuArquivo
 {
-    public class GravacaoDeArquivos : IGravacaoDeArquivos
+    public class GravacaoDeArquivos(ICaixaDeDialogoArquivos caixaDeDialogoArquivos, IExcecoes excecoes) : IGravacaoDeArquivos
     {
-        private string _arquivo;
-        private readonly ICaixaDeDialogoArquivos _caixaDeDialogoArquivos;
-        private readonly IExcecoes _excecoes;
-
-        public GravacaoDeArquivos(ICaixaDeDialogoArquivos caixaDeDialogoArquivos, IExcecoes excecoes)
-        {
-            _arquivo = string.Empty;
-            _caixaDeDialogoArquivos = caixaDeDialogoArquivos;
-            _excecoes = excecoes;
-        }
-
         // Verifica se o arquivo possui um caminho, caso não possua pede selecionar um local para salvar e depois salva o arquivo
         public void Salvar(IEditorDeDocumentos editorDeDocumentos)
         {
-            _arquivo = editorDeDocumentos.Arquivo;
-            if (string.IsNullOrEmpty(_arquivo))
+            string arquivo = editorDeDocumentos.Arquivo;
+            if (string.IsNullOrEmpty(arquivo))
                 SalvarComo(editorDeDocumentos);
-            else GravarArquivo(editorDeDocumentos);
+            else GravarArquivo(editorDeDocumentos, arquivo);
         }
 
         // Seleciona um local para salvar o arquivo e depois salva o arquivo
         public void SalvarComo(IEditorDeDocumentos editorDeDocumentos)
         {
-            _arquivo = _caixaDeDialogoArquivos.MostrarCaixaDeDialogo(
+            string arquivo = caixaDeDialogoArquivos.MostrarCaixaDeDialogo(
                 new SaveFileDialog(),
                 "Selecione um local para salvar o documento"
             );
 
-            if (string.IsNullOrEmpty(_arquivo))
+            if (string.IsNullOrEmpty(arquivo))
                 return;
-            else GravarArquivo(editorDeDocumentos);
+            else GravarArquivo(editorDeDocumentos, arquivo);
         }
 
         // Grava o arquivo no armazenamento
-        private void GravarArquivo(IEditorDeDocumentos editorDeDocumentos)
+        private void GravarArquivo(IEditorDeDocumentos editorDeDocumentos, string arquivo)
         {
             try
             {
-                using(var sw = new StreamWriter(_arquivo))
+                using(var sw = new StreamWriter(arquivo))
                 {
                     sw.AutoFlush = true;
                     sw.Write(editorDeDocumentos.DocumentoAtual);
                     editorDeDocumentos.DocumentoOriginal = 
                         editorDeDocumentos.DocumentoAtual;
-                    editorDeDocumentos.Arquivo = _arquivo;
+                    editorDeDocumentos.Arquivo = arquivo;
                 }
             }
             catch(Exception ex)
             {
-                _excecoes.ExibirMensagemExcecao(ex);
+                excecoes.ExibirMensagemExcecao(ex);
             }
             finally
             {
-                _arquivo = string.Empty;
+                arquivo = string.Empty;
                 editorDeDocumentos.AtualizarTitulo();
             }
         }

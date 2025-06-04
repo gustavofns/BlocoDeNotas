@@ -12,20 +12,9 @@ using System.Windows;
 
 namespace BlocoDeNotas.Menu.MenuArquivo
 {
-    public class GerenciamentoDaJanela : IGerenciamentoDaJanela
+    public class GerenciamentoDaJanela(IJanela janela, ICaixaDeMensagem caixaDeMensagem, 
+        IGravacaoDeArquivos gravacaoDeArquivos) : IGerenciamentoDaJanela
     {
-        private IJanela _janela;
-        private ICaixaDeMensagem _caixaDeMensagem;
-        private IGravacaoDeArquivos _gravacaoDeArquivos;
-
-        public GerenciamentoDaJanela(IJanela janela,
-            ICaixaDeMensagem caixaDeMensagem, IGravacaoDeArquivos gravacaoDeArquivos)
-        {
-            _janela = janela;
-            _caixaDeMensagem = caixaDeMensagem;
-            _gravacaoDeArquivos = gravacaoDeArquivos;
-        }
-
         // Abre uma nova janela
         public void AbrirNovaJanela()
         {
@@ -35,7 +24,7 @@ namespace BlocoDeNotas.Menu.MenuArquivo
         // Fecha a janela atual
         public void FecharJanela()
         {
-            _janela.FecharJanela();
+            janela.FecharJanela();
         }
 
         // Fecha o arquivo atual
@@ -52,11 +41,11 @@ namespace BlocoDeNotas.Menu.MenuArquivo
             if (!string.IsNullOrEmpty(editorDeDocumentos.DocumentoAtual) || !string.IsNullOrEmpty(editorDeDocumentos.Arquivo))
             {
                 if (editorDeDocumentos.DocumentoAtual != editorDeDocumentos.DocumentoOriginal)
-                    if (_caixaDeMensagem.MostrarPergunta("Deseja salvar o documento antes de sair?"))
-                        _gravacaoDeArquivos.Salvar(editorDeDocumentos);
+                    if (caixaDeMensagem.MostrarPergunta("Deseja salvar o documento antes de sair?"))
+                        gravacaoDeArquivos.Salvar(editorDeDocumentos);
             }
 
-            if (!_caixaDeMensagem.MostrarPergunta("Tem certeza que deseja sair?"))
+            if (!caixaDeMensagem.MostrarPergunta("Tem certeza que deseja sair?"))
                 return;
            Application.Current.Shutdown();
         }

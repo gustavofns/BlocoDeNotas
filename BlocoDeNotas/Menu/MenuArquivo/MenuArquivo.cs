@@ -11,29 +11,16 @@ using System.Windows;
 
 namespace BlocoDeNotas.Menu.MenuArquivo
 {
-    public class MenuArquivo : IMenuArquivo
+    public class MenuArquivo(IEditorDeDocumentos editorDeDocumentos, ILeituraDeArquivos leituraDeArquivos,
+        IGravacaoDeArquivos gravacaoDeArquivos, IGerenciamentoDaJanela gerenciamentoDaJanela) : IMenuArquivo
     {
-        private readonly IEditorDeDocumentos _editorDeDocumentos;
-        private readonly ILeituraDeArquivos _leituraDeArquivos;
-        private readonly IGravacaoDeArquivos _gravacaoDeArquivos;
-        private readonly IGerenciamentoDaJanela _gerenciamentoDaJanela;
 
-        public MenuArquivo(IEditorDeDocumentos editorDeDocumentos, ILeituraDeArquivos leituraDeArquivos, IGravacaoDeArquivos gravacaoDeArquivos, 
-            IGerenciamentoDaJanela gerenciamentoDaJanela) 
-        {
-            _editorDeDocumentos = editorDeDocumentos;
-            _leituraDeArquivos = leituraDeArquivos;
-            _gravacaoDeArquivos = gravacaoDeArquivos;
-            _gerenciamentoDaJanela = gerenciamentoDaJanela;
-        }
-
-
-        public void AbrirNovaJanela() => _gerenciamentoDaJanela.AbrirNovaJanela();
-        public void FecharJanela() => _gerenciamentoDaJanela.FecharJanela();
-        public void AbrirArquivo() => _leituraDeArquivos.AbrirArquivo(_editorDeDocumentos);
-        public void Salvar() => _gravacaoDeArquivos.Salvar(_editorDeDocumentos);
-        public void SalvarComo() => _gravacaoDeArquivos.SalvarComo(_editorDeDocumentos);
-        public void FecharArquivo() => _gerenciamentoDaJanela.FecharArquivo(_editorDeDocumentos);
-        public void SairDoAplicativo() => _gerenciamentoDaJanela.SairDoAplicativo(_editorDeDocumentos);
+        public void AbrirNovaJanela() => gerenciamentoDaJanela.AbrirNovaJanela();
+        public void FecharJanela() => gerenciamentoDaJanela.FecharJanela();
+        public void AbrirArquivo() => leituraDeArquivos.AbrirArquivo(editorDeDocumentos);
+        public void Salvar() => gravacaoDeArquivos.Salvar(editorDeDocumentos);
+        public void SalvarComo() => gravacaoDeArquivos.SalvarComo(editorDeDocumentos);
+        public void FecharArquivo() => gerenciamentoDaJanela.FecharArquivo(editorDeDocumentos);
+        public void SairDoAplicativo() => gerenciamentoDaJanela.SairDoAplicativo(editorDeDocumentos);
     }
 }

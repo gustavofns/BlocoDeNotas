@@ -10,19 +10,12 @@ using System.Windows;
 
 namespace BlocoDeNotas.Eventos
 {
-    public class Excecoes : IExcecoes
+    public class Excecoes(ICaixaDeMensagem caixaDeMensagem) : IExcecoes
     {
-        private readonly ICaixaDeMensagem _caixaDeMensagem;
-
-        public Excecoes(ICaixaDeMensagem caixaMensagem)
-        {
-            _caixaDeMensagem = caixaMensagem;
-        }
-
         // exibi uma messagem de erro
         public void ExibirMensagemExcecao(Exception ex)
         {
-            _caixaDeMensagem.MostrarMensagem(
+            caixaDeMensagem.MostrarMensagem(
                 MessageBoxImage.Error,
                 TratarExcecao(ex)
             );

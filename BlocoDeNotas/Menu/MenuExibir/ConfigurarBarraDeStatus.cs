@@ -8,20 +8,13 @@ using System.Threading.Tasks;
 
 namespace BlocoDeNotas.Menu.MenuExibir
 {
-    public class ConfigurarBarraDeStatus
+    public class ConfigurarBarraDeStatus(IEditor editor)
     {
-        private readonly IEditor _editor;
-
-        public ConfigurarBarraDeStatus(IEditor editor)
-        {
-            _editor = editor;
-        }
-
         public void ExibirBarraDeStatus(bool sender)
         {
             Properties.Settings.Default.BarraDeStatus = false;
             Properties.Settings.Default.Save();
-            _editor.ExibirBarraDeStatus(sender);
+            editor.ExibirBarraDeStatus(sender);
         }
     }
 }
